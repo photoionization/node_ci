@@ -50,6 +50,7 @@ node_dep("inspector") {
     ":v8_inspector_compress_protocol_json",
     "../../deps/uv",
     "../../deps/llhttp",
+    "../../deps/openssl",
     "//third_party/icu:icuuc",
   ]
   public_configs = [ ":inspector_config" ]
