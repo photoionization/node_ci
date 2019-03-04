@@ -10,7 +10,15 @@ config("external_config") {
   include_dirs = [ "src" ]
 }
 
+config("internal_config") {
+  cflags_c = [
+    "-Wno-implicit-function-declaration",
+    "-Wno-incompatible-pointer-types",
+  ]
+}
+
 node_dep("histogram") {
   public_configs = [ ":external_config" ]
+  configs = [ ":internal_config" ]
   sources = [ "src/hdr_histogram.c" ]
 }

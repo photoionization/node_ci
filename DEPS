@@ -34,7 +34,7 @@ vars = {
   'trace_common_revision' : '936ba8a963284a6b3737cf2f0474a7131073abee',
 
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
-  'v8_revision': 'a8a45e41213d51590a1b9b0a629afece1751555c',
+  'v8_revision': 'f507e2226170dfb7520560dc9cbbf63f688bb71b',
 }
 
 deps = {
@@ -57,14 +57,28 @@ recursedeps = [
 
 hooks = [
   {
+    'name': 'generate_node_filelist',
+    'pattern': 'node-ci/node',
+    'action': ['python', 'node-ci/tools/generate_node_files_json.py'],
+  },
+  {
+    # Update the Windows toolchain if necessary.
+    'name': 'win_toolchain',
+    'pattern': '.',
+    'condition': 'checkout_win',
+    'action': ['python', 'node-ci/build/vs_toolchain.py', 'update'],
+  },
+  {
     'name': 'clang',
     'pattern': '.',
     'action': ['python', 'node-ci/tools/clang/scripts/update.py'],
   },
   {
-    'name': 'generate_node_filelist',
-    'pattern': 'node-ci/node',
-    'action': ['python', 'node-ci/tools/generate_node_files_json.py'],
+    # Update LASTCHANGE.
+    'name': 'lastchange',
+    'pattern': '.',
+    'action': ['python', 'node-ci/build/util/lastchange.py',
+               '-o', 'node-ci/build/util/LASTCHANGE'],
   },
   # Pull GN using checked-in hashes.
   {

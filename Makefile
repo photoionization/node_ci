@@ -49,11 +49,11 @@ cctest.Debug: build.Debug
 # Run JS tests
 .PHONY: jstest.Release
 jstest.Release: build.Release
-	tools/test.py $(PARALLEL_ARGS) -m release
+	tools/test.py --test-root node/test $(PARALLEL_ARGS) -m release
 
 .PHONY: jstest.Debug
 jstest.Debug: build.Debug
-	tools/test.py $(PARALLEL_ARGS) -m debug
+	tools/test.py --test-root node/test $(PARALLEL_ARGS) -m debug
 
 # Run all tests
 .PHONY: test
