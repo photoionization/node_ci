@@ -97,14 +97,7 @@ action("generate_config_gypi") {
   outputs = [ "$target_gen_dir/js2c_inputs/config.gypi", ]
   depfile = "$target_gen_dir/$target_name.d"
 
-  if (is_mac) {
-    gn = "//buildtools/mac/gn"
-  } else if (is_win) {
-    gn = "//buildtools/win/gn.exe"
-  } else {
-    gn = "//buildtools/linux64/gn"
-  }
-  script_args = [ gn, "$root_out_dir" ]
+  script_args = [ "//third_party", "$root_out_dir" ]
   script_args += outputs
   script_args += [ depfile ]
   args = rebase_path(script_args, root_build_dir)
@@ -165,7 +158,6 @@ config("node_base_internal") {
     "-Wno-unused-variable",
     "-Wno-string-plus-int",
     "-Wno-string-conversion",
-    "-Wno-unused-function",
   ]
 
   if (target_cpu == "x86") {
@@ -253,10 +245,8 @@ source_set("node_base") {
   public_configs = [
     ":node_base_external",
     "//build/config/compiler:no_chromium_code",
+    "//build/config/gcc:symbol_visibility_default",
   ]
-  if (is_posix || is_fuchsia) {
-    public_configs += [ "//build/config/gcc:symbol_visibility_default" ]
-  }
   configs += [ ":node_base_internal" ]
   configs -= [ "//build/config/clang:find_bad_constructs" ]
 
@@ -346,7 +336,7 @@ executable("node_cctest") {
   testonly = true
   deps = [
     ":node_base",
-    "//v8/testing/gtest:gtest_main",
+    "//testing/gtest:gtest_main",
   ]
   configs += [ ":node_base_internal" ]
   sources = node_files.cctest_sources

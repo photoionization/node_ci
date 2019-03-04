@@ -51,7 +51,6 @@ node_dep("inspector") {
     "../../deps/uv",
     "../../deps/llhttp",
     "../../deps/openssl",
-    "../../deps/zlib",
     "//third_party/icu:icuuc",
   ]
   public_configs = [ ":inspector_config" ]

@@ -52,10 +52,10 @@ def translate_config(config):
     }
   }
 
-def main(gn_exe, gn_out_dir, output_file, depfile):
+def main(jinja_dir, gn_out_dir, output_file, depfile):
   # Get GN config and parse into a dictionary.
   gnconfig = subprocess.check_output(
-                 [gn_exe, 'args', '--list', '--short', '-C', gn_out_dir])
+                 ['gn', 'args', '--list', '--short', '-C', gn_out_dir])
   config = dict(re.findall(GN_RE, gnconfig))
   config['node_module_version'] = getmoduleversion.get_version()
 

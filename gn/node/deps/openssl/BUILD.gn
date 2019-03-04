@@ -10,13 +10,8 @@ config("external_config") {
 }
 
 config("internal_config") {
-  cflags_c = [
-    "-Wno-implicit-function-declaration",
-    "-Wno-constant-conversion",
-    "-Wno-incompatible-pointer-types",
-    "-Wno-constant-conversion",
-  ]
   if (is_posix || is_fuchsia) {
+    cflags_c = ["-Wno-implicit-function-declaration" ]
     asmflags = [ "-fPIC" ]
     cflags = [ "-fPIC" ]
     ldflags = [ "-fPIC" ]
@@ -33,9 +28,6 @@ config("internal_config") {
     "config/archs/linux-x86_64/no-asm/crypto",
     "config",
   ]
-  if (is_win) {
-    libs = [ "crypt32.lib" ]
-  }
 }
 
 openssl_defines = [
@@ -47,6 +39,7 @@ openssl_defines = [
   "OPENSSL_NO_HW",
   "OPENSSLDIR=\"/etc/ssl\"",
   "ENGINESDIR=\"/dev/null\"",
+  "TERMIOS",
 ]
 
 node_dep("openssl") {
