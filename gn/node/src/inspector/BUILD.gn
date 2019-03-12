@@ -63,7 +63,7 @@ action("protocol_generated_sources") {
   # This is to ensure that the output directory exists--the code generator
   # doesn't create it.
   write_file("$target_gen_dir/$inspector_protocol_package/.dummy", "")
-  script = "$inspector_protocol_dir/CodeGenerator.py"
+  script = "$inspector_protocol_dir/code_generator.py"
 
   inputs = [
     "$target_gen_dir/node_protocol_config.json",
@@ -174,7 +174,7 @@ action("concatenate_protocols") {
   outputs = [
     "$target_gen_dir/concatenated_protocol.json",
   ]
-  script = "$inspector_protocol_dir/ConcatenateProtocols.py"
+  script = "$inspector_protocol_dir/concatenate_protocols.py"
   args = rebase_path(inputs + outputs, root_build_dir)
 }
 
