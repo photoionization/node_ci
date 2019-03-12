@@ -3,52 +3,52 @@
 # found in the LICENSE file.
 
 vars = {
+  'build_revision': '74ed0860baf0c53a00cec8ecd4c92cd2b650d2a6',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
-  'build_revision': 'ebd384ac0066c979fa8fcd69b139e05407618820',
 
-  'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
   'buildtools_revision': '3e50219fc4503f461b2176a9976891b28d80f9ab',
+  'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
+  'clang_revision': 'ff65c25671e8bf21082fcd8061ccc64e9578c8fe',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
-  'clang_revision': '987f14b1d69362d837743b9807e2b14caf55688f',
 
+  'depot_tools_revision': '920bada95c6dc83b5848e01961f3bf8bdc692611',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
-  'depot_tools_revision': '95ea36ed70541b2ad01c33656c9504b7dc6404d0',
 
+  'googletest_revision': '8b6d3f9c4a774bef3081195d422993323b6bb2e0',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
-  'googletest_revision': '37ae1fc5e6be26f367d76c078beabd7024fed53a',
 
+  'icu_revision': '2fd941df00511f26554ab37ae0d00cdc26361d0b',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
-  'icu_revision': '960f195aa87acaec46e6104ec93a596da7ae0843',
 
-  'jinja2_url': 'https://chromium.googlesource.com/chromium/src/third_party/jinja2.git',
   'jinja2_revision': 'b41863e42637544c2941b574c7877d3e1f663e25',
+  'jinja2_url': 'https://chromium.googlesource.com/chromium/src/third_party/jinja2.git',
 
-  'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
+  'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
+  'node_revision': '907d82c7ab995e9baba79f3fa7774cfba2edad54',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
-  'node_revision': '8d1ccd53e23211ff2fb58d1b3d8b0fa0acefd0c2',
 
-  'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
   'trace_common_revision' : '936ba8a963284a6b3737cf2f0474a7131073abee',
+  'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
+  'v8_revision': 'd3e33d4f3478d200627701e16d8a379a0fb02443',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
-  'v8_revision': 'f507e2226170dfb7520560dc9cbbf63f688bb71b',
 }
 
 deps = {
   'node-ci/base/trace_event/common': Var('trace_common_url') + '@' + Var('trace_common_revision'),
   'node-ci/build': Var('build_url') + '@' + Var('build_revision'),
   'node-ci/buildtools': Var('buildtools_url') + '@' + Var('buildtools_revision'),
-  'node-ci/tools/clang': Var('clang_url') + '@' + Var('clang_revision'),
+  'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
   'node-ci/third_party/googletest/src': Var('googletest_url') + '@' + Var('googletest_revision'),
   'node-ci/third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
   'node-ci/third_party/jinja2': Var('jinja2_url') + '@' + Var('jinja2_revision'),
   'node-ci/third_party/markupsafe': Var('markupsafe_url') + '@' + Var('markupsafe_revision'),
+  'node-ci/tools/clang': Var('clang_url') + '@' + Var('clang_revision'),
   'node-ci/v8': Var('v8_url') + '@' +  Var('v8_revision'),
-  'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
 }
 
 recursedeps = [
