@@ -3,16 +3,16 @@
 # found in the LICENSE file.
 
 vars = {
-  'build_revision': '74ed0860baf0c53a00cec8ecd4c92cd2b650d2a6',
+  'build_revision': '5b91f2d38785680d33c532ecb1a853a03f3ad6af',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
   'buildtools_revision': '3e50219fc4503f461b2176a9976891b28d80f9ab',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
-  'clang_revision': 'ff65c25671e8bf21082fcd8061ccc64e9578c8fe',
+  'clang_revision': '3dd606a4e91b32c6f0116b38abac3ab0c4944ec3',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '920bada95c6dc83b5848e01961f3bf8bdc692611',
+  'depot_tools_revision': 'efe902b20b6ae0d367b354bdaa2e10c19349f880',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'googletest_revision': '8b6d3f9c4a774bef3081195d422993323b6bb2e0',
@@ -27,13 +27,13 @@ vars = {
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '907d82c7ab995e9baba79f3fa7774cfba2edad54',
+  'node_revision': '78f047d23187d9ecac2b84bad9afe0dad808e61e',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : '936ba8a963284a6b3737cf2f0474a7131073abee',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'd3e33d4f3478d200627701e16d8a379a0fb02443',
+  'v8_revision': 'e3f2fe4453336e49e065fbdab710a93cf3d5387e',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 }
 
