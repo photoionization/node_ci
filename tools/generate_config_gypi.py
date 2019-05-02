@@ -36,8 +36,7 @@ def translate_config(config):
       'node_module_version': string_to_number(config['node_module_version']),
       'node_report': config['node_report'],
       'node_shared': bool_string_to_number(config['is_component_build']),
-      'node_code_cache_path':
-          'node_code_cache.cc' if config['node_use_code_cache'] else '',
+      'node_code_cache_path': 'yes' if config['node_use_code_cache'] else 'no',
       'shlib_suffix': shlib_suffix,
       # v8_enable_inspector is actually a misnomer, and only affects node.
       'v8_enable_inspector':

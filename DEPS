@@ -15,10 +15,10 @@ vars = {
   'depot_tools_revision': 'efe902b20b6ae0d367b354bdaa2e10c19349f880',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
-  'googletest_revision': '8b6d3f9c4a774bef3081195d422993323b6bb2e0',
+  'googletest_revision': '39f72ea6f5cd458860b563d7bcb7ea67546e6ea3',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': '4ae7482a0e9e1f77a793545d803086a5ad4bcfd8',
+  'icu_revision': 'ae4b77dc8966796f0bd93bb6342023276749e148',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': 'b41863e42637544c2941b574c7877d3e1f663e25',
@@ -27,7 +27,7 @@ vars = {
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': 'e47157ba2a1e76f6c68050eaf665a218c611eb35',
+  'node_revision': 'b7db8083e0a850054baeb06892c719946c9f46c4',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : '936ba8a963284a6b3737cf2f0474a7131073abee',

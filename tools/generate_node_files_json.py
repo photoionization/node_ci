@@ -78,11 +78,12 @@ if __name__ == '__main__':
   out['node_sources'] = [
       f.replace('deps/v8/', '../v8/', 1) for f in node_sources]
 
-  # Find cctest files.
+  # Find cctest files. Omit included gtest.
   cctest_target = next(
       t for t in node_gyp['targets']
       if t['target_name'] == 'cctest')
-  out['cctest_sources'] = cctest_target['sources']
+  out['cctest_sources'] = [
+      f for f in cctest_target['sources'] if not f.startswith('test/cctest/gtest')]
 
   # Find inspector sources.
   inspector_sources = inspector_gyp['sources']

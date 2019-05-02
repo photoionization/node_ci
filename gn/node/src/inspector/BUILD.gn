@@ -67,7 +67,7 @@ action("protocol_generated_sources") {
 
   inputs = [
     "$target_gen_dir/node_protocol_config.json",
-    "$target_gen_dir/node_protocol.json",
+    "$target_gen_dir/src/node_protocol.json",
     "$inspector_protocol_dir/lib/Allocator_h.template",
     "$inspector_protocol_dir/lib/Array_h.template",
     "$inspector_protocol_dir/lib/Collections_h.template",
@@ -149,7 +149,7 @@ generate_protocol_json("node_protocol_json") {
     "node_protocol.pdl",
   ]
   outputs = [
-    "$target_gen_dir/node_protocol.json",
+    "$target_gen_dir/src/node_protocol.json",
   ]
 }
 
@@ -158,7 +158,7 @@ generate_protocol_json("v8_protocol_json") {
     "//v8/src/inspector/js_protocol.pdl",
   ]
   outputs = [
-    "$target_gen_dir/js_protocol.json",
+    "$target_gen_dir/src/js_protocol.json",
   ]
 }
 
@@ -168,8 +168,8 @@ action("concatenate_protocols") {
     ":v8_protocol_json",
   ]
   inputs = [
-    "$target_gen_dir/js_protocol.json",
-    "$target_gen_dir/node_protocol.json",
+    "$target_gen_dir/src/js_protocol.json",
+    "$target_gen_dir/src/node_protocol.json",
   ]
   outputs = [
     "$target_gen_dir/concatenated_protocol.json",

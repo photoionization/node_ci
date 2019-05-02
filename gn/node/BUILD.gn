@@ -46,6 +46,9 @@ declare_args() {
 
   # Use code cache to speed up startup.
   node_use_code_cache = true
+
+  # Use snapshot to speed up startup.
+  node_use_snapshot = true
 }
 
 assert(!node_use_dtrace, "node_use_dtrace not supported in GN")
@@ -119,14 +122,14 @@ chdir_action("node_js2c") {
 
   macro_inputs = []
   if (!node_use_dtrace && !node_use_etw) {
-    macro_inputs += [ "src/notrace_macros.py" ]
+    macro_inputs += [ "tools/js2c_macros/notrace_macros.py" ]
   }
   if (node_debug_lib) {
-    macro_inputs += [ "tools/nodcheck_macros.py" ]
+    macro_inputs += [ "tools/js2c_macros/nodcheck_macros.py" ]
   } else {
-    macro_inputs += [ "tools/dcheck_macros.py" ]
+    macro_inputs += [ "tools/js2c_macros/dcheck_macros.py" ]
   }
-  macro_inputs += [ "tools/check_macros.py" ]
+  macro_inputs += [ "tools/js2c_macros/check_macros.py" ]
   config_gypi = [ "$target_gen_dir/js2c_inputs/config.gypi" ]
   # We use a relative path to work around an assertion in js2c.py.
   config_gypi_relative_path = ["config.gypi"]
@@ -166,6 +169,7 @@ config("node_base_internal") {
     "-Wno-string-plus-int",
     "-Wno-string-conversion",
     "-Wno-unused-function",
+    "-Wno-extra-semi", # Temporarily until resolved upstream.
   ]
 
   if (target_cpu == "x86") {
@@ -256,7 +260,7 @@ source_set("node_base") {
   ]
   if (is_posix || is_mac || is_fuchsia) {
     public_configs += [ "//build/config/gcc:symbol_visibility_default" ]
-    configs -= [ "//build/config/gcc:symbol_visibility_hidden" ] 
+    configs -= [ "//build/config/gcc:symbol_visibility_hidden" ]
   }
   configs += [ ":node_base_internal" ]
   configs -= [ "//build/config/clang:find_bad_constructs" ]
@@ -300,43 +304,94 @@ source_set("node_base") {
 }
 
 if (node_use_code_cache) {
-  executable("node_no_cache") {
+  executable("node_mkcodecache") {
     sources = [
-      "src/node_main.cc",
       "src/node_code_cache_stub.cc",
+      "src/node_snapshot_stub.cc",
+      "tools/code_cache/mkcodecache.cc",
+      "tools/code_cache/cache_builder.cc",
+      "tools/code_cache/cache_builder.h",
     ]
+    configs += [ ":node_base_internal" ]
     deps = [ ":node_base" ]
   }
 
-  action("generate_code_cache") {
-    script = "//tools/generate_code_cache.py"
-    inputs = [ "tools/generate_code_cache.js" ]
-    outputs = [ "$target_gen_dir/node_code_cache.cc" ]
-    node_no_cache = [ "$root_out_dir/node_no_cache" ]
-
-    args = rebase_path(node_no_cache + inputs + outputs, root_build_dir)
-    deps = [":node_no_cache"]
-  }
-
-  component("node_lib") {
-    sources = [
-      "src/node_main.cc",
-      "$target_gen_dir/node_code_cache.cc",
+  action("run_node_mkcodecache") {
+    script = "//tools/run_executable_in_dir.py"
+    base = target_gen_dir
+    stamp = "$target_gen_dir/run_mkcodecache.stamp"
+    exe = "$root_out_dir/node_mkcodecache"
+    output_cc = "$target_gen_dir/node_code_cache.cc"
+    inputs = [ exe ]
+    outputs = [
+      stamp,
+      output_cc,
     ]
-    public_deps = [ ":node_base" ]
-    deps = [ ":generate_code_cache" ]
-    output_name = "node"
-  }
-} else {
-  component("node_lib") {
-    sources = [
-      "src/node_main.cc",
-      "src/node_code_cache_stub.cc",
+    args = [
+      rebase_path(base, root_build_dir),
+      rebase_path(stamp, root_build_dir),
+      rebase_path(exe, base),
+      rebase_path(output_cc, base)
     ]
-    public_deps = [ ":node_base" ]
-    output_name = "node"
+    deps = [ ":node_mkcodecache" ]
   }
 }
+
+if (node_use_snapshot) {
+  executable("node_mksnapshot") {
+    sources = [
+      "src/node_code_cache_stub.cc",
+      "src/node_snapshot_stub.cc",
+      "tools/snapshot/node_mksnapshot.cc",
+      "tools/snapshot/snapshot_builder.cc",
+      "tools/snapshot/snapshot_builder.h",
+    ]
+    configs += [ ":node_base_internal" ]
+    deps = [ ":node_base" ]
+  }
+
+  action("run_node_mksnapshot") {
+    script = "//tools/run_executable_in_dir.py"
+    base = target_gen_dir
+    stamp = "$target_gen_dir/run_node_mksnapshot.stamp"
+    exe = "$root_out_dir/node_mksnapshot"
+    output_cc = "$target_gen_dir/node_snapshot.cc"
+    inputs = [ exe ]
+    outputs = [
+      stamp,
+      output_cc,
+    ]
+    args = [
+      rebase_path(base, root_build_dir),
+      rebase_path(stamp, root_build_dir),
+      rebase_path(exe, base),
+      rebase_path(output_cc, base)
+    ]
+    deps = [ ":node_mksnapshot" ]
+  }
+}
+
+component("node_lib") {
+  sources = [
+    "src/node_main.cc",
+  ]
+  public_deps = [ ":node_base" ]
+  deps = []
+  if (node_use_code_cache) {
+    sources += [ "$target_gen_dir/node_code_cache.cc" ]
+    deps += [ ":run_node_mkcodecache" ]
+  } else {
+    sources += [ "src/node_code_cache_stub.cc" ]
+  }
+  if (node_use_snapshot) {
+    sources += [ "$target_gen_dir/node_snapshot.cc" ]
+    deps += [ ":run_node_mksnapshot" ]
+  } else {
+    sources += [ "src/node_snapshot_stub.cc" ]
+  }
+  output_name = "node"
+}
+
 
 executable("node") {
   sources = [ "src/node_main.cc" ]
@@ -351,7 +406,6 @@ executable("node_cctest") {
   ]
   configs += [ ":node_base_internal" ]
   sources = node_files.cctest_sources
-  sources += [ "src/node_code_cache_stub.cc" ]
   if (node_enable_inspector) {
     sources += [
       "test/cctest/test_inspector_socket.cc",
