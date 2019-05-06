@@ -3,7 +3,7 @@
 # found in the LICENSE file.
 
 vars = {
-  'build_revision': 'd6fe3ed558a837b83c4464f5945a9647ca444e66',
+  'build_revision': 'e70f890b4ac78993816978e70fa696c6cb6b8c41',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
   'buildtools_revision': 'd5c58b84d50d256968271db459cd29b22bff1ba2',
@@ -21,19 +21,19 @@ vars = {
   'buildtools_libunwind_revision': '69d9b84cca8354117b9fe9705a4430d789ee599b',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': '3dd606a4e91b32c6f0116b38abac3ab0c4944ec3',
+  'clang_revision': 'a9a8b184466f88065af2daa7904a62edc388508a',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'efe902b20b6ae0d367b354bdaa2e10c19349f880',
+  'depot_tools_revision': 'ccd2b4da9a7e6ddf126c0b4437db75201836154c',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:64b846c96daeb3eaf08e26d8a84d8451c6cb712b',
 
-  'googletest_revision': '39f72ea6f5cd458860b563d7bcb7ea67546e6ea3',
+  'googletest_revision': '3f5b5b8f8493a03fa25f1e4a7eae7678514a431d',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': '4ae7482a0e9e1f77a793545d803086a5ad4bcfd8',
+  'icu_revision': 'ae4b77dc8966796f0bd93bb6342023276749e148',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': 'b41863e42637544c2941b574c7877d3e1f663e25',
@@ -45,10 +45,10 @@ vars = {
   'node_revision': 'b7db8083e0a850054baeb06892c719946c9f46c4',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : '936ba8a963284a6b3737cf2f0474a7131073abee',
+  'trace_common_revision' : '63246bb20bd451c35d99008569d73d9b50337c94',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '19e9067826e2f40f30aef10f979c5f2199c601e9',
+  'v8_revision': '7ebcb5a1531fa64815ed41bc7632585307c842f2',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 }
 
