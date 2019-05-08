@@ -45,10 +45,10 @@ declare_args() {
   node_report = true
 
   # Use code cache to speed up startup.
-  node_use_code_cache = true
+  node_use_code_cache = !is_win
 
   # Use snapshot to speed up startup.
-  node_use_snapshot = true
+  node_use_snapshot = !is_win
 }
 
 assert(!node_use_dtrace, "node_use_dtrace not supported in GN")
@@ -322,7 +322,6 @@ if (node_use_code_cache) {
     stamp = "$target_gen_dir/run_mkcodecache.stamp"
     exe = "$root_out_dir/node_mkcodecache"
     output_cc = "$target_gen_dir/node_code_cache.cc"
-    inputs = [ exe ]
     outputs = [
       stamp,
       output_cc,
@@ -356,7 +355,6 @@ if (node_use_snapshot) {
     stamp = "$target_gen_dir/run_node_mksnapshot.stamp"
     exe = "$root_out_dir/node_mksnapshot"
     output_cc = "$target_gen_dir/node_snapshot.cc"
-    inputs = [ exe ]
     outputs = [
       stamp,
       output_cc,

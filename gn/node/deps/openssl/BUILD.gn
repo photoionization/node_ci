@@ -49,21 +49,20 @@ openssl_defines = [
   "ENGINESDIR=\"/dev/null\"",
 ]
 
+source_set("openssl_crypto_o_str") {
+  # This is a hack to undef _GNU_SOURCE only for openssl/crypto/o_str.c
+  visibility = [ ":openssl" ]
+  sources = [ "openssl/crypto/o_str.c" ]
+  defines = openssl_defines
+  configs += [ ":internal_config", ":external_config" ]
+  cflags = [ "-U_GNU_SOURCE" ]
+}
+
 node_dep("openssl") {
   sources = node_files.openssl_sources
+  sources -= [ "openssl/crypto/o_str.c" ]
   defines = openssl_defines
-
-  include_dirs = [
-    "openssl",
-    "openssl/crypto/",
-    "openssl/crypto/include/",
-    "openssl/crypto/modes/",
-    "openssl/crypto/ec/curve448",
-    "openssl/crypto/ec/curve448/arch_32",
-    "openssl/config/archs/linux-x86_64/no-asm/crypto",
-  ]
-
   public_configs = [ ":external_config" ]
   configs = [ ":internal_config" ]
-  remove_configs = [ "//build/config/compiler:compiler" ]
+  deps = [ ":openssl_crypto_o_str" ]
 }
