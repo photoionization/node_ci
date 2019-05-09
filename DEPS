@@ -3,7 +3,7 @@
 # found in the LICENSE file.
 
 vars = {
-  'build_revision': 'e70f890b4ac78993816978e70fa696c6cb6b8c41',
+  'build_revision': 'f8e8a314cb87d36f0c0cee328f62f2b41ce98a31',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
   'buildtools_revision': 'd5c58b84d50d256968271db459cd29b22bff1ba2',
