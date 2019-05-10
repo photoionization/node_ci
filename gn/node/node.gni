@@ -2,7 +2,11 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-node_exe = "$root_out_dir/node"
+if (is_win) {
+  node_exe = "$root_out_dir/node.exe"
+} else {
+  node_exe = "$root_out_dir/node"
+}
 
 template("node_dep") {
   static_library(target_name) {

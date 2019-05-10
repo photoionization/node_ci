@@ -7,8 +7,12 @@ group("test_all") {
   deps = [
     "//node:node",
     "//node:node_cctest",
-    "//node/test/addons:build",
-    "//node/test/node-api:build",
-    "//node/test/js-native-api:build",
   ]
+  if (!is_win) {
+    deps += [
+      "//node/test/addons:build",
+      "//node/test/node-api:build",
+      "//node/test/js-native-api:build",
+    ]
+  }
 }
