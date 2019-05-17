@@ -14,6 +14,7 @@ node_headers = [
   "//node/src/node_buffer.h",
   "//node/src/node_object_wrap.h",
   "//node/src/node_version.h",
+  "//node/src/util-inl.h",
   "//node/common.gypi",
 ]
 

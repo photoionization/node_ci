@@ -24,6 +24,8 @@ _protocol_generated = [
   "protocol/NodeWorker.h",
   "protocol/NodeTracing.cpp",
   "protocol/NodeTracing.h",
+  "protocol/NodeRuntime.cpp",
+  "protocol/NodeRuntime.h",
 ]
 
 # These are from node_protocol_config.json
