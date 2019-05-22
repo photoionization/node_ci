@@ -5,6 +5,21 @@
 import("//node/node_files.gni")
 import("//node/node.gni")
 
+declare_args() {
+  # Defaults for OpenSSL config path.
+  if (is_linux) {
+    openssl_dir = "/etc/ssl/"
+  } else if (is_mac) {
+    openssl_dir = "/System/Library/OpenSSL/"
+  } else {
+    openssl_dir = ""
+  }
+
+  # Security level as described in
+  # https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html
+  openssl_seclevel = 1
+}
+
 config("external_config") {
   include_dirs = [ "openssl/include" ]
 }
@@ -45,8 +60,9 @@ openssl_defines = [
   "OPENSSL_PIC",
   "OPENSSL_NO_ASM",
   "OPENSSL_NO_HW",
-  "OPENSSLDIR=\"/etc/ssl\"",
+  "OPENSSLDIR=\"$openssl_dir\"",
   "ENGINESDIR=\"/dev/null\"",
+  "OPENSSL_TLS_SECURITY_LEVEL=$openssl_seclevel",
 ]
 
 source_set("openssl_crypto_o_str") {

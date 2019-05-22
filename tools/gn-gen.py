@@ -46,6 +46,9 @@ def GenerateBuildFiles(options):
   gn_args.append('use_jumbo_build=%s' % ToBool(options.jumbo))
   gn_args.append('is_component_build=%s' % ToBool(options.shared))
   gn_args.append('node_use_code_cache=%s' % ToBool(not options.no_cache))
+  # Override system's OpenSSL configs for tests.
+  gn_args.append('openssl_dir=""')
+  gn_args.append('openssl_seclevel=1')
 
   flattened_args = ' '.join(gn_args)
   args = ['gn', 'gen', options.out_dir, '-q', '--args=' + flattened_args]
