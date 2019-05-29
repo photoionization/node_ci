@@ -33,7 +33,7 @@ vars = {
   'googletest_revision': '3f5b5b8f8493a03fa25f1e4a7eae7678514a431d',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'ae4b77dc8966796f0bd93bb6342023276749e148',
+  'icu_revision': 'f5d1dcca2f0bfb0f11cbce262159a2728a6051d8',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': 'b41863e42637544c2941b574c7877d3e1f663e25',
