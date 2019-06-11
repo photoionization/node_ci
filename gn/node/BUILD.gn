@@ -142,7 +142,7 @@ chdir_action("node_js2c") {
 
   cwd = "$target_gen_dir/js2c_inputs"
   script = "tools/js2c.py"
-  args = rebase_path(outputs)
+  args = [ "--target" ] + rebase_path(outputs)
   args += library_files
   args += rebase_path(macro_inputs) + config_gypi_relative_path
 }
