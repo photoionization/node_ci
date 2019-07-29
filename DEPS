@@ -3,10 +3,10 @@
 # found in the LICENSE file.
 
 vars = {
-  'build_revision': '8a3bba4de0c8e17c81e5eb73ad2c75a3de4fa4b9',
+  'build_revision': 'd35a96ac2e0fd0fe3d7c106036417b9c4ec96085',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': '0218c0f9ac9fdba00e5c27b5aca94d3a64c74f34',
+  'buildtools_revision': '74cfb57006f83cfe050817526db359d5c8a11628',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
   'buildtools_clang_format_revision': '96636aa0e9f047f17447f2d45a094d0b59ed7917',
@@ -21,19 +21,19 @@ vars = {
   'buildtools_libunwind_revision': '69d9b84cca8354117b9fe9705a4430d789ee599b',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': '7ee072e439c601156b49ad0a12dcfbfb045c41e2',
+  'clang_revision': '57e1363519e28ecffd57567dc02d704f1a2b1f4d',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '073b8ac2ff8e7fdfba3e99db0d09611e20c2f202',
+  'depot_tools_revision': 'df746d0e6fd46f4817100ccbe6892424daf7e244',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
-  'googletest_revision': '31200def0dec8a624c861f919e86e4444e6e6ee7',
+  'googletest_revision': '2134e3fd857d952e03ce76064fad5ac6e9036104',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': '9f0f47b1e410b137762f2e3699359f0dbfcdbc05',
+  'icu_revision': '682a230923933a7157a41b88c7804b6b7d2abdfa',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': 'b41863e42637544c2941b574c7877d3e1f663e25',
@@ -42,13 +42,13 @@ vars = {
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '9ec0d300d9bfeaad8f74f63d5799ce5a2b7de819',
+  'node_revision': '7e6322e83f5ec6ed517ad7b97adca4335e752b7c',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : 'cfe8887fa6ac3170e23a68949930e28d4705a16f',
+  'trace_common_revision' : 'd0793a09d63308706b1aca274414daf57de6c81b',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '1340645339ec09e45a81d3e58a79e170676392a0',
+  'v8_revision': '9f3f2d5b8cb6622799e8e99868472176d30ac3b3',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 }
 
