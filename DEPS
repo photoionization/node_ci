@@ -114,6 +114,13 @@ hooks = [
     'action': ['python', 'node-ci/build/vs_toolchain.py', 'update'],
   },
   {
+    # Update the Mac toolchain if necessary.
+    'name': 'mac_toolchain',
+    'pattern': '.',
+    'condition': 'checkout_mac',
+    'action': ['python', 'node-ci/build/mac_toolchain.py'],
+  },
+  {
     'name': 'clang',
     'pattern': '.',
     'action': ['python', 'node-ci/tools/clang/scripts/update.py'],
