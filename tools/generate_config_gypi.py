@@ -37,7 +37,7 @@ def translate_config(config):
       'node_report': config['node_report'],
       'node_shared': bool_string_to_number(config['is_component_build']),
       'node_code_cache': 'yes' if config['node_use_code_cache'] else 'no',
-      'napi_build_version': '4',
+      'napi_build_version': '5',
       'shlib_suffix': shlib_suffix,
       # v8_enable_inspector is actually a misnomer, and only affects node.
       'v8_enable_inspector':
