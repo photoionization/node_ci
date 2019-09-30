@@ -48,7 +48,7 @@ vars = {
   'trace_common_revision' : 'd0793a09d63308706b1aca274414daf57de6c81b',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'f584f7cc1b54cd502bc159136bb599dccc05ef7b',
+  'v8_revision': 'b6c625f3b0a0ada2a016052d9237cca8b85d62c3',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 }
 
