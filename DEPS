@@ -42,13 +42,13 @@ vars = {
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '906c34960d7a117fe3d4897da006045453da356c',
+  'node_revision': '49da15195fa8390265fb0e685262333c8cf8863c',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : 'd0793a09d63308706b1aca274414daf57de6c81b',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'da49a384df96b96f7688045525a70486cd4c6d9e',
+  'v8_revision': '90c6444292997bbd2accfef9b93134241f55b64d',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'e5c4d8c45ed18f84ea68f5029c9bceb1f67268b8',

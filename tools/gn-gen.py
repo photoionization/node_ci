@@ -44,7 +44,6 @@ def GenerateBuildFiles(options):
   gn_args.append('is_debug=%s' % ToBool(options.debug))
   gn_args.append('symbol_level=%s' % (1 if options.debug else 0))
   gn_args.append('use_goma=%s' % ToBool(options.goma))
-  gn_args.append('use_jumbo_build=%s' % ToBool(options.jumbo))
   gn_args.append('is_component_build=%s' % ToBool(options.shared))
   gn_args.append('node_use_code_cache=%s' % ToBool(not options.no_cache))
   # Override system's OpenSSL configs for tests.
