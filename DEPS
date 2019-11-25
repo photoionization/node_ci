@@ -50,6 +50,9 @@ vars = {
 
   'v8_revision': 'da49a384df96b96f7688045525a70486cd4c6d9e',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
+
+  'zlib_revision': 'e5c4d8c45ed18f84ea68f5029c9bceb1f67268b8',
+  'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 }
 
 deps = {
@@ -66,6 +69,7 @@ deps = {
   'node-ci/third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
   'node-ci/third_party/jinja2': Var('jinja2_url') + '@' + Var('jinja2_revision'),
   'node-ci/third_party/markupsafe': Var('markupsafe_url') + '@' + Var('markupsafe_revision'),
+  'node-ci/third_party/zlib': Var('zlib_url') + '@' + Var('zlib_revision'),
   'node-ci/tools/clang': Var('clang_url') + '@' + Var('clang_revision'),
   'node-ci/v8': Var('v8_url') + '@' +  Var('v8_revision'),
   'node-ci/buildtools/linux64': {
