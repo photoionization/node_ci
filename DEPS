@@ -3,7 +3,7 @@
 # found in the LICENSE file.
 
 vars = {
-  'build_revision': 'd35a96ac2e0fd0fe3d7c106036417b9c4ec96085',
+  'build_revision': '4abd203d72c8399f7c68d1f7055c081994506d9b',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
   'buildtools_revision': '74cfb57006f83cfe050817526db359d5c8a11628',
@@ -21,7 +21,7 @@ vars = {
   'buildtools_libunwind_revision': '69d9b84cca8354117b9fe9705a4430d789ee599b',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': '57e1363519e28ecffd57567dc02d704f1a2b1f4d',
+  'clang_revision': 'cd8fb02573f28c1b26809ea79af1e5674daa08d0',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
   'depot_tools_revision': 'df746d0e6fd46f4817100ccbe6892424daf7e244',
@@ -33,7 +33,7 @@ vars = {
   'googletest_revision': '2134e3fd857d952e03ce76064fad5ac6e9036104',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': '682a230923933a7157a41b88c7804b6b7d2abdfa',
+  'icu_revision': 'dbd3825b31041d782c5b504c59dcfb5ac7dda08c',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': 'b41863e42637544c2941b574c7877d3e1f663e25',
@@ -48,10 +48,10 @@ vars = {
   'trace_common_revision' : 'd0793a09d63308706b1aca274414daf57de6c81b',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '90c6444292997bbd2accfef9b93134241f55b64d',
+  'v8_revision': 'b15c02d0e1e398313d4342cbb9545b334f313ef4',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': 'e5c4d8c45ed18f84ea68f5029c9bceb1f67268b8',
+  'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 }
 
