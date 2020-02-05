@@ -3,9 +3,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-import("//v8/gni/v8.gni")
 import("//node/node.gni")
 import("//node/node_files.gni")
+import("//v8/gni/v8.gni")
 
 inspector_protocol_dir = "../../tools/inspector_protocol"
 
@@ -50,11 +50,11 @@ node_dep("inspector") {
   deps = [
     ":protocol_generated_sources",
     ":v8_inspector_compress_protocol_json",
-    "../../deps/uv",
     "../../deps/llhttp",
     "../../deps/openssl",
-    "../../deps/zlib",
+    "../../deps/uv",
     "//third_party/icu:icuuc",
+    "//third_party/zlib",
   ]
   public_configs = [ ":inspector_config" ]
   configs = [ "//node:node_base_internal" ]

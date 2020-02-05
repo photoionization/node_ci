@@ -3,8 +3,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-import("//v8/gni/v8.gni")
 import("//node/node_files.gni")
+import("//v8/gni/v8.gni")
 
 declare_args() {
   # Enable the V8 inspector protocol for use with node.
@@ -97,7 +97,9 @@ copy("node_v8_js2c_inputs") {
 
 action("generate_config_gypi") {
   script = "//tools/generate_config_gypi.py"
-  outputs = [ "$target_gen_dir/js2c_inputs/config.gypi", ]
+  outputs = [
+    "$target_gen_dir/js2c_inputs/config.gypi",
+  ]
   depfile = "$target_gen_dir/$target_name.d"
 
   if (is_mac) {
@@ -107,7 +109,10 @@ action("generate_config_gypi") {
   } else {
     gn = "//buildtools/linux64/gn"
   }
-  script_args = [ gn, "$root_out_dir" ]
+  script_args = [
+    gn,
+    "$root_out_dir",
+  ]
   script_args += outputs
   script_args += [ depfile ]
   args = rebase_path(script_args, root_build_dir)
@@ -121,24 +126,18 @@ chdir_action("node_js2c") {
   ]
 
   macro_inputs = []
-  if (!node_use_dtrace && !node_use_etw) {
-    macro_inputs += [ "tools/js2c_macros/notrace_macros.py" ]
-  }
-  if (node_debug_lib) {
-    macro_inputs += [ "tools/js2c_macros/nodcheck_macros.py" ]
-  } else {
-    macro_inputs += [ "tools/js2c_macros/dcheck_macros.py" ]
-  }
-  macro_inputs += [ "tools/js2c_macros/check_macros.py" ]
   config_gypi = [ "$target_gen_dir/js2c_inputs/config.gypi" ]
+
   # We use a relative path to work around an assertion in js2c.py.
-  config_gypi_relative_path = ["config.gypi"]
+  config_gypi_relative_path = [ "config.gypi" ]
 
   library_files = node_files.all_library_files
-  inputs = get_target_outputs(":node_js2c_inputs") +
-           get_target_outputs(":node_v8_js2c_inputs") +
-           macro_inputs + config_gypi
-  outputs = [ "$target_gen_dir/node_javascript.cc" ]
+  inputs =
+      get_target_outputs(":node_js2c_inputs") +
+      get_target_outputs(":node_v8_js2c_inputs") + macro_inputs + config_gypi
+  outputs = [
+    "$target_gen_dir/node_javascript.cc",
+  ]
 
   cwd = "$target_gen_dir/js2c_inputs"
   script = "tools/js2c.py"
@@ -154,7 +153,10 @@ config("node_base_external") {
 }
 
 config("node_base_internal") {
-  visibility = [ ":*", "src/inspector:*" ]
+  visibility = [
+    ":*",
+    "src/inspector:*",
+  ]
   configs = [ ":node_base_external" ]
   cflags = [ "-Wno-microsoft-include" ]
   libs = []
@@ -169,7 +171,7 @@ config("node_base_internal") {
     "-Wno-string-plus-int",
     "-Wno-string-conversion",
     "-Wno-unused-function",
-    "-Wno-extra-semi", # Temporarily until resolved upstream.
+    "-Wno-extra-semi",  # Temporarily until resolved upstream.
   ]
 
   if (target_cpu == "x86") {
@@ -246,7 +248,8 @@ source_set("node_base") {
     "deps/histogram",
     "deps/llhttp",
     "deps/nghttp2",
-    "deps/zlib",
+    "deps/uvwasi",
+    "//third_party/zlib",
     "//v8:v8_libplatform",
   ]
   public_deps = [
@@ -265,9 +268,7 @@ source_set("node_base") {
   configs -= [ "//build/config/clang:find_bad_constructs" ]
 
   sources = node_files.node_sources
-  sources += [
-    "$target_gen_dir/node_javascript.cc",
-  ]
+  sources += [ "$target_gen_dir/node_javascript.cc" ]
 
   if (v8_enable_i18n_support) {
     deps += [ "//third_party/icu" ]
@@ -307,12 +308,14 @@ if (node_use_code_cache) {
     sources = [
       "src/node_code_cache_stub.cc",
       "src/node_snapshot_stub.cc",
-      "tools/code_cache/mkcodecache.cc",
       "tools/code_cache/cache_builder.cc",
       "tools/code_cache/cache_builder.h",
+      "tools/code_cache/mkcodecache.cc",
     ]
     configs += [ ":node_base_internal" ]
-    deps = [ ":node_base" ]
+    deps = [
+      ":node_base",
+    ]
   }
 
   action("run_node_mkcodecache") {
@@ -329,9 +332,11 @@ if (node_use_code_cache) {
       rebase_path(base, root_build_dir),
       rebase_path(stamp, root_build_dir),
       rebase_path(exe, base),
-      rebase_path(output_cc, base)
+      rebase_path(output_cc, base),
     ]
-    deps = [ ":node_mkcodecache" ]
+    deps = [
+      ":node_mkcodecache",
+    ]
   }
 }
 
@@ -345,7 +350,9 @@ if (node_use_snapshot) {
       "tools/snapshot/snapshot_builder.h",
     ]
     configs += [ ":node_base_internal" ]
-    deps = [ ":node_base" ]
+    deps = [
+      ":node_base",
+    ]
   }
 
   action("run_node_mksnapshot") {
@@ -362,9 +369,11 @@ if (node_use_snapshot) {
       rebase_path(base, root_build_dir),
       rebase_path(stamp, root_build_dir),
       rebase_path(exe, base),
-      rebase_path(output_cc, base)
+      rebase_path(output_cc, base),
     ]
-    deps = [ ":node_mksnapshot" ]
+    deps = [
+      ":node_mksnapshot",
+    ]
   }
 }
 
@@ -372,7 +381,9 @@ component("node_lib") {
   sources = [
     "src/node_main.cc",
   ]
-  public_deps = [ ":node_base" ]
+  public_deps = [
+    ":node_base",
+  ]
   deps = []
   if (node_use_code_cache) {
     sources += [ "$target_gen_dir/node_code_cache.cc" ]
@@ -389,10 +400,13 @@ component("node_lib") {
   output_name = "node"
 }
 
-
 executable("node") {
-  sources = [ "src/node_main.cc" ]
-  deps = [ ":node_lib" ]
+  sources = [
+    "src/node_main.cc",
+  ]
+  deps = [
+    ":node_lib",
+  ]
 }
 
 executable("node_cctest") {

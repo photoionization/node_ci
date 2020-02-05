@@ -1,0 +1,39 @@
+# Copyright (c) 2013-2019 GitHub Inc.
+# Copyright 2019 the V8 project authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//node/node.gni")
+
+config("includes") {
+  include_dirs = [
+      "include",
+      "src",
+  ]
+}
+
+
+node_dep("uvwasi") {
+  sources = [
+    "src/clocks.c",
+    "src/clocks.h",
+    "src/fd_table.c",
+    "src/uv_mapping.c",
+    "src/uv_mapping.h",
+    "src/uvwasi_alloc.h",
+    "src/uvwasi.c",
+    "src/wasi_rights.c",
+    "src/wasi_rights.h",
+    "include/fd_table.h",
+    "include/uv_wasi.h",
+    "include/wasi_types.h",
+  ]
+
+  public_configs = [
+    ":includes"
+  ]
+
+  deps = [
+      "//node/deps/uv"
+  ]
+}

@@ -44,8 +44,11 @@ def translate_config(config):
           bool_string_to_number(config['node_enable_inspector']),
       'v8_enable_i18n_support':
           bool_string_to_number(config['v8_enable_i18n_support']),
+      'v8_enable_pointer_compression': 0,
+      'v8_enable_31bit_smis_on_64bit_arch': 0,
       # introduced for building addons.
       'node_use_openssl': config['node_use_openssl'],
+      'node_use_node_code_cache': 'true',
       'build_v8_with_gn': 'false',
       'enable_lto': 'false',
       'openssl_fips': '',

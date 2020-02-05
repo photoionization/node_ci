@@ -22,9 +22,11 @@ def GenerateBuildFiles(options):
     options.sysroot = True
     gn_args.append('v8_enable_test_features=true')
 
-  if options.sysroot:
-    gn_args.append('use_sysroot=true')
-    gn_args.append('use_custom_libcxx=true')
+  # Ignore sysroot, since addons are always compiled by native libcxx.
+  # TODO: Change build to push these flags to addons as well.
+  # if options.sysroot:
+  #   gn_args.append('use_sysroot=true')
+  #   gn_args.append('use_custom_libcxx=true')
 
   if options.asan:
     gn_args.append('is_lsan=true')
