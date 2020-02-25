@@ -3,25 +3,25 @@
 # found in the LICENSE file.
 
 vars = {
-  'build_revision': '4abd203d72c8399f7c68d1f7055c081994506d9b',
+  'build_revision': '49d87d57f67a640eb2f0d07f2f049a4ee337ac0e',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': '74cfb57006f83cfe050817526db359d5c8a11628',
+  'buildtools_revision': 'feb2d0c562195d2cc127045597053cc8ade51b4a',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
-  'buildtools_clang_format_revision': '96636aa0e9f047f17447f2d45a094d0b59ed7917',
+  'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
   'buildtools_clang_format_url': 'https://chromium.googlesource.com/chromium/llvm-project/cfe/tools/clang-format.git',
 
-  'buildtools_libcxx_revision': '5938e0582bac570a41edb3d6a2217c299adc1bc6',
+  'buildtools_libcxx_revision': '78d6a7767ed57b50122a161b91f59f19c9bd0d19',
   'buildtools_libcxx_url': 'https://chromium.googlesource.com/chromium/llvm-project/libcxx.git',
 
-  'buildtools_libcxxabi_revision': '0d529660e32d77d9111912d73f2c74fc5fa2a858',
+  'buildtools_libcxxabi_revision': 'ce3db128f9e4d6d19d1cdbe39bb45fcc64a5adb0',
   'buildtools_libcxxabi_url': 'https://chromium.googlesource.com/chromium/llvm-project/libcxxabi.git',
 
-  'buildtools_libunwind_revision': '69d9b84cca8354117b9fe9705a4430d789ee599b',
+  'buildtools_libunwind_revision': '3e6ec2ae9afaa3683269b690612f84d907943ea2',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': 'cd8fb02573f28c1b26809ea79af1e5674daa08d0',
+  'clang_revision': 'eeaa53b76fa7c2e84f655a63a8e66c6db9d72fff',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
   'depot_tools_revision': 'df746d0e6fd46f4817100ccbe6892424daf7e244',
@@ -30,10 +30,10 @@ vars = {
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
-  'googletest_revision': '2134e3fd857d952e03ce76064fad5ac6e9036104',
+  'googletest_revision': '23b2a3b1cf803999fb38175f6e9e038a4495c8a5',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'dbd3825b31041d782c5b504c59dcfb5ac7dda08c',
+  'icu_revision': 'eb405d8a422eb77910a15715d17b60b7f10bbf8c',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': 'b41863e42637544c2941b574c7877d3e1f663e25',
@@ -42,13 +42,13 @@ vars = {
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': 'a4eeb0db454e32b973f90b2737f6a103207801d0',
+  'node_revision': 'b65c0e167eba12f9f0603f9e13cbe3069b8a00bc',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : 'd0793a09d63308706b1aca274414daf57de6c81b',
+  'trace_common_revision' : 'dab187b372fc17e51f5b9fad8201813d0aed5129',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '902fe5f0662648efeefdbff6541636ed376d8b44',
+  'v8_revision': 'fbc8e00b147fab0daf6408e4ffc1ccc31ea68093',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',
