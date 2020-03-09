@@ -127,6 +127,11 @@ node_dep("cares") {
     sources += [ "config/linux/ares_config.h" ]
   }
 
+  if (is_fuchsia) {
+    include_dirs += [ "//gn/node/deps/cares/config/fuchsia" ]
+    sources += [ "//gn/node/deps/cares/config/fuchsia/ares_config.h" ]
+  }
+
   if (is_mac) {
     include_dirs += [ "config/darwin" ]
     sources += [ "config/darwin/ares_config.h" ]

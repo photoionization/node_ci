@@ -1,0 +1,11 @@
+{
+   "sandbox":{
+      "dev":[
+         "null",
+         "zero"
+      ]
+   },
+   "program":{
+      "binary":"node"
+   }
+}

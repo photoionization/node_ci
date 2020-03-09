@@ -3,6 +3,8 @@
 # found in the LICENSE file.
 
 vars = {
+  'checkout_fuchsia_boot_images': 'qemu.x64',
+
   'build_revision': '49d87d57f67a640eb2f0d07f2f049a4ee337ac0e',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
@@ -143,5 +145,15 @@ hooks = [
     'action': ['python',
                'node-ci/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=x64'],
+  },
+  {
+    'name': 'fuchsia_sdk',
+    'pattern': '.',
+    'condition': 'checkout_fuchsia',
+    'action': [
+      'python',
+      'node-ci/build/fuchsia/update_sdk.py',
+      '--boot-images={checkout_fuchsia_boot_images}',
+    ],
   },
 ]

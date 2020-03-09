@@ -148,7 +148,6 @@ node_dep("uv") {
       "src/unix/random-devurandom.c",
       "src/unix/random-getentropy.c",
       "src/unix/random-getrandom.c",
-      "src/unix/random-sysctl-linux.c",
       "src/unix/signal.c",
       "src/unix/spinlock.h",
       "src/unix/stream.c",
@@ -181,6 +180,7 @@ node_dep("uv") {
       "src/unix/linux-inotify.c",
       "src/unix/linux-syscalls.c",
       "src/unix/linux-syscalls.h",
+      "src/unix/random-sysctl-linux.c",
       "src/unix/procfs-exepath.c",
       "src/unix/sysinfo-loadavg.c",
       "src/unix/sysinfo-memory.c",
@@ -194,6 +194,17 @@ node_dep("uv") {
     sources += [
       "src/unix/bsd-ifaddrs.c",
       "src/unix/kqueue.c",
+    ]
+  }
+  #TODO(v8:10292): This should be deleted once libuv support Fuchsia.
+  if (is_fuchsia) {
+    include_dirs += [ "//gn/fuchsia/include" ]
+    sources += [
+      "//gn/node/deps/uv/src/unix/fuchsia.c",
+    ]
+
+    deps = [
+     "//gn/fuchsia:fuchsia_xsi"
     ]
   }
 }

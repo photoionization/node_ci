@@ -2,13 +2,34 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+if (is_fuchsia) {
+  import("//third_party/fuchsia-sdk/sdk/build/component.gni")
+  import("//third_party/fuchsia-sdk/sdk/build/package.gni")
+
+  fuchsia_component("node_cmx") {
+    manifest = "//gn/node/meta/node.cmx"
+    data_deps = [
+      "//node:node",
+    ]
+  }
+
+  fuchsia_package("node") {
+    deps = [
+      ":node_cmx",
+    ]
+  }
+
+}
+
 group("test_all") {
   testonly = true
+  
   deps = [
     "//node:node",
     "//node:node_cctest",
   ]
-  if (!is_win) {
+  
+  if (!is_win && !is_fuchsia) {
     deps += [
       "//node/test/addons:build",
       "//node/test/node-api:build",
@@ -16,3 +37,4 @@ group("test_all") {
     ]
   }
 }
+

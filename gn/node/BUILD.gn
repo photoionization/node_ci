@@ -45,10 +45,10 @@ declare_args() {
   node_report = true
 
   # Use code cache to speed up startup.
-  node_use_code_cache = !is_win
+  node_use_code_cache = !is_win && !is_fuchsia
 
   # Use snapshot to speed up startup.
-  node_use_snapshot = !is_win
+  node_use_snapshot = !is_win && !is_fuchsia
 }
 
 assert(!node_use_dtrace, "node_use_dtrace not supported in GN")
@@ -150,6 +150,10 @@ config("node_base_external") {
   include_dirs = [ "src" ]
   defines = [ "NODE_WANT_INTERNALS=1" ]
   configs = [ "//v8:external_config" ]
+  if (is_fuchsia) {
+    # TODO(v8:10292): Remove this once Node migrates off the POSIX APIs.
+    include_dirs += [ "//gn/fuchsia/include" ]
+  }
 }
 
 config("node_base_internal") {
@@ -252,6 +256,12 @@ source_set("node_base") {
     "//third_party/zlib",
     "//v8:v8_libplatform",
   ]
+  if (is_fuchsia) {
+    # TODO(v8:10292): Remove this once Node migrates off the POSIX APIs.
+    deps += [
+      "//gn/fuchsia:fuchsia_xsi"
+    ]
+  }
   public_deps = [
     "deps/uv",
     "//v8",

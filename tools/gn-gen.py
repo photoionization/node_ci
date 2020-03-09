@@ -28,6 +28,9 @@ def GenerateBuildFiles(options):
   #   gn_args.append('use_sysroot=true')
   #   gn_args.append('use_custom_libcxx=true')
 
+  if options.target_os:
+    gn_args.append('target_os="' + options.target_os + '"')
+
   if options.asan:
     gn_args.append('is_lsan=true')
     gn_args.append('is_asan=true')
@@ -82,6 +85,7 @@ def ParseOptions(args):
                       action='store_true', default=False)
   parser.add_argument('--no-cache', help='do not use Node.js code cache',
                       action='store_true', default=False)
+  parser.add_argument('--target_os', help='set target OS', default='')
   return parser.parse_args(args)
 
 if __name__ == '__main__':

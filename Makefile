@@ -21,6 +21,9 @@ out/Release:
 out/Debug:
 	tools/gn-gen.py out/Debug --debug
 
+out/fuchsia:
+	tools/gn-gen.py out/fuchsia --target_os="fuchsia" --no-cache
+
 # Build
 .PHONY: build.Release
 build.Release: out/Release
@@ -30,12 +33,19 @@ build.Release: out/Release
 build.Debug: out/Debug
 	autoninja -C $< test_all
 
+.PHONY: build.fuchsia
+build.fuchsia: out/fuchsia
+	autoninja -C $<
+
 # Link node binary
 node: build.Release
 	if [ ! -r $@ -o ! -L $@ ]; then ln -fs out/Release/node $@; fi
 
 node_g: build.Debug
 	if [ ! -r $@ -o ! -L $@ ]; then ln -fs out/Debug/node $@; fi
+
+.PHONY: fuchsia
+fuchsia: build.fuchsia
 
 # Run cctest
 .PHONY: cctest.Release

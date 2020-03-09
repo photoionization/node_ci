@@ -10,8 +10,12 @@ config("includes") {
       "include",
       "src",
   ]
-}
 
+  if (is_fuchsia) {
+    # TODO(v8:10292): Remove this once Node migrates off the POSIX APIs.
+    include_dirs += [ "//gn/fuchsia/include" ]
+  }
+}
 
 node_dep("uvwasi") {
   sources = [
