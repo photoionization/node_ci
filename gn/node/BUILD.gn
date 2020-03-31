@@ -41,9 +41,6 @@ declare_args() {
   # default to https://nodejs.org/download/release/').
   node_release_urlbase = ""
 
-  # Enable node_report.
-  node_report = true
-
   # Use code cache to speed up startup.
   node_use_code_cache = !is_win && !is_fuchsia
 
@@ -176,6 +173,7 @@ config("node_base_internal") {
     "-Wno-string-conversion",
     "-Wno-unused-function",
     "-Wno-extra-semi",  # Temporarily until resolved upstream.
+    "-Wno-unreachable-code" # node_crypto.cc has unreachable code.
   ]
 
   if (target_cpu == "x86") {
@@ -193,6 +191,7 @@ config("node_base_internal") {
   defines = [
     "NODE_ARCH=\"$node_arch\"",
     "NODE_PLATFORM=\"$node_platform\"",
+    "NODE_REPORT"
   ]
 
   if (is_win) {
@@ -228,9 +227,6 @@ config("node_base_internal") {
     defines += [ "NODE_USE_V8_PLATFORM=1" ]
   } else {
     defines += [ "NODE_USE_V8_PLATFORM=0" ]
-  }
-  if (node_report) {
-    defines += [ "NODE_REPORT" ]
   }
   if (node_enable_inspector) {
     defines += [ "HAVE_INSPECTOR=1" ]
@@ -298,17 +294,11 @@ source_set("node_base") {
       "src/node_crypto_clienthello-inl.h",
       "src/node_crypto_clienthello.cc",
       "src/node_crypto_clienthello.h",
+      "src/node_crypto_common.h",
+      "src/node_crypto_common.cc",
       "src/node_crypto_groups.h",
       "src/tls_wrap.cc",
       "src/tls_wrap.h",
-    ]
-  }
-
-  if (node_report) {
-    sources += [
-      "src/node_report.cc",
-      "src/node_report_module.cc",
-      "src/node_report_utils.cc",
     ]
   }
 }
@@ -419,11 +409,21 @@ executable("node") {
   ]
 }
 
+source_set("gtest_main") {
+  testonly = true
+  include_dirs = [ "test/cctest" ]
+  sources = [
+    "test/cctest/gtest/gtest.h",
+    "test/cctest/gtest/gtest-all.cc",
+    "test/cctest/gtest/gtest_main.cc",
+  ]
+}
+
 executable("node_cctest") {
   testonly = true
   deps = [
     ":node_base",
-    "//v8/testing/gtest:gtest_main",
+    ":gtest_main",
   ]
   configs += [ ":node_base_internal" ]
   sources = node_files.cctest_sources
