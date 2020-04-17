@@ -185,7 +185,7 @@ node_dep("uv") {
   }
   if (is_fuchsia) {
     sources += [
-      "//gn/node/deps/uv/src/unix/fuchsia.c",
+      "src/unix/fuchsia.c",
       "src/unix/no-fsevents.c",
       "src/unix/no-proctitle.c",
       "src/unix/posix-hrtime.c",
