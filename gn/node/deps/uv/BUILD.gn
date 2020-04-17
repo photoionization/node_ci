@@ -222,6 +222,19 @@ source_set("test-tty") {
   ]
 }
 
+source_set("runner_unix") {
+  cflags_c = [
+    "-Wno-incompatible-pointer-types-discards-qualifiers",
+  ]
+  sources = [
+    "test/runner-unix.h",
+    "test/runner-unix.c",
+  ]
+  deps = [
+    ":uv"
+  ]
+}
+
 executable("uv_tests") {
   sources = [
     "test/blackhole-server.c",
@@ -229,8 +242,6 @@ executable("uv_tests") {
     "test/echo-server.c",
     "test/fixtures",
     "test/run-tests.c",
-    "test/runner-unix.c",
-    "test/runner-unix.h",
     "test/runner.c",
     "test/runner.h",
     "test/task.h",
@@ -385,6 +396,7 @@ executable("uv_tests") {
 
   deps = [
     ":uv",
+    ":runner_unix",
     ":test-tty",
     ":test-close-fd",
   ]
