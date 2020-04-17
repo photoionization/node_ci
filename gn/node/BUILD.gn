@@ -417,6 +417,12 @@ source_set("gtest_main") {
     "test/cctest/gtest/gtest-all.cc",
     "test/cctest/gtest/gtest_main.cc",
   ]
+  if (is_fuchsia) {
+    deps = [
+      "//third_party/fuchsia-sdk/sdk/pkg/fdio",
+      "//third_party/fuchsia-sdk/sdk/pkg/zx"
+    ]
+  }
 }
 
 executable("node_cctest") {
