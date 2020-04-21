@@ -13,7 +13,7 @@ if (is_fuchsia) {
     ]
   }
 
-  fuchsia_package("node") {
+  fuchsia_package("node_package") {
     deps = [
       ":node_cmx",
     ]
