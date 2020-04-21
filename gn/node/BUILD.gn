@@ -252,12 +252,6 @@ source_set("node_base") {
     "//third_party/zlib",
     "//v8:v8_libplatform",
   ]
-  if (is_fuchsia) {
-    # TODO(v8:10292): Remove this once Node migrates off the POSIX APIs.
-    deps += [
-      "//gn/fuchsia:fuchsia_xsi"
-    ]
-  }
   public_deps = [
     "deps/uv",
     "//v8",
