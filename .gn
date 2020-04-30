@@ -38,6 +38,7 @@ default_args = {
   # Node.js defaults.
   node_report = true
   is_debug = false
+  node_use_custom_libcxx = false
 
   # V8 options.
   v8_embedder_string = "-node.0"

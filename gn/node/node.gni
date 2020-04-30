@@ -2,6 +2,11 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+declare_args() {
+  # Compile node modules with custom libc++
+  node_use_custom_libcxx = false
+}
+
 if (is_win) {
   node_exe = "$root_out_dir/node.exe"
 } else {
@@ -57,12 +62,22 @@ template("build_addons") {
     ]
     inputs = invoker.inputs + build_scripts
     base = root_gen_dir
+
     env = [
       "--env", "npm_config_loglevel", "silent",
       "--env", "npm_config_python", "python",
       "--env", "npm_config_nodedir",
           rebase_path("$root_gen_dir/node", root_build_dir),
+      # Force native modules to be compile with clang
+      "--env", "CXX",
+          rebase_path("//third_party/llvm-build/Release+Asserts/bin/clang++"),
+
     ]
+    if (node_use_custom_libcxx) {
+      libcpp_path = rebase_path("//buildtools/third_party/libc++/trunk/include")
+      libcppabi_path = rebase_path("//buildtools/third_party/libc++abi/trunk/include")
+      env += [ "--env", "CFLAGS", "-nostdinc++ -isystem $libcpp_path -isystem $libcppabi_path" ]
+    }
     args = rebase_path(build_scripts, base) +
            [ rebase_path(target_gen_dir, base) ]
   }
