@@ -44,6 +44,8 @@ config("libuv_config") {
 }
 
 node_dep("uv") {
+  # This happens everywhere in libuv code when compiling in debug mode.
+  cflags_c = ["-Wno-string-conversion"]
   public_configs = [ ":libuv_config" ]
   libs = []
   ldflags = []
@@ -233,6 +235,9 @@ source_set("runner_unix") {
   deps = [
     ":uv"
   ]
+  if (is_fuchsia) {
+    deps += [ "//third_party/fuchsia-sdk/sdk/pkg/fdio" ]
+  }
 }
 
 executable("uv_tests") {
