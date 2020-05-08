@@ -8,7 +8,7 @@ import("//v8/gni/v8.gni")
 
 declare_args() {
   # Enable the V8 inspector protocol for use with node.
-  node_enable_inspector = true
+  node_enable_inspector = !is_fuchsia
 
   # Build node with SSL support.
   # The variable is called "openssl" for parity with node's GYP build.
