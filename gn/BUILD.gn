@@ -13,12 +13,26 @@ if (is_fuchsia) {
     ]
   }
 
+  fuchsia_component("node_cctest_cmx") {
+    testonly = true
+    manifest = "//gn/node/meta/node_cctest.cmx"
+    data_deps = [
+      "//node:node_cctest",
+    ]
+  }
+
   fuchsia_package("node_package") {
     deps = [
       ":node_cmx",
     ]
   }
-
+ 
+  fuchsia_package("node_cctest_package") {
+    testonly = true
+    deps = [
+      ":node_cctest_cmx",
+    ]
+  }
 }
 
 group("test_all") {
