@@ -8,7 +8,8 @@
          "zero"
       ],
       "features": [
-         "isolated-temp"
+         "isolated-temp",
+         "deprecated-ambient-replace-as-executable"
       ],
       "services": [
          "fuchsia.process.Launcher",
