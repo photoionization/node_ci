@@ -5,10 +5,10 @@
 vars = {
   'checkout_fuchsia_boot_images': 'qemu.x64',
 
-  'build_revision': '55fa64c8f5defc4749cd110fccffdf68663e4bcc',
+  'build_revision': '10edae4e5c3afa37eabbc5e9a70c54562f1223b2',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': '2c41dfb19abe40908834803b6fed797b0f341fe1',
+  'buildtools_revision': '204a35a2a64f7179f8b76d7a0385653690839e21',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
   'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
@@ -23,16 +23,16 @@ vars = {
   'buildtools_libunwind_revision': '3e6ec2ae9afaa3683269b690612f84d907943ea2',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': '698732d5db36040c07d5cc5f9137fcc943494c11',
+  'clang_revision': 'de3e20662b84f0ee361a5ae11c99a9513df7c8e8',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'fc5e10322119d4c8d28c291520a6cfe3a90e02de',
+  'depot_tools_revision': 'aaf566999558aa8ead38811228cd539a6e6e2fda',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
-  'googletest_revision': 'e3f0319d89f4cbf32993de595d984183b1a9fc57',
+  'googletest_revision': 'a09ea700d32bab83325aff9ff34d0582e50e3997',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
   'icu_revision': 'f2223961702f00a8833874b0560d615a2cc42738',
@@ -44,13 +44,13 @@ vars = {
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '381d2020a2a9f8ff9b968c79b2deafaf12f8eb87',
+  'node_revision': 'b902f3027a6697b750eb59fa56c6a1420022b3f7',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : 'dab187b372fc17e51f5b9fad8201813d0aed5129',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '0b392da22ddeac4cd23c5b14faddb7276d70fad2',
+  'v8_revision': 'd0b5b7d19498758b864f30148dd5cc0f8212d007',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',

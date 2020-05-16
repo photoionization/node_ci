@@ -22,6 +22,8 @@ node_dep("uvwasi") {
     "src/clocks.c",
     "src/clocks.h",
     "src/fd_table.c",
+    "src/path_resolver.c",
+    "src/path_resolver.h",
     "src/uv_mapping.c",
     "src/uv_mapping.h",
     "src/uvwasi_alloc.h",
