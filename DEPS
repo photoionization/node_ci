@@ -5,10 +5,10 @@
 vars = {
   'checkout_fuchsia_boot_images': 'qemu.x64',
 
-  'build_revision': '10edae4e5c3afa37eabbc5e9a70c54562f1223b2',
+  'build_revision': '258013f5cc62fb0f587fca61ec0fa05fb851e98e',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': '204a35a2a64f7179f8b76d7a0385653690839e21',
+  'buildtools_revision': '1b066f021638735d72aa799ae6bc37e0b8963c67',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
   'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
@@ -23,19 +23,19 @@ vars = {
   'buildtools_libunwind_revision': '3e6ec2ae9afaa3683269b690612f84d907943ea2',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': 'de3e20662b84f0ee361a5ae11c99a9513df7c8e8',
+  'clang_revision': '76b6634f9d4cfd66bc3ca015a91bfe6b8071d2a8',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'aaf566999558aa8ead38811228cd539a6e6e2fda',
+  'depot_tools_revision': '1dcaaa7aabb0573c4877621f3f534b82cf02e271',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
-  'googletest_revision': 'a09ea700d32bab83325aff9ff34d0582e50e3997',
+  'googletest_revision': '4fe018038f87675c083d0cfb6a6b57c274fb1753',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'f2223961702f00a8833874b0560d615a2cc42738',
+  'icu_revision': 'e4b8586e8ab6b3a33d9e016cddeeb70b81d2ab82',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': '3f90fa05c85718505e28c9c3426c1ba52843b9b7',
@@ -44,13 +44,13 @@ vars = {
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': 'b902f3027a6697b750eb59fa56c6a1420022b3f7',
+  'node_revision': 'aa042f9f2a707792731305cd8d4865db4b495693',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : 'dab187b372fc17e51f5b9fad8201813d0aed5129',
+  'trace_common_revision' : 'ef3586804494b7e402b6c1791d5dccdf2971afff',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'd0b5b7d19498758b864f30148dd5cc0f8212d007',
+  'v8_revision': 'fe201c34db38d3583231701ebbcad62c303e6d17',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',
