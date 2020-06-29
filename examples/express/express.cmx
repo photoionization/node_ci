@@ -1,0 +1,20 @@
+{
+   "program": {
+      "binary": "node",
+      "args": [ "/pkg/express.js" ]
+   },
+   "sandbox": {
+      "dev": [
+         "null",
+         "zero"
+      ],
+      "features": [
+         "isolated-temp",
+         "deprecated-ambient-replace-as-executable"
+      ],
+      "services": [
+         "fuchsia.process.Launcher",
+         "fuchsia.posix.socket.Provider"
+      ]
+   }
+}

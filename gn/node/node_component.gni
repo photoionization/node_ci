@@ -13,11 +13,23 @@ import("//third_party/fuchsia-sdk/sdk/build/component.gni")
 #     either a v1 (.cmx) or v2 (.cml) manifest. v2 manifests must have
 #     the file extension ".cml".
 #
+#   node_modules:
+#     Optional: Node modules dependencies.
+#
 #   sources:
 #     Optional: JS files to be included in the package.
 #
 template("node_component") {
   assert(defined(invoker.manifest), "manifest file required for this component")
+
+  if (!defined(invoker.node_modules)) {
+    node_modules = []
+  } else {
+    node_modules = invoker.node_modules
+  }
+
+  # Write the npm dependencies as runtime deps
+  data = exec_script("//tools/npm.py", node_modules, "value")
 
   copy("$target_name.sources") {
     sources = invoker.sources
