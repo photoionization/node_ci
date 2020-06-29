@@ -26,23 +26,29 @@ if (is_fuchsia) {
       ":node_cmx",
     ]
   }
- 
+
   fuchsia_package("node_cctest_package") {
     testonly = true
     deps = [
       ":node_cctest_cmx",
     ]
   }
+
+  group("examples") {
+    deps = [
+      "//examples"
+    ]
+  }
 }
 
 group("test_all") {
   testonly = true
-  
+
   deps = [
     "//node:node",
     "//node:node_cctest",
   ]
-  
+
   if (!is_win && !is_fuchsia) {
     deps += [
       "//node/test/addons:build",
@@ -51,4 +57,3 @@ group("test_all") {
     ]
   }
 }
-
