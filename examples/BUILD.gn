@@ -7,5 +7,6 @@ group("examples") {
     "express",
     "lodash",
     "simple_server",
+    "tsc",
   ]
 }
