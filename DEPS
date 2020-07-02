@@ -2,8 +2,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+gclient_gn_args_file = 'node-ci/build/config/gclient_args.gni'
+gclient_gn_args = [
+  'checkout_google_benchmark',
+]
+
 vars = {
   'checkout_fuchsia_boot_images': 'qemu.x64',
+  'checkout_google_benchmark' : False,
 
   'build_revision': '258013f5cc62fb0f587fca61ec0fa05fb851e98e',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
