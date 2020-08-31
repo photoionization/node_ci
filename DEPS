@@ -11,10 +11,10 @@ vars = {
   'checkout_fuchsia_boot_images': 'qemu.x64',
   'checkout_google_benchmark' : False,
 
-  'build_revision': '0d4e00d5f4046ce21d4de22c2125c5359c3a303b',
+  'build_revision': '5e22a2309a8ef9cf1f5cdee293e060bfc587589c',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': 'b00ad0af636401e5eb4b5d0ab01b65164dca1914',
+  'buildtools_revision': 'ff93f3ea1a7f033d3caf8f60ec1937cc71351419',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
   'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
@@ -29,16 +29,16 @@ vars = {
   'buildtools_libunwind_revision': '3e6ec2ae9afaa3683269b690612f84d907943ea2',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': '361d3671544d55aeb9aeb850ec9e6c78c619b873',
+  'clang_revision': '89d15db59117ae3086a47ee3d7abb45f5430bbd1',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '3bd3c99b4d5c884798648198ba7b01755214fd90',
+  'depot_tools_revision': 'c73782c8d8ffbb4fc5cc7c88150706066e3d99a9',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
-  'googletest_revision': 'adeef192947fbc0f68fa14a6c494c8df32177508',
+  'googletest_revision': 'df6b75949b1efab7606ba60c0f0a0125ac95c5af',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
   'icu_revision': 'fb520a538683cc017dc44f28444dd58d61cfea66',
@@ -56,7 +56,7 @@ vars = {
   'trace_common_revision' : '23ef5333a357fc7314630ef88b44c3a545881dee',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'bd094d0d12906cb60719f99c4c416ecb279a2b1d',
+  'v8_revision': '925effd0456a840048ed5c592561fae56c7c8c59',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',
