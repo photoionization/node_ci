@@ -11,7 +11,7 @@ vars = {
   'checkout_fuchsia_boot_images': 'qemu.x64',
   'checkout_google_benchmark' : False,
 
-  'build_revision': '5e22a2309a8ef9cf1f5cdee293e060bfc587589c',
+  'build_revision': 'e4867e8154f6bd5027485979c1414c10ba90710c',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
   'buildtools_revision': 'ff93f3ea1a7f033d3caf8f60ec1937cc71351419',
@@ -29,16 +29,16 @@ vars = {
   'buildtools_libunwind_revision': '3e6ec2ae9afaa3683269b690612f84d907943ea2',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': '89d15db59117ae3086a47ee3d7abb45f5430bbd1',
+  'clang_revision': '03bacc323567b1f522fdf52f03a315b587da1826',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'c73782c8d8ffbb4fc5cc7c88150706066e3d99a9',
+  'depot_tools_revision': '9218ba277ab5a561b3968c3b4ae1520ebad51c7b',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
-  'googletest_revision': 'df6b75949b1efab7606ba60c0f0a0125ac95c5af',
+  'googletest_revision': '7b1cf6dd5fbe0c22c5e638fce8caf7f0f5c1abbf',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
   'icu_revision': 'fb520a538683cc017dc44f28444dd58d61cfea66',
@@ -50,13 +50,13 @@ vars = {
   'markupsafe_revision': 'f2fb0f21ef1e1d4ffd43be8c63fc3d4928dea7ab',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '2fc45a2ea67081e631a16237ea54ea1a824fe877',
+  'node_revision': '0df292652aaf01a7d492cba1e84fec6cc7748dc7',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : '23ef5333a357fc7314630ef88b44c3a545881dee',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '925effd0456a840048ed5c592561fae56c7c8c59',
+  'v8_revision': '64b592649737032e598e2e07a5cd013746b43026',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',
