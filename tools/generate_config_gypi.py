@@ -36,7 +36,7 @@ def translate_config(config):
       'node_module_version': string_to_number(config['node_module_version']),
       'node_shared': bool_string_to_number(config['is_component_build']),
       'node_code_cache': 'yes' if config['node_use_code_cache'] else 'no',
-      'napi_build_version': '6',
+      'napi_build_version': '7',
       'shlib_suffix': shlib_suffix,
       # v8_enable_inspector is actually a misnomer, and only affects node.
       'v8_enable_inspector':
@@ -44,7 +44,6 @@ def translate_config(config):
       'v8_enable_i18n_support':
           bool_string_to_number(config['v8_enable_i18n_support']),
       'v8_enable_pointer_compression': 0,
-      'v8_enable_reverse_jsargs': 0,
       'v8_enable_31bit_smis_on_64bit_arch': 0,
       # introduced for building addons.
       'node_use_openssl': config['node_use_openssl'],

@@ -8,13 +8,12 @@ gclient_gn_args = [
 ]
 
 vars = {
-  'checkout_fuchsia_boot_images': 'qemu.x64',
   'checkout_google_benchmark' : False,
 
-  'build_revision': 'e4867e8154f6bd5027485979c1414c10ba90710c',
+  'build_revision': 'ae5b5ecabdc944bde2730e6b7d13abe71ca9a2ee',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': 'ff93f3ea1a7f033d3caf8f60ec1937cc71351419',
+  'buildtools_revision': '4be464e050b3d05060471788f926b34c641db9fd',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
   'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
@@ -29,34 +28,34 @@ vars = {
   'buildtools_libunwind_revision': '3e6ec2ae9afaa3683269b690612f84d907943ea2',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/llvm.org/libunwind.git',
 
-  'clang_revision': '03bacc323567b1f522fdf52f03a315b587da1826',
+  'clang_revision': 'd4827bfe100154b06d9ffa59b21bb845fce9c7d5',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '9218ba277ab5a561b3968c3b4ae1520ebad51c7b',
+  'depot_tools_revision': '6e970e597b25a3a74a560746711d1811133841d2',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
-  'googletest_revision': '7b1cf6dd5fbe0c22c5e638fce8caf7f0f5c1abbf',
+  'googletest_revision': '07f4869221012b16b7f9ee685d94856e1fc9f361',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'fb520a538683cc017dc44f28444dd58d61cfea66',
+  'icu_revision': '84fb34e2d110871c3414183b9f6c0745453b02ad',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
-  'jinja2_revision': '61cfe2ac6c9108534c43b4039a95a0980251f266',
+  'jinja2_revision': 'a82a4944a7f2496639f34a89c9923be5908b80aa',
   'jinja2_url': 'https://chromium.googlesource.com/chromium/src/third_party/jinja2.git',
 
   'markupsafe_revision': 'f2fb0f21ef1e1d4ffd43be8c63fc3d4928dea7ab',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '0df292652aaf01a7d492cba1e84fec6cc7748dc7',
+  'node_revision': '3f64e4a2f299eb7f6b781932c42d50271f560884',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : '23ef5333a357fc7314630ef88b44c3a545881dee',
+  'trace_common_revision' : 'ea3ab7b3f22a844966f27bcafc0475e4ea95a019',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '64b592649737032e598e2e07a5cd013746b43026',
+  'v8_revision': '2cae49cce09fc6134281603ca3cd28602ccdd9f7',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',
@@ -159,7 +158,6 @@ hooks = [
     'action': [
       'python',
       'node-ci/build/fuchsia/update_sdk.py',
-      '--boot-images={checkout_fuchsia_boot_images}',
     ],
   },
 ]
