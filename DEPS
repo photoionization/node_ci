@@ -10,6 +10,9 @@ gclient_gn_args = [
 vars = {
   'checkout_google_benchmark' : False,
 
+  'abseil_cpp_revision': '66b870c3b1cbbb7f85b31cc9a8a785329f5ebcb8',
+  'abseil_cpp_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
+
   'build_revision': 'ae5b5ecabdc944bde2730e6b7d13abe71ca9a2ee',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
@@ -71,6 +74,7 @@ deps = {
   'node-ci/buildtools/third_party/libc++abi/trunk': Var('buildtools_libcxxabi_url') + '@' + Var('buildtools_libcxxabi_revision'),
   'node-ci/buildtools/third_party/libunwind/trunk': Var('buildtools_libunwind_url') + '@' + Var('buildtools_libunwind_revision'),
   'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
+  'node-ci/third_party/abseil-cpp': Var('abseil_cpp_url') + '@' + Var('abseil_cpp_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
   'node-ci/third_party/googletest/src': Var('googletest_url') + '@' + Var('googletest_revision'),
   'node-ci/third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
