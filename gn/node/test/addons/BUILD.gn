@@ -15,7 +15,7 @@ build_addons("build") {
     "..:copy_node_headers",
     "..:copy_v8_headers",
     "..:copy_test_files",
-    "//node/tools/doc:generate_addons",
+    # "//node/tools/doc:generate_addons", TODO(v8:11042): temporarily disabling this compilation step.
   ]
   inputs = node_files.test_addons_files +
            node_files.v8_headers +
