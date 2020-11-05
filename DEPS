@@ -37,6 +37,9 @@ vars = {
   'depot_tools_revision': '6e970e597b25a3a74a560746711d1811133841d2',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
+  'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
+  'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
+
   # GN CIPD package version.
   'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
 
@@ -76,6 +79,10 @@ deps = {
   'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
   'node-ci/third_party/abseil-cpp': Var('abseil_cpp_url') + '@' + Var('abseil_cpp_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
+  'node-ci/third_party/fuchsia-sdk': {
+    'url': Var('fuchsia_sdk_url') + '@' + Var('fuchsia_sdk_revision'),
+    'condition': 'checkout_fuchsia',
+  },
   'node-ci/third_party/googletest/src': Var('googletest_url') + '@' + Var('googletest_revision'),
   'node-ci/third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
   'node-ci/third_party/jinja2': Var('jinja2_url') + '@' + Var('jinja2_revision'),
