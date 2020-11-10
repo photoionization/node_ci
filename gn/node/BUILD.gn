@@ -147,10 +147,6 @@ config("node_base_external") {
   include_dirs = [ "src" ]
   defines = [ "NODE_WANT_INTERNALS=1" ]
   configs = [ "//v8:external_config" ]
-  if (is_fuchsia) {
-    # TODO(v8:10292): Remove this once Node migrates off the POSIX APIs.
-    include_dirs += [ "//gn/fuchsia/include" ]
-  }
 }
 
 config("node_base_internal") {
