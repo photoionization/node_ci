@@ -32,6 +32,9 @@ FILENAMES_JSON_HEADER = '''
 // DO NOT EDIT
 '''.lstrip()
 
+def dedup(a_list):
+  return list(set(a_list))
+
 def RedirectV8(list):
   return [f.replace('deps/v8/', '../v8/', 1) for f in list]
 
@@ -77,6 +80,12 @@ if __name__ == '__main__':
       if f not in node_source_blacklist]
   out['node_sources'] = [
       f.replace('deps/v8/', '../v8/', 1) for f in node_sources]
+
+  # Find C++ sources when building with crypto.
+  node_use_openssl = next(
+      t for t in node_lib_target['conditions']
+      if t[0] == 'node_use_openssl=="true"')
+  out['crypto_sources'] = dedup(node_use_openssl[1]['sources'])
 
   # Find cctest files. Omit included gtest.
   cctest_target = next(
