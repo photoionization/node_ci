@@ -1,7 +1,7 @@
 {
    "program": {
       "binary": "node",
-      "args": [ "/pkg/server.js" ]
+      "args": [ "/pkg/simple_server.js" ]
    },
    "sandbox": {
       "dev": [
