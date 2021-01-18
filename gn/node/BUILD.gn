@@ -85,13 +85,6 @@ copy("node_js2c_inputs") {
   ]
 }
 
-copy("node_v8_js2c_inputs") {
-  sources = node_files.v8_library_files
-  outputs = [
-    "$target_gen_dir/js2c_inputs/deps/navigation/{{source_target_relative}}",
-  ]
-}
-
 action("generate_config_gypi") {
   script = "//tools/generate_config_gypi.py"
   outputs = [
@@ -119,7 +112,6 @@ chdir_action("node_js2c") {
   deps = [
     ":generate_config_gypi",
     ":node_js2c_inputs",
-    ":node_v8_js2c_inputs",
   ]
 
   macro_inputs = []
@@ -131,7 +123,7 @@ chdir_action("node_js2c") {
   library_files = node_files.all_library_files
   inputs =
       get_target_outputs(":node_js2c_inputs") +
-      get_target_outputs(":node_v8_js2c_inputs") + macro_inputs + config_gypi
+      macro_inputs + config_gypi
   outputs = [
     "$target_gen_dir/node_javascript.cc",
   ]

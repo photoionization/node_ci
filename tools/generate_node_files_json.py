@@ -60,8 +60,6 @@ if __name__ == '__main__':
   openssl_gyp = LoadPythonDictionary(openssl_gyp_file)
   # Find JS lib file and single out files from V8.
   library_files = node_gyp['variables']['library_files']
-  out['v8_library_files'] = [
-      f.replace('deps/', '../') for f in library_files if f.startswith('deps/v8')]
   out['node_library_files'] = [
       f for f in library_files if not f.startswith('deps/v8')]
   out['all_library_files'] = library_files
