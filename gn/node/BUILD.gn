@@ -4,6 +4,7 @@
 # found in the LICENSE file.
 
 import("//node/node_files.gni")
+import("//v8/gni/snapshot_toolchain.gni")
 import("//v8/gni/v8.gni")
 
 declare_args() {
@@ -101,7 +102,7 @@ action("generate_config_gypi") {
   }
   script_args = [
     gn,
-    "$root_out_dir",
+    "$root_build_dir",
   ]
   script_args += outputs
   script_args += [ depfile ]
@@ -273,25 +274,28 @@ source_set("node_base") {
 }
 
 if (node_use_code_cache) {
-  executable("node_mkcodecache") {
-    sources = [
-      "src/node_code_cache_stub.cc",
-      "src/node_snapshot_stub.cc",
-      "tools/code_cache/cache_builder.cc",
-      "tools/code_cache/cache_builder.h",
-      "tools/code_cache/mkcodecache.cc",
-    ]
-    configs += [ ":node_base_internal" ]
-    deps = [
-      ":node_base",
-    ]
+  if (current_toolchain == v8_snapshot_toolchain) {
+    executable("node_mkcodecache") {
+      sources = [
+        "src/node_code_cache_stub.cc",
+        "src/node_snapshot_stub.cc",
+        "tools/code_cache/cache_builder.cc",
+        "tools/code_cache/cache_builder.h",
+        "tools/code_cache/mkcodecache.cc",
+      ]
+      configs += [ ":node_base_internal" ]
+      deps = [
+        ":node_base",
+      ]
+    }
   }
 
   action("run_node_mkcodecache") {
     script = "//tools/run_executable_in_dir.py"
     base = target_gen_dir
     stamp = "$target_gen_dir/run_mkcodecache.stamp"
-    exe = "$root_out_dir/node_mkcodecache"
+    exe = get_label_info(":node_mkcodecache($v8_snapshot_toolchain)",
+                         "root_out_dir") + "/node_mkcodecache"
     output_cc = "$target_gen_dir/node_code_cache.cc"
     outputs = [
       stamp,
@@ -304,31 +308,34 @@ if (node_use_code_cache) {
       rebase_path(output_cc, base),
     ]
     deps = [
-      ":node_mkcodecache",
+      ":node_mkcodecache($v8_snapshot_toolchain)",
     ]
   }
 }
 
 if (node_use_snapshot) {
-  executable("node_mksnapshot") {
-    sources = [
-      "src/node_code_cache_stub.cc",
-      "src/node_snapshot_stub.cc",
-      "tools/snapshot/node_mksnapshot.cc",
-      "tools/snapshot/snapshot_builder.cc",
-      "tools/snapshot/snapshot_builder.h",
-    ]
-    configs += [ ":node_base_internal" ]
-    deps = [
-      ":node_base",
-    ]
+  if (current_toolchain == v8_snapshot_toolchain) {
+    executable("node_mksnapshot") {
+      sources = [
+        "src/node_code_cache_stub.cc",
+        "src/node_snapshot_stub.cc",
+        "tools/snapshot/node_mksnapshot.cc",
+        "tools/snapshot/snapshot_builder.cc",
+        "tools/snapshot/snapshot_builder.h",
+      ]
+      configs += [ ":node_base_internal" ]
+      deps = [
+        ":node_base",
+      ]
+    }
   }
 
   action("run_node_mksnapshot") {
     script = "//tools/run_executable_in_dir.py"
     base = target_gen_dir
     stamp = "$target_gen_dir/run_node_mksnapshot.stamp"
-    exe = "$root_out_dir/node_mksnapshot"
+    exe = get_label_info(":node_mksnapshot($v8_snapshot_toolchain)",
+                         "root_out_dir") + "/node_mksnapshot"
     output_cc = "$target_gen_dir/node_snapshot.cc"
     outputs = [
       stamp,
@@ -341,7 +348,7 @@ if (node_use_snapshot) {
       rebase_path(output_cc, base),
     ]
     deps = [
-      ":node_mksnapshot",
+      ":node_mksnapshot($v8_snapshot_toolchain)",
     ]
   }
 }

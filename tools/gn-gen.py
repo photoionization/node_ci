@@ -30,6 +30,9 @@ def GenerateBuildFiles(options):
   if options.target_os:
     gn_args.append('target_os="' + options.target_os + '"')
 
+  if options.target_cpu:
+    gn_args.append('target_cpu="' + options.target_cpu + '"')
+
   if options.asan:
     gn_args.append('is_lsan=true')
     gn_args.append('is_asan=true')
@@ -85,6 +88,7 @@ def ParseOptions(args):
   parser.add_argument('--no-cache', help='do not use Node.js code cache',
                       action='store_true', default=False)
   parser.add_argument('--target_os', help='set target OS', default='')
+  parser.add_argument('--target_cpu', help='set target CPU', default='')
   return parser.parse_args(args)
 
 if __name__ == '__main__':
