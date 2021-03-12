@@ -43,7 +43,7 @@ declare_args() {
   node_release_urlbase = ""
 
   # Use code cache to speed up startup.
-  node_use_code_cache = !is_win && !is_fuchsia
+  node_use_code_cache = is_linux
 
   # Use snapshot to speed up startup.
   node_use_snapshot = !is_win && !is_fuchsia
@@ -193,7 +193,7 @@ config("node_base_internal") {
     defines += [ "__POSIX__" ]
   }
   if (is_mac) {
-    libs += [ "CoreFoundation.framework" ]
+    frameworks = [ "CoreFoundation.framework" ]
   }
   if (node_tag != "") {
     defines += [ "NODE_TAG=\"$node_tag\"" ]
@@ -402,18 +402,20 @@ source_set("gtest_main") {
   }
 }
 
-executable("node_cctest") {
-  testonly = true
-  deps = [
-    ":node_base",
-    ":gtest_main",
-  ]
-  configs += [ ":node_base_internal" ]
-  sources = node_files.cctest_sources
-  if (node_enable_inspector) {
-    sources += [
-      "test/cctest/test_inspector_socket.cc",
-      "test/cctest/test_inspector_socket_server.cc",
+if (is_linux) {
+  executable("node_cctest") {
+    testonly = true
+    deps = [
+      ":node_base",
+      ":gtest_main",
     ]
+    configs += [ ":node_base_internal" ]
+    sources = node_files.cctest_sources
+    if (node_enable_inspector) {
+      sources += [
+        "test/cctest/test_inspector_socket.cc",
+        "test/cctest/test_inspector_socket_server.cc",
+      ]
+    }
   }
 }

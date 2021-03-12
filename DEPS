@@ -43,7 +43,7 @@ vars = {
   'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
 
   # GN CIPD package version.
-  'gn_version': 'git_revision:81ee1967d3fcbc829bac1c005c3da59739c88df9',
+  'gn_version': 'git_revision:0d67e272bdb8145f87d238bc0b2cb8bf80ccec90',
 
   'googletest_revision': '763eaa430540926fa16060654427149802c97fba',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',

@@ -46,10 +46,14 @@ group("test_all") {
 
   deps = [
     "//node:node",
-    "//node:node_cctest",
   ]
 
-  if (!is_win && !is_fuchsia) {
+  # TODO(v8:11554): These targets currently do not build on Mac.
+  if (is_linux || is_fuchsia) {
+    deps += [ "//node:node_cctest" ]
+  }
+
+  if (is_linux) {
     deps += [
       "//node/test/addons:build",
       "//node/test/node-api:build",
