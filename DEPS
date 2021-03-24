@@ -66,7 +66,7 @@ vars = {
   'v8_revision': '6e45bf8952363e9b571b9f9fc30cab022758d73a',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': 'd7f3ca98b2b0d5f72656502961a59353791c4f8a',
+  'zlib_revision': '09490503d0f201b81e03f5ca0ab8ba8ee76d4a8e',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 }
 
