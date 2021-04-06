@@ -237,6 +237,7 @@ source_set("node_base") {
     "deps/histogram",
     "deps/llhttp",
     "deps/nghttp2",
+    "deps/ngtcp2",
     "deps/uvwasi",
     "//third_party/zlib",
     "//v8:v8_libplatform",
