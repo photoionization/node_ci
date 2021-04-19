@@ -63,7 +63,7 @@ vars = {
   'trace_common_revision' : '7af6071eddf11ad91fbd5df54138f9d3c6d980d5',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '6e45bf8952363e9b571b9f9fc30cab022758d73a',
+  'v8_revision': 'f2741b13ba7c57103c06d1c323c2c7af29d21eab',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': '09490503d0f201b81e03f5ca0ab8ba8ee76d4a8e',

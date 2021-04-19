@@ -77,6 +77,7 @@ default_args = {
   v8_use_siphash = true
   v8_expose_symbols = true
   v8_enable_lazy_source_positions = false
+  v8_allow_javascript_in_promise_hooks = true
 
   # V8 options.
   v8_experimental_extra_library_files = []
