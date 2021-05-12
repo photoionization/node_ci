@@ -15,10 +15,10 @@ vars = {
   'abseil_cpp_revision': '66b870c3b1cbbb7f85b31cc9a8a785329f5ebcb8',
   'abseil_cpp_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
-  'build_revision': '52bfb9d2b24f79f93acf3cf93735dc0571b0a618',
+  'build_revision': '32281a3e42d30495248ea4c89aa6de41371a1001',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': '5dbd89c9d9c0b0ff47cefdc2bc421b8c9a1c5a21',
+  'buildtools_revision': 'e72cd4587a1b833ecf559e4524b69a359cc87697',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
   'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
@@ -33,22 +33,22 @@ vars = {
   'buildtools_libunwind_revision': '08f35c8514a74817103121def05351186830d4b7',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libunwind.git',
 
-  'clang_revision': 'a387faa2a6741f565e45d78804a49a0e55de5909',
+  'clang_revision': 'e76c8f17cf2833813d671674cd89f01f3a21e851',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '7e3ad9eeb839c06b5056ba6a800a7895b927be4f',
+  'depot_tools_revision': 'cb17bc602880062ea728a78449fb87d778791dc2',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
   'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
 
   # GN CIPD package version.
-  'gn_version': 'git_revision:0d67e272bdb8145f87d238bc0b2cb8bf80ccec90',
+  'gn_version': 'git_revision:39a87c0b36310bdf06b692c098f199a0d97fc810',
 
-  'googletest_revision': '763eaa430540926fa16060654427149802c97fba',
+  'googletest_revision': 'f5e592d8ee5ffb1d9af5be7f715ce3576b8bf9c4',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'd25bdc013cb0d0d9b1b7c53beb1ab2a30323341c',
+  'icu_revision': 'f022e298b4f4a782486bb6d5ce6589c998b51fe2',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': '11b6b3e5971d760bd2d310f77643f55a818a6d25',
@@ -57,13 +57,13 @@ vars = {
   'markupsafe_revision': '0944e71f4b2cb9a871bcbe353f95e889b64a611a',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '6f8412fcb4a1be1a191231f46ae47439f07da627',
+  'node_revision': 'b0b5fec12870e21b9e7718489c108d034cbcf712',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : '7af6071eddf11ad91fbd5df54138f9d3c6d980d5',
+  'trace_common_revision' : 'd5bb24e5d9802c8c917fcaa4375d5239a586c168',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'f2741b13ba7c57103c06d1c323c2c7af29d21eab',
+  'v8_revision': '4f51af6de8b463007f1e9aab925dcc6d6fd9fb5e',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': '09490503d0f201b81e03f5ca0ab8ba8ee76d4a8e',
