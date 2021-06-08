@@ -33,6 +33,7 @@ def translate_config(config):
     },
     'variables': {
       'asan': bool_string_to_number(config['is_asan']),
+      'llvm_version': 13,
       'node_module_version': string_to_number(config['node_module_version']),
       'node_shared': bool_string_to_number(config['is_component_build']),
       'node_code_cache': 'yes' if config['node_use_code_cache'] else 'no',
