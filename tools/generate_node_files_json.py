@@ -42,6 +42,35 @@ def GitLsFiles(path, prefix):
   output = subprocess.check_output(['git', 'ls-files'], cwd=path)
   return [prefix + x for x in output.splitlines()]
 
+def isGypExpansion(entry):
+  return entry.startswith('<') or entry.startswith('>')
+
+def GypExpand(node_dir, entry):
+  assert entry.startswith('<!'), \
+    'Only gyp command expansion is supported at the moment. ' \
+    'Invalid expansion: %s' % entry
+  is_list = entry.startswith('<!@')
+  command = entry[4 if is_list else 3 : -1]
+  command = command.split()
+  # Dirty hack to run node's python3 scripts under our python2 environment
+  if command[0] == 'python':
+    command[0] = 'python3'
+  output = subprocess.check_output(command, cwd=node_dir)
+  if is_list:
+    output = output.splitlines()
+  else:
+    output = [output]
+  return output
+
+def GypExpandList(node_dir, list):
+  entries = []
+  for entry in list:
+    if isGypExpansion(entry):
+      entries = entries + GypExpand(node_dir, entry)
+    else:
+      entries.append(entry)
+  return entries
+
 if __name__ == '__main__':
   # Set up paths.
   root_dir = os.path.dirname(os.path.dirname(__file__))
@@ -59,7 +88,9 @@ if __name__ == '__main__':
   inspector_gyp = LoadPythonDictionary(inspector_gyp_file)
   openssl_gyp = LoadPythonDictionary(openssl_gyp_file)
   # Find JS lib file and single out files from V8.
-  library_files = node_gyp['variables']['library_files']
+  library_files = GypExpandList(node_dir, node_gyp['variables']['library_files'])
+  deps_files = node_gyp['variables']['deps_files']
+  library_files += deps_files
   out['node_library_files'] = [
       f for f in library_files if not f.startswith('deps/v8')]
   out['all_library_files'] = library_files
@@ -70,6 +101,7 @@ if __name__ == '__main__':
       if t['target_name'] == '<(node_lib_target_name)')
   node_source_blacklist = {
       '<@(library_files)',
+      '<@(deps_files)',
       'common.gypi',
       '<(SHARED_INTERMEDIATE_DIR)/node_javascript.cc',
   }

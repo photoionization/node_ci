@@ -7,17 +7,22 @@ import os
 import subprocess
 
 DEPS = {
-  'node-ci/base/trace_event/common': 'origin/master',
-  'node-ci/build': 'origin/master',
-  'node-ci/buildtools': 'origin/master',
+  'node-ci/base/trace_event/common': 'origin/main',
+  'node-ci/build': 'origin/main',
+  'node-ci/buildtools': 'origin/main',
+  'node-ci/buildtools/clang_format/script': 'origin/main',
+  'node-ci/buildtools/third_party/libc++/trunk': 'origin/main',
+  'node-ci/buildtools/third_party/libc++abi/trunk': 'origin/main',
+  'node-ci/buildtools/third_party/libunwind/trunk': 'origin/main',
   'node-ci/node' : 'origin',
-  'node-ci/third_party/depot_tools': 'origin/master',
+  'node-ci/third_party/depot_tools': 'origin/main',
   'node-ci/third_party/googletest/src': 'origin/master',
   'node-ci/third_party/icu': 'origin/master',
-  'node-ci/third_party/jinja2': 'origin/master',
-  'node-ci/third_party/markupsafe': 'origin/master',
-  'node-ci/tools/clang': 'origin/master',
-  'node-ci/v8' : 'origin/master',
+  'node-ci/third_party/jinja2': 'origin/main',
+  'node-ci/third_party/markupsafe': 'origin/main',
+  'node-ci/third_party/zlib': 'origin/main',
+  'node-ci/tools/clang': 'origin/main',
+  'node-ci/v8' : 'origin/main',
 }
 
 def main():
