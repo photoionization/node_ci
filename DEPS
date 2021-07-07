@@ -11,6 +11,7 @@ gclient_gn_args = [
 vars = {
   'checkout_google_benchmark' : False,
   'checkout_fuchsia_for_arm64_host' : False,
+  'checkout_reclient': False,
 
   'build_revision': '85b9c5900e92486f16ef877606948d1bdffb781d',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
@@ -65,6 +66,8 @@ vars = {
 
   'zlib_revision': '00ade15d946d72f75c786dc2e66c419a9d99e2ad',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
+
+   'reclient_version': 're_client_version:0.33.0.3e223d5',
 }
 
 deps = {
@@ -117,6 +120,16 @@ deps = {
     ],
     'dep_type': 'cipd',
     'condition': 'host_os == "win"',
+  },
+  'node-ci/buildtools/reclient': {
+    'packages': [
+      {
+        'package': 'infra/rbe/client/${{platform}}',
+        'version': Var('reclient_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': '(host_os == "linux" or host_os == "win") and checkout_reclient',
   },
 }
 
