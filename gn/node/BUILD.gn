@@ -249,6 +249,7 @@ source_set("node_base") {
   public_configs = [
     ":node_base_external",
     "//build/config/compiler:no_chromium_code",
+    "deps/googletest:gtest_config",
   ]
   if (is_posix || is_mac || is_fuchsia) {
     public_configs += [ "//build/config/gcc:symbol_visibility_default" ]
@@ -384,29 +385,12 @@ executable("node") {
   ]
 }
 
-source_set("gtest_main") {
-  testonly = true
-  include_dirs = [ "test/cctest" ]
-  sources = [
-    "test/cctest/gtest/gtest.h",
-    "test/cctest/gtest/gtest-all.cc",
-    "test/cctest/gtest/gtest_main.cc",
-  ]
-  deps = [ "deps/uv" ]
-  if (is_fuchsia) {
-    deps += [
-      "//third_party/fuchsia-sdk/sdk/pkg/fdio",
-      "//third_party/fuchsia-sdk/sdk/pkg/zx"
-    ]
-  }
-}
-
 if (is_linux) {
   executable("node_cctest") {
     testonly = true
     deps = [
       ":node_base",
-      ":gtest_main",
+      "deps/googletest",
     ]
     configs += [ ":node_base_internal" ]
     sources = node_files.cctest_sources

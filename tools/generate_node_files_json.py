@@ -42,31 +42,21 @@ def GitLsFiles(path, prefix):
   output = subprocess.check_output(['git', 'ls-files'], cwd=path)
   return [prefix + x for x in output.splitlines()]
 
-def isGypExpansion(entry):
-  return entry.startswith('<') or entry.startswith('>')
-
-def GypExpand(node_dir, entry):
-  assert entry.startswith('<!'), \
-    'Only gyp command expansion is supported at the moment. ' \
-    'Invalid expansion: %s' % entry
-  is_list = entry.startswith('<!@')
-  command = entry[4 if is_list else 3 : -1]
-  command = command.split()
-  # Dirty hack to run node's python3 scripts under our python2 environment
-  if command[0] == 'python':
-    command[0] = 'python3'
-  output = subprocess.check_output(command, cwd=node_dir)
-  if is_list:
-    output = output.splitlines()
-  else:
-    output = [output]
-  return output
+def SearchNodeLibraryFiles(node_dir, entry):
+  assert(entry == '<@(node_library_files)')
+  files = []
+  prefix_size = len(node_dir) + 1
+  for (dir, _, fs) in os.walk(os.path.join(node_dir,'lib')):
+    for f in fs:
+      if f.endswith(".js"):
+        files.append(os.path.join(dir, f)[prefix_size:])
+  return files
 
 def GypExpandList(node_dir, list):
   entries = []
   for entry in list:
-    if isGypExpansion(entry):
-      entries = entries + GypExpand(node_dir, entry)
+    if entry == '<@(node_library_files)':
+      entries = entries + SearchNodeLibraryFiles(node_dir, entry)
     else:
       entries.append(entry)
   return entries

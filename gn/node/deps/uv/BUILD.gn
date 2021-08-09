@@ -165,6 +165,7 @@ node_dep("uv") {
   }
   if (is_linux) {
     sources += [
+      "src/unix/epoll.c",
       "src/unix/linux-core.c",
       "src/unix/linux-inotify.c",
       "src/unix/linux-syscalls.c",
@@ -306,6 +307,9 @@ if (is_linux || is_fuchsia) {
       "test/test-metrics.c",
       "test/test-multiple-listen.c",
       "test/test-mutexes.c",
+      "test/test-not-readable-on-eof.c",
+      "test/test-not-readable-nor-writable-on-read-error.c",
+      "test/test-not-writable-after-shutdown.c",
       "test/test-osx-select.c",
       "test/test-pass-always.c",
       "test/test-ping-pong.c",
@@ -337,6 +341,7 @@ if (is_linux || is_fuchsia) {
       "test/test-semaphore.c",
       "test/test-shutdown-close.c",
       "test/test-shutdown-eof.c",
+      "test/test-shutdown-simultaneous.c",
       "test/test-shutdown-twice.c",
       "test/test-signal-multiple-loops.c",
       "test/test-signal-pending-on-close.c",
