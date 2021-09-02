@@ -78,9 +78,9 @@ template("build_addons") {
 
     ]
     if (node_use_custom_libcxx) {
-      libcpp_path = rebase_path("//buildtools/third_party/libc++/trunk/include")
+      libcpp_path = rebase_path("//buildtools/third_party/libc++")
       libcppabi_path = rebase_path("//buildtools/third_party/libc++abi/trunk/include")
-      env += [ "--env", "CFLAGS", "-nostdinc++ -isystem $libcpp_path -isystem $libcppabi_path" ]
+      env += [ "--env", "CFLAGS", "-nostdinc++ -isystem $libcpp_path -isystem $libcpp_path/trunk/include -isystem $libcppabi_path" ]
     }
     args = rebase_path(build_scripts, base) +
            [ rebase_path(target_gen_dir, base) ]

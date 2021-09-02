@@ -162,7 +162,8 @@ config("node_base_internal") {
     "-Wno-string-conversion",
     "-Wno-unused-function",
     "-Wno-extra-semi",  # Temporarily until resolved upstream.
-    "-Wno-unreachable-code" # node_crypto.cc has unreachable code.
+    "-Wno-unreachable-code", # node_crypto.cc has unreachable code.
+    "-Wno-unreachable-code-break",
   ]
 
   if (target_cpu == "x86") {

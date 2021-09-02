@@ -243,6 +243,10 @@ source_set("runner_unix") {
 # TODO(v8:11554): This target currently do not build on Mac.
 if (is_linux || is_fuchsia) {
   executable("uv_tests") {
+    cflags_c = [
+      "-Wno-implicit-fallthrough",
+    ]
+
     sources = [
       "test/blackhole-server.c",
       "test/dns-server.c",

@@ -13,7 +13,7 @@ vars = {
   'checkout_fuchsia_for_arm64_host' : False,
   'checkout_reclient': False,
 
-  'build_revision': '85b9c5900e92486f16ef877606948d1bdffb781d',
+  'build_revision': 'b69c335c665732593d428a023fbc0fdf7b14df39',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
   'buildtools_revision': '7ea3a871db68ae2cbbeaf5433a3192a799ef3c11',
@@ -22,49 +22,49 @@ vars = {
   'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
   'buildtools_clang_format_url': 'https://chromium.googlesource.com/chromium/llvm-project/cfe/tools/clang-format.git',
 
-  'buildtools_libcxx_revision': '8fa87946779682841e21e2da977eccfb6cb3bded',
+  'buildtools_libcxx_revision': '023ec05651787769b55481873822700e8c48c317',
   'buildtools_libcxx_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git',
 
-  'buildtools_libcxxabi_revision': 'ae0481e55f1c5fba9237b6239fb47b96e69eafbd',
+  'buildtools_libcxxabi_revision': '7de86cbf37e0cf76ffe786ab6a21a728b1027bc2',
   'buildtools_libcxxabi_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxxabi.git',
 
-  'buildtools_libunwind_revision': '5f424e3f1a1717c6f4800953a46c9050cf34feb6',
+  'buildtools_libunwind_revision': '8b38731bf1b5796edf91af15614fd0f91192c0e0',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libunwind.git',
 
-  'clang_revision': 'e1e56a58075d9d3ee55a86be0ed2e87be317968a',
+  'clang_revision': '403247ef95e2b17530ab2a46980dac16245b7852',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'eb140aedbc3fa6b6d53946b32e57675052b6277f',
+  'depot_tools_revision': '789dfc223b9dfd2fb377a7c4bcb351e63167554d',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
   'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
 
   # GN CIPD package version.
-  'gn_version': 'git_revision:39a87c0b36310bdf06b692c098f199a0d97fc810',
+  'gn_version': 'git_revision:69ec4fca1fa69ddadae13f9e6b7507efa0675263',
 
-  'googletest_revision': '4ec4cd23f486bf70efcc5d2caa40f24368f752e3',
+  'googletest_revision': '955c7f837efad184ec63e771c42542d37545eaef',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'b9dfc58bf9b02ea0365509244aca13841322feb0',
+  'icu_revision': 'ece15d049f2d360721716089372e3749fb89e0f4',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
-  'jinja2_revision': '7c54c1f227727e0c4c1d3dc19dd71cd601a2db95',
+  'jinja2_revision': '6db8da1615a13fdfab925688bc4bf2eb394a73af',
   'jinja2_url': 'https://chromium.googlesource.com/chromium/src/third_party/jinja2.git',
 
   'markupsafe_revision': '1b882ef6372b58bfd55a3285f37ed801be9137cd',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '6780f9f66094ada2c8ea163bd4f47087913ba752',
+  'node_revision': '4e57994ae496ac0042d0df0d2b69312bbdf0e6bc',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : 'd5bb24e5d9802c8c917fcaa4375d5239a586c168',
+  'trace_common_revision' : '3da1e2fcf66acd5c7194497b4285ac163f32e239',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'b0067a236443ed5b46e7f4ae9863bec886ed0ffb',
+  'v8_revision': '7fc37adc63b94a3200a25e244470074818a83031',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': '00ade15d946d72f75c786dc2e66c419a9d99e2ad',
+  'zlib_revision': '77c132322fe81a1f5518b326e18c99ebd3281627',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
    'reclient_version': 're_client_version:0.33.0.3e223d5',
