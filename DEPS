@@ -67,7 +67,7 @@ vars = {
   'zlib_revision': '77c132322fe81a1f5518b326e18c99ebd3281627',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
-   'reclient_version': 're_client_version:0.33.0.3e223d5',
+   'reclient_version': 're_client_version:0.40.0.40ff5a5',
 }
 
 deps = {
