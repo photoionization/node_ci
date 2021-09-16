@@ -13,6 +13,9 @@ vars = {
   'checkout_fuchsia_for_arm64_host' : False,
   'checkout_reclient': False,
 
+  'abseil_revision': '6569bfcb586ad33f3f97921a3b350046c3a2af87',
+  'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
+
   'build_revision': 'ceee817350326e1554f91969df6e890f8b6fb20a',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
@@ -79,6 +82,7 @@ deps = {
   'node-ci/buildtools/third_party/libc++abi/trunk': Var('buildtools_libcxxabi_url') + '@' + Var('buildtools_libcxxabi_revision'),
   'node-ci/buildtools/third_party/libunwind/trunk': Var('buildtools_libunwind_url') + '@' + Var('buildtools_libunwind_revision'),
   'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
+  'node-ci/third_party/abseil-cpp': Var('abseil_url') + '@' + Var('abseil_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
   'node-ci/third_party/fuchsia-sdk': {
     'url': Var('fuchsia_sdk_url') + '@' + Var('fuchsia_sdk_revision'),
