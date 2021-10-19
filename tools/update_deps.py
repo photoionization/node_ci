@@ -17,7 +17,7 @@ DEPS = {
   'node-ci/node' : 'origin',
   'node-ci/third_party/depot_tools': 'origin/main',
   'node-ci/third_party/googletest/src': 'origin/master',
-  'node-ci/third_party/icu': 'origin/master',
+  'node-ci/third_party/icu': 'origin/main',
   'node-ci/third_party/jinja2': 'origin/main',
   'node-ci/third_party/markupsafe': 'origin/main',
   'node-ci/third_party/zlib': 'origin/main',
