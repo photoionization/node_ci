@@ -140,6 +140,7 @@ config("node_base_external") {
   include_dirs = [ "src" ]
   defines = [ "NODE_WANT_INTERNALS=1" ]
   configs = [ "//v8:external_config" ]
+  cflags_cc = [ "-std=c++17" ]
 }
 
 config("node_base_internal") {
@@ -164,6 +165,7 @@ config("node_base_internal") {
     "-Wno-extra-semi",  # Temporarily until resolved upstream.
     "-Wno-unreachable-code", # node_crypto.cc has unreachable code.
     "-Wno-unreachable-code-break",
+    "-Wno-shadow",
   ]
 
   if (target_cpu == "x86") {
@@ -351,6 +353,20 @@ if (node_use_snapshot) {
     deps = [
       ":node_mksnapshot($v8_snapshot_toolchain)",
     ]
+  }
+}
+
+if (node_use_openssl && (is_linux || is_mac)) {
+  shared_library("test_crypto_engine") {
+    sources = [
+      "test/fixtures/test_crypto_engine.c"
+    ]
+    deps = [ "deps/openssl" ]
+    cflags = [
+      "-Wno-deprecated-declarations",
+      "-fPIC",
+    ]
+    configs -= [ "//build/config/gcc:symbol_visibility_hidden" ]
   }
 }
 

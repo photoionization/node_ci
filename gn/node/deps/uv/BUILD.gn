@@ -44,7 +44,10 @@ config("libuv_config") {
 
 node_dep("uv") {
   # This happens everywhere in libuv code when compiling in debug mode.
-  cflags_c = ["-Wno-string-conversion"]
+  cflags_c = [
+    "-Wno-string-conversion",
+    "-Wno-shadow"
+  ]
   public_configs = [ ":libuv_config" ]
   libs = []
   ldflags = []
@@ -201,6 +204,7 @@ node_dep("uv") {
 source_set("test-close-fd") {
   cflags_c = [
     "-Wno-string-conversion",
+    "-Wno-shadow"
   ]
   sources = [
     "test/test-close-fd.c",
@@ -213,6 +217,7 @@ source_set("test-close-fd") {
 source_set("test-tty") {
   cflags_c = [
     "-Wno-string-conversion",
+    "-Wno-shadow"
   ]
   sources = [
     "test/test-tty-duplicate-key.c",
@@ -226,6 +231,7 @@ source_set("test-tty") {
 source_set("runner_unix") {
   cflags_c = [
     "-Wno-incompatible-pointer-types-discards-qualifiers",
+    "-Wno-shadow"
   ]
   sources = [
     "test/runner-unix.h",
@@ -244,6 +250,7 @@ if (is_linux || is_fuchsia) {
   executable("uv_tests") {
     cflags_c = [
       "-Wno-implicit-fallthrough",
+      "-Wno-shadow",
     ]
 
     sources = [

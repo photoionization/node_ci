@@ -74,12 +74,15 @@ if __name__ == '__main__':
       'linux-x86_64', 'no-asm', 'openssl.gypi')
   nghttp2_gyp_file = os.path.join(node_dir,
       'deps', 'nghttp2', 'nghttp2.gyp')
+  cares_gyp_file = os.path.join(node_dir,
+      'deps', 'cares', 'cares.gyp')
   out = {}
   # Load file lists from gyp files.
   node_gyp = LoadPythonDictionary(node_gyp_file)
   inspector_gyp = LoadPythonDictionary(inspector_gyp_file)
   openssl_gyp = LoadPythonDictionary(openssl_gyp_file)
   nghttp2_gyp = LoadPythonDictionary(nghttp2_gyp_file)
+  cares_gyp = LoadPythonDictionary(cares_gyp_file)
 
   # Find JS lib file and single out files from V8.
   library_files = GypExpandList(node_dir, node_gyp['variables']['library_files'])
@@ -126,13 +129,17 @@ if __name__ == '__main__':
   # OpenSSL sources countain duplicate sources, so we remove duplicates by applying list(set())
   openssl_sources = set(openssl_gyp['variables']['openssl_sources'])
   openssl_sources = openssl_sources.union(set(openssl_gyp['variables']['openssl_sources_linux-x86_64'])) 
-  # HACK: fips.ld is not a source.
-  openssl_sources.remove("./config/archs/linux-x86_64/no-asm/providers/fips.ld")
+  # HACK: Remove libraries from sources
+  openssl_sources = {source for source in openssl_sources if not source.endswith('.ld')}
   out['openssl_sources'] = list(openssl_sources)
 
   # Find nghttp2 sources.
   nghttp2_sources = nghttp2_gyp['targets'][0]['sources']
   out['nghttp2_sources'] = nghttp2_sources
+
+  # Find cares sources.
+  cares_sources = cares_gyp['targets'][0]['sources']
+  out['cares_sources'] = cares_sources
 
   # Find node/tools/doc content.
   tools_doc_dir = os.path.join(node_dir, 'tools', 'doc')

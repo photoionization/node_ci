@@ -58,6 +58,7 @@ group("test_all") {
       "//node/test/addons:build",
       "//node/test/node-api:build",
       "//node/test/js-native-api:build",
+      "//node:test_crypto_engine",
     ]
   }
 }
