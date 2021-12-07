@@ -78,6 +78,7 @@ default_args = {
   v8_expose_symbols = true
   v8_enable_lazy_source_positions = false
   v8_allow_javascript_in_promise_hooks = true
+  v8_enable_javascript_promise_hooks = true
   # TODO(cbruni, v8:12302): Remove once API is migrated
   v8_scriptormodule_legacy_lifetime = true
 
