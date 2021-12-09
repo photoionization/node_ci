@@ -55,6 +55,7 @@ default_args = {
   v8_enable_pointer_compression = false
   v8_optimized_debug = false
   v8_enable_fast_mksnapshot = false
+  v8_enable_snapshot_compression = false
 
   #########################################################
   # Alternative configuration not supported. Do not change.

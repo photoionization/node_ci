@@ -53,6 +53,7 @@ def GenerateBuildFiles(options):
   gn_args.append('use_goma=%s' % ToBool(options.goma))
   gn_args.append('is_component_build=%s' % ToBool(options.shared))
   gn_args.append('node_use_code_cache=%s' % ToBool(not options.no_cache))
+  gn_args.append('v8_enable_snapshot_compression=false')
   # Override system's OpenSSL configs for tests.
   gn_args.append('openssl_dir=""')
   gn_args.append('openssl_seclevel=1')
