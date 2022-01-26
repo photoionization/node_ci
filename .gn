@@ -31,6 +31,9 @@ exec_script_whitelist =
     "//node/node_component.gni",
   ]
 
+# The python interpreter to use by default.
+script_executable = "vpython3"
+
 default_args = {
   #########################################################
   # Changeable defaults

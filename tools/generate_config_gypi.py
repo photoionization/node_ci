@@ -59,7 +59,7 @@ def main(gn_exe, gn_out_dir, output_file, depfile):
   # Get GN config and parse into a dictionary.
   gnconfig = subprocess.check_output(
                  [gn_exe, 'args', '--list', '--short', '-C', gn_out_dir])
-  config = dict(re.findall(GN_RE, gnconfig))
+  config = dict(re.findall(GN_RE, gnconfig.decode('utf-8')))
   config['node_module_version'] = getmoduleversion.get_version()
 
   # Write output.
