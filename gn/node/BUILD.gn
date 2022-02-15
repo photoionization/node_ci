@@ -356,20 +356,6 @@ if (node_use_snapshot) {
   }
 }
 
-if (node_use_openssl && (is_linux || is_mac)) {
-  shared_library("test_crypto_engine") {
-    sources = [
-      "test/fixtures/test_crypto_engine.c"
-    ]
-    deps = [ "deps/openssl" ]
-    cflags = [
-      "-Wno-deprecated-declarations",
-      "-fPIC",
-    ]
-    configs -= [ "//build/config/gcc:symbol_visibility_hidden" ]
-  }
-}
-
 component("node_lib") {
   sources = [
     "src/node_main.cc",
