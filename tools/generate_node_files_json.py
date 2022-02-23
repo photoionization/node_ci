@@ -16,10 +16,10 @@ def LoadPythonDictionary(path):
   file_string = open(path).read()
   try:
     file_data = eval(file_string, {'__builtins__': None}, None)
-  except SyntaxError, e:
+  except SyntaxError as e:
     e.filename = path
     raise
-  except Exception, e:
+  except Exception as e:
     raise Exception('Unexpected error while reading %s: %s' % (path, str(e)))
 
   assert isinstance(file_data, dict), '%s does not eval to a dictionary' % path
@@ -39,7 +39,7 @@ def RedirectV8(list):
   return [f.replace('deps/v8/', '../v8/', 1) for f in list]
 
 def GitLsFiles(path, prefix):
-  output = subprocess.check_output(['git', 'ls-files'], cwd=path)
+  output = subprocess.check_output(['git', 'ls-files'], cwd=path).decode()
   return [prefix + x for x in output.splitlines()]
 
 def SearchNodeLibraryFiles(node_dir, entry):

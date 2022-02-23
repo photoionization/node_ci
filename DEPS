@@ -141,7 +141,7 @@ hooks = [
   {
     'name': 'generate_node_filelist',
     'pattern': 'node-ci/node',
-    'action': ['python', 'node-ci/tools/generate_node_files_json.py'],
+    'action': ['python3', 'node-ci/tools/generate_node_files_json.py'],
   },
   {
     # Update the Windows toolchain if necessary.
