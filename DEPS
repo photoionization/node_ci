@@ -58,7 +58,7 @@ vars = {
   'markupsafe_revision': '1b882ef6372b58bfd55a3285f37ed801be9137cd',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '129f255c4ff03e73c2329d83e569c4b32c09a03f',
+  'node_revision': 'be5a267357f674ca2e71c2ae8d323711c6fb21a2',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : 'd115b033c4e53666b535cbd1985ffe60badad082',
