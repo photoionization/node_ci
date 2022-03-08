@@ -45,7 +45,7 @@ def update_deps(root, deps_dict):
       # Branch specified.
       command = ['git', 'rev-parse', target]
 
-    new_hash = subprocess.check_output(command, cwd=path).strip().split('\t')[0]
+    new_hash = subprocess.check_output(command, cwd=path).strip().decode('utf-8').split('\t')[0]
     old_hash = subprocess.check_output(
       ['gclient', 'getdep', '-r', dep]).strip()
     git_desc = subprocess.check_output(
@@ -62,7 +62,7 @@ def main(update_build):
   # Fetch from upstream
   subprocess.check_output(['gclient', 'fetch'])
   # Get gclient root
-  root = subprocess.check_output(['gclient', 'root']).strip()
+  root = subprocess.check_output(['gclient', 'root']).strip().decode('utf-8')
   update_deps(root, DEPS)
   if update_build:
     update_deps(root, BUILD_DEPS)
