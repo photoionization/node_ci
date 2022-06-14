@@ -230,6 +230,9 @@ config("node_base_internal") {
   } else {
     defines += [ "NODE_HAVE_I18N_SUPPORT=0" ]
   }
+  if (node_use_code_cache) {
+    defines += [ "NODE_USE_NODE_CODE_CACHE=1"]
+  }
 }
 
 source_set("node_base") {
@@ -278,51 +281,10 @@ source_set("node_base") {
   }
 }
 
-if (node_use_code_cache) {
-  if (current_toolchain == v8_snapshot_toolchain) {
-    executable("node_mkcodecache") {
-      sources = [
-        "src/node_code_cache_stub.cc",
-        "src/node_snapshot_stub.cc",
-        "tools/code_cache/cache_builder.cc",
-        "tools/code_cache/cache_builder.h",
-        "tools/code_cache/mkcodecache.cc",
-      ]
-      configs += [ ":node_base_internal" ]
-      deps = [
-        ":node_base",
-      ]
-    }
-  }
-
-  action("run_node_mkcodecache") {
-    script = "//tools/run_executable_in_dir.py"
-    base = target_gen_dir
-    stamp = "$target_gen_dir/run_mkcodecache.stamp"
-    exe = get_label_info(":node_mkcodecache($v8_snapshot_toolchain)",
-                         "root_out_dir") + "/node_mkcodecache"
-    output_cc = "$target_gen_dir/node_code_cache.cc"
-    outputs = [
-      stamp,
-      output_cc,
-    ]
-    args = [
-      rebase_path(base, root_build_dir),
-      rebase_path(stamp, root_build_dir),
-      rebase_path(exe, base),
-      rebase_path(output_cc, base),
-    ]
-    deps = [
-      ":node_mkcodecache($v8_snapshot_toolchain)",
-    ]
-  }
-}
-
 if (node_use_snapshot) {
   if (current_toolchain == v8_snapshot_toolchain) {
     executable("node_mksnapshot") {
       sources = [
-        "src/node_code_cache_stub.cc",
         "src/node_snapshot_stub.cc",
         "tools/snapshot/node_mksnapshot.cc",
       ]
@@ -364,12 +326,6 @@ component("node_lib") {
     ":node_base",
   ]
   deps = []
-  if (node_use_code_cache) {
-    sources += [ "$target_gen_dir/node_code_cache.cc" ]
-    deps += [ ":run_node_mkcodecache" ]
-  } else {
-    sources += [ "src/node_code_cache_stub.cc" ]
-  }
   if (node_use_snapshot) {
     sources += [ "$target_gen_dir/node_snapshot.cc" ]
     deps += [ ":run_node_mksnapshot" ]

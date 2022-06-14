@@ -61,7 +61,7 @@ template("build_addons") {
   call_node(target_name) {
     deps = invoker.deps
     build_scripts = [
-      "//node/tools/build-addons.js",
+      "//node/tools/build-addons.mjs",
       "//node/deps/npm/node_modules/node-gyp/bin/node-gyp.js",
     ]
     inputs = invoker.inputs + build_scripts
