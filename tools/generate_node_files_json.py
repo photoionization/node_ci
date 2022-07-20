@@ -77,6 +77,8 @@ if __name__ == '__main__':
       'deps', 'nghttp2', 'nghttp2.gyp')
   cares_gyp_file = os.path.join(node_dir,
       'deps', 'cares', 'cares.gyp')
+  base64_gyp_file = os.path.join(node_dir,
+      'deps', 'base64', 'base64.gyp')
   out = {}
   # Load file lists from gyp files.
   node_gyp = LoadPythonDictionary(node_gyp_file)
@@ -84,6 +86,7 @@ if __name__ == '__main__':
   openssl_gyp = LoadPythonDictionary(openssl_gyp_file)
   nghttp2_gyp = LoadPythonDictionary(nghttp2_gyp_file)
   cares_gyp = LoadPythonDictionary(cares_gyp_file)
+  base64_gyp = LoadPythonDictionary(base64_gyp_file)
 
   # Find JS lib file and single out files from V8.
   library_files = GypExpandList(node_dir, node_gyp['variables']['library_files'])
@@ -141,6 +144,10 @@ if __name__ == '__main__':
   # Find cares sources.
   cares_sources = cares_gyp['targets'][0]['sources']
   out['cares_sources'] = cares_sources
+
+  # Find base64 sources.
+  base64_sources = base64_gyp['targets'][0]['sources']
+  out['base64_sources'] = base64_sources
 
   # Find node/tools/doc content.
   tools_doc_dir = os.path.join(node_dir, 'tools', 'doc')

@@ -58,19 +58,19 @@ vars = {
   'markupsafe_revision': '1b882ef6372b58bfd55a3285f37ed801be9137cd',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '2680c3dc3a6e16e6d5d814fbd3f3452a9c593206',
+  'node_revision': '11bb61b90d3220e2202702b26a29d680e7383884',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : 'd115b033c4e53666b535cbd1985ffe60badad082',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '4ac5b2f6e016a75bb5339f74d5f81ead7c851b64',
+  'v8_revision': '3c984ee9ee4e24e3d144668e5bbcea5d021e502f',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'e53d3f018a7d98811fae1cd0af05a3aefbd9430d',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
-   'reclient_version': 're_client_version:0.40.0.40ff5a5',
+  'reclient_version': 're_client_version:0.40.0.40ff5a5',
 }
 
 deps = {

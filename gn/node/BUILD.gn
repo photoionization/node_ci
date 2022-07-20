@@ -238,6 +238,7 @@ config("node_base_internal") {
 source_set("node_base") {
   deps = [
     ":node_js2c",
+    "deps/base64",
     "deps/brotli/c:brotli",
     "deps/cares",
     "deps/histogram",
@@ -250,6 +251,7 @@ source_set("node_base") {
   ]
   public_deps = [
     "deps/uv",
+    "deps/base64",
     "//v8",
   ]
   public_configs = [

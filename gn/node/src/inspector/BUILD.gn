@@ -53,6 +53,7 @@ node_dep("inspector") {
     "../../deps/llhttp",
     "../../deps/openssl",
     "../../deps/uv",
+    "../../deps/base64",
     "//third_party/icu:icuuc",
     "//third_party/zlib",
   ]

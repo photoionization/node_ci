@@ -251,6 +251,7 @@ if (is_linux || is_fuchsia) {
     cflags_c = [
       "-Wno-implicit-fallthrough",
       "-Wno-shadow",
+      "-Wno-unused-but-set-variable",
     ]
 
     sources = [
