@@ -58,6 +58,7 @@ def GenerateBuildFiles(options):
   gn_args.append('openssl_dir=""')
   gn_args.append('openssl_seclevel=1')
   gn_args.append('v8_enable_javascript_promise_hooks=true')
+  gn_args.append('v8_scriptormodule_legacy_lifetime=true')
 
   flattened_args = ' '.join(gn_args)
   args = ['gn', 'gen', options.out_dir, '-q', '--args=' + flattened_args]
