@@ -5,7 +5,12 @@
 
 import os
 import sys
+
+# Assert python3.
+assert sys.version_info.major >= 3
+
 basedir = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(basedir, 'node', 'tools'))
 import test
+
 sys.exit(test.Main())
