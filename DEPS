@@ -37,7 +37,7 @@ vars = {
   'clang_revision': '0ca99b7456f6522fd7f3b2198f355f1851d1e9f4',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'e0fee9fa4bcb466d33e6180797a9763f70a0c594',
+  'depot_tools_revision': '08bb5c487f80147a236360ea50f4544890530779',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
@@ -46,10 +46,10 @@ vars = {
   # GN CIPD package version.
   'gn_version': 'git_revision:69ec4fca1fa69ddadae13f9e6b7507efa0675263',
 
-  'googletest_revision': '4c9a3bb62bf3ba1f1010bf96f9c8ed767b363774',
+  'googletest_revision': '63907e1bfe6f78806b17d094daf2198ee27aad62',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'b3070c52557323463e6b9827e2343e60e1b91f85',
+  'icu_revision': '20f8ac695af59b6c830def7d4e95bfeb13dd7be5',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': 'ee69aa00ee8536f61db6a451f3858745cf587de6',
@@ -58,13 +58,13 @@ vars = {
   'markupsafe_revision': '1b882ef6372b58bfd55a3285f37ed801be9137cd',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '81cc8a7d02b0adfe291a9170dce25f24e0fa33c8',
+  'node_revision': '23d2625e9c61b02e9d3d031bfe05af4b94449471',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : '2ba7a48ca6167ee8ef311a7f3bc60b5e5cf5ee79',
+  'trace_common_revision' : '521ac34ebd795939c7e16b37d9d3ddb40e8ed556',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'e441e21260270422f8452c63932c9e9a43dc424d',
+  'v8_revision': '03b445c775dd958a4835c45f37306a497508769a',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': '8d1d3e341948009ed8dc807a545204e7a1854c33',
