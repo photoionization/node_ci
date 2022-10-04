@@ -46,6 +46,10 @@ vars = {
   # GN CIPD package version.
   'gn_version': 'git_revision:69ec4fca1fa69ddadae13f9e6b7507efa0675263',
 
+  # ninja CIPD package version.
+  # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
+  'ninja_version': 'version:2@1.8.2.chromium.3',
+
   'googletest_revision': '63907e1bfe6f78806b17d094daf2198ee27aad62',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
@@ -134,6 +138,15 @@ deps = {
     ],
     'dep_type': 'cipd',
     'condition': '(host_os == "linux" or host_os == "win") and checkout_reclient',
+  },
+  'node-ci/third_party/ninja': {
+    'packages': [
+      {
+        'package': 'infra/3pp/tools/ninja/${{platform}}',
+        'version': Var('ninja_version'),
+      }
+    ],
+    'dep_type': 'cipd',
   },
 }
 
