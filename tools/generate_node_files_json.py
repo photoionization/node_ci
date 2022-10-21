@@ -92,6 +92,18 @@ if __name__ == '__main__':
   library_files = GypExpandList(node_dir, node_gyp['variables']['library_files'])
   deps_files = node_gyp['variables']['deps_files']
   library_files += deps_files
+
+  # Remove '<@(node_builtin_shareable_builtins)'.
+  # We do not support  externally shared js builtins.
+  # See: https://github.com/nodejs/node/pull/44376
+  # TODO(victorgomes): We need a way to get these externally shareable builtins
+  # from configure.py. I have a feeling this is still in flux in the NodeJS side,
+  # so let's delay this a bit.
+  library_files.remove('<@(node_builtin_shareable_builtins)')
+  library_files.append('deps/cjs-module-lexer/lexer.js')
+  library_files.append('deps/cjs-module-lexer/dist/lexer.js')
+  library_files.append('deps/undici/undici.js')
+
   out['node_library_files'] = [
       f for f in library_files if not f.startswith('deps/v8')]
   out['all_library_files'] = library_files
