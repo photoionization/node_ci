@@ -11,7 +11,6 @@ gclient_gn_args = [
 vars = {
   'checkout_google_benchmark' : False,
   'checkout_fuchsia_for_arm64_host' : False,
-  'checkout_reclient': False,
 
   'abseil_revision': '3f6f1caf8d47704b0771d11570d76ac75b279adc',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
@@ -137,7 +136,7 @@ deps = {
       }
     ],
     'dep_type': 'cipd',
-    'condition': '(host_os == "linux" or host_os == "win") and checkout_reclient',
+    'condition': 'host_os == "linux" or host_os == "win"',
   },
   'node-ci/third_party/ninja': {
     'packages': [
