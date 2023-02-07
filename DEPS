@@ -36,7 +36,7 @@ vars = {
   'clang_revision': '0ca99b7456f6522fd7f3b2198f355f1851d1e9f4',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '63fea808b00889ca603f083febe010a8fa7dded7',
+  'depot_tools_revision': 'ef2d011ad3041801565aa8c6d1418cc82c0ddb2e',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
@@ -49,28 +49,28 @@ vars = {
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.8.2.chromium.3',
 
-  'googletest_revision': '4408a0288b24fbe9156a9b14bbecd148ea64f40f',
+  'googletest_revision': '2f2e72bae991138cedd0e3d06a115022736cd568',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': '1f164eefd5994880c567876cc45730f2c24329fa',
+  'icu_revision': '266a46937f05303da1ac4c68f2c94f9a1caa3f76',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
-  'jinja2_revision': '4633bf431193690c3491244f5a0acbe9ac776233',
+  'jinja2_revision': '264c07d7e64f2874434a3b8039e101ddf1b01e7e',
   'jinja2_url': 'https://chromium.googlesource.com/chromium/src/third_party/jinja2.git',
 
   'markupsafe_revision': '13f4e8c9e206567eeb13bf585406ddc574005748',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '275ff529f2fb5197bff0846a0d14bebd0b11a807',
+  'node_revision': '6f7eb23ed1c363d4120a6c1aaaa150f9f10e88e5',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : '521ac34ebd795939c7e16b37d9d3ddb40e8ed556',
+  'trace_common_revision' : '05a225a3e0bbd6fb6a9cac02d482ab784194411d',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '0861b4b6582ea5c641316e6f301804f81f4741c6',
+  'v8_revision': '11c99c33fe1d393b4383fac889612610e946c842',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': 'd866d41e168ec04545bb17031fa911007a0581f4',
+  'zlib_revision': '2d44c51ada6d325b85b53427b02dabf44648bca4',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
   'reclient_version': 're_client_version:0.40.0.40ff5a5',

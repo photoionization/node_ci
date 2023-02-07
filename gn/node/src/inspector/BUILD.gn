@@ -54,6 +54,7 @@ node_dep("inspector") {
     "../../deps/openssl",
     "../../deps/uv",
     "../../deps/base64",
+    "../../deps/simdutf",
     "//third_party/icu:icuuc",
     "//third_party/zlib",
   ]
