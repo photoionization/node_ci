@@ -50,6 +50,7 @@ node_dep("inspector") {
   deps = [
     ":protocol_generated_sources",
     ":v8_inspector_compress_protocol_json",
+    "../../deps/ada",
     "../../deps/llhttp",
     "../../deps/openssl",
     "../../deps/uv",

@@ -239,6 +239,7 @@ config("node_base_internal") {
 source_set("node_base") {
   deps = [
     ":node_js2c",
+    "deps/ada",
     "deps/base64",
     "deps/brotli/c:brotli",
     "deps/cares",
@@ -246,6 +247,7 @@ source_set("node_base") {
     "deps/llhttp",
     "deps/nghttp2",
     "deps/ngtcp2",
+    "deps/postject",
     "deps/simdutf",
     "deps/uvwasi",
     "//third_party/zlib",
@@ -323,6 +325,9 @@ if (node_use_snapshot) {
 }
 
 component("node_lib") {
+  cflags_cc = [
+    "-Wno-shadow",
+  ]
   sources = [
     "src/node_main.cc",
   ]

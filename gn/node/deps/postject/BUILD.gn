@@ -5,14 +5,11 @@
 
 import("//node/node.gni")
 
-config("simdutf_config") {
+config("postject_config") {
   include_dirs = [ "." ]
-  cflags_cc = [
-    "-Wno-unused-function",
-  ]
 }
 
-node_dep("simdutf") {
-  public_configs = [ ":simdutf_config" ]
-  sources = [ "simdutf.cpp", "simdutf.h" ]
+node_dep("postject") {
+  public_configs = [ ":postject_config" ]
+  sources = [ "postject-api.h" ]
 }
