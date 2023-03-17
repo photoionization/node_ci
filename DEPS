@@ -15,28 +15,28 @@ vars = {
   'abseil_revision': '3f6f1caf8d47704b0771d11570d76ac75b279adc',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
-  'build_revision': '78234e59faec88b9e1557774ce3dac75d17032af',
+  'build_revision': '2bf4270421ec3345670d420cd9cbb96db6501b13',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': '34f9ff8fd5f494bf2b886337e6ef6fcea414cb11',
+  'buildtools_revision': 'ac6f095ab3b7aba37198c736f7d7c929f9acdab0',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
   'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
   'buildtools_clang_format_url': 'https://chromium.googlesource.com/chromium/llvm-project/cfe/tools/clang-format.git',
 
-  'buildtools_libcxx_revision': 'b1269813eaf5b8ac78e35e45a0f7cc320bd3e7d6',
+  'buildtools_libcxx_revision': '0643682e66fd742e3759fbc41ee291c64a9a58b9',
   'buildtools_libcxx_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git',
 
-  'buildtools_libcxxabi_revision': '3007992fc7706df4e0b17b63eaf601c421e163ae',
+  'buildtools_libcxxabi_revision': 'ee42da736df695c3de30e8d0d723b27e97bee719',
   'buildtools_libcxxabi_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxxabi.git',
 
-  'buildtools_libunwind_revision': '49191c55bba0e64664954eec93a43d8eb11e5798',
+  'buildtools_libunwind_revision': '2b438f460b547d91578b78714b68476e0b7778eb',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libunwind.git',
 
-  'clang_revision': '0ca99b7456f6522fd7f3b2198f355f1851d1e9f4',
+  'clang_revision': 'bdb6d43dc1e6a1d0500ee96bdb46a4e2d06c1352',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'c5b38329e6b5fd3ebf87afb2267620ad2d9269ea',
+  'depot_tools_revision': '3f3e2f789e27d41d3c20a555fd60a39ebd631e15',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
@@ -49,7 +49,7 @@ vars = {
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.8.2.chromium.3',
 
-  'googletest_revision': '391ce627def20c1e8a54d10b12949b15086473dd',
+  'googletest_revision': 'e49c6b946a44f9a58586bfc76f75687d8f77e725',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
   'icu_revision': '1e49ac26ddc712b1ab702f69023cbc57e9ae6628',
@@ -61,13 +61,13 @@ vars = {
   'markupsafe_revision': '13f4e8c9e206567eeb13bf585406ddc574005748',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '62eacc9ef6fb1ef91c7fcb3fec35965cc80e55fe',
+  'node_revision': 'edf28f98167377a55e6c69617e3228ed6a2e245a',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : '147f65333c38ddd1ebf554e89965c243c8ce50b3',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '50a1f25c59ce3c193a1a92b5165aca33e1040e71',
+  'v8_revision': 'fd4429fb4a8ffbe2d49bcb91a1ced1a466804c17',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': '5edb52d4302d7aef232d585ec9ae27ef5c3c5438',

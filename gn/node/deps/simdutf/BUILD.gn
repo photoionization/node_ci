@@ -9,6 +9,7 @@ config("simdutf_config") {
   include_dirs = [ "." ]
   cflags_cc = [
     "-Wno-unused-function",
+    "-Wno-ambiguous-reversed-operator",
   ]
 }
 
