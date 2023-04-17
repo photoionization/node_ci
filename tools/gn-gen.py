@@ -25,7 +25,6 @@ def GenerateBuildFiles(options):
   if options.sysroot:
     gn_args.append('use_sysroot=true')
     gn_args.append('use_custom_libcxx=true')
-    gn_args.append('node_use_custom_libcxx=true')
 
   if options.target_os:
     gn_args.append('target_os="' + options.target_os + '"')
@@ -48,17 +47,16 @@ def GenerateBuildFiles(options):
     gn_args.append('is_ubsan_vptr=true')
     gn_args.append('is_ubsan_no_recover=true')
 
+  # Should be set to false after this is merged:
+  # https://chromium-review.googlesource.com/c/chromium/deps/icu/+/5004573
+  if options.target_os == 'win' and options.target_cpu.endswith('64'):
+    gn_args.append('icu_use_data_file=true')
+  else:
+    gn_args.append('icu_use_data_file=false')
+
   gn_args.append('is_debug=%s' % ToBool(options.debug))
   gn_args.append('symbol_level=%s' % (1 if options.debug else 0))
-  gn_args.append('use_goma=%s' % ToBool(options.goma))
   gn_args.append('is_component_build=%s' % ToBool(options.shared))
-  gn_args.append('node_use_code_cache=%s' % ToBool(not options.no_cache))
-  gn_args.append('v8_enable_snapshot_compression=false')
-  # Override system's OpenSSL configs for tests.
-  gn_args.append('openssl_dir=""')
-  gn_args.append('openssl_seclevel=1')
-  gn_args.append('v8_enable_javascript_promise_hooks=true')
-  gn_args.append('v8_scriptormodule_legacy_lifetime=true')
 
   flattened_args = ' '.join(gn_args)
   args = ['gn', 'gen', options.out_dir, '-q', '--args=' + flattened_args]
@@ -69,10 +67,6 @@ def ParseOptions(args):
   parser = argparse.ArgumentParser(
       description='Generate GN build configurations')
   parser.add_argument('out_dir', help='build directory')
-  parser.add_argument('--goma', help='use goma to speed up compile',
-                      action='store_true')
-  parser.add_argument('--jumbo', help='use jumbo to speed up compile',
-                      action='store_true')
   parser.add_argument('--asan', help='build with address sanitizer',
                       action='store_true', default=False)
   parser.add_argument('--tsan', help='build with thread sanitizer',
@@ -87,8 +81,6 @@ def ParseOptions(args):
   parser.add_argument('--sysroot', help='use bundled sysroot',
                       action='store_true', default=False)
   parser.add_argument('--debug', help='debug build',
-                      action='store_true', default=False)
-  parser.add_argument('--no-cache', help='do not use Node.js code cache',
                       action='store_true', default=False)
   parser.add_argument('--target_os', help='set target OS', default='')
   parser.add_argument('--target_cpu', help='set target CPU', default='')

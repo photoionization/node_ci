@@ -11,11 +11,6 @@ import("//build/dotfile_settings.gni")
 # The location of the build configuration file.
 buildconfig = "//build/config/BUILDCONFIG.gn"
 
-# The secondary source root is a parallel directory tree where
-# GN build files are placed when they can not be placed directly
-# in the source tree, e.g. for third party source trees.
-secondary_source = "//gn/"
-
 # These are the targets to check headers for by default. The files in targets
 # matching these patterns (see "gn help label_pattern" for format) will have
 # their includes checked for proper dependencies when you run either
@@ -28,7 +23,43 @@ check_targets = ["*"]
 exec_script_whitelist =
   build_dotfile_settings.exec_script_whitelist + [
     "//v8/build_overrides/build.gni",
-    "//node/node_component.gni",
+    "//node/BUILD.gn",
+    "//node/node.gni",
+    "//node/unofficial.gni",
+    "//node/tools/inspector_protocol/BUILD.gn",
+    "//node/deps/ada/BUILD.gn",
+    "//node/deps/ada/unofficial.gni",
+    "//node/deps/llhttp/BUILD.gn",
+    "//node/deps/llhttp/unofficial.gni",
+    "//node/deps/nghttp2/BUILD.gn",
+    "//node/deps/nghttp2/unofficial.gni",
+    "//node/deps/simdjson/BUILD.gn",
+    "//node/deps/simdjson/unofficial.gni",
+    "//node/deps/simdutf/BUILD.gn",
+    "//node/deps/simdutf/unofficial.gni",
+    "//node/deps/postject/BUILD.gn",
+    "//node/deps/postject/unofficial.gni",
+    "//node/deps/brotli/BUILD.gn",
+    "//node/deps/brotli/unofficial.gni",
+    "//node/deps/base64/BUILD.gn",
+    "//node/deps/base64/unofficial.gni",
+    "//node/deps/ngtcp2/BUILD.gn",
+    "//node/deps/ngtcp2/unofficial.gni",
+    "//node/deps/uv/BUILD.gn",
+    "//node/deps/uv/unofficial.gni",
+    "//node/deps/uvwasi/BUILD.gn",
+    "//node/deps/uvwasi/unofficial.gni",
+    "//node/deps/cares/BUILD.gn",
+    "//node/deps/cares/unofficial.gni",
+    "//node/deps/googletest/BUILD.gn",
+    "//node/deps/googletest/unofficial.gni",
+    "//node/deps/openssl/BUILD.gn",
+    "//node/deps/openssl/unofficial.gni",
+    "//node/deps/histogram/BUILD.gn",
+    "//node/deps/histogram/unofficial.gni",
+    "//node/src/inspector/BUILD.gn",
+    "//node/src/inspector/unofficial.gni",
+    "//node_tests/BUILD.gn",
   ]
 
 # The python interpreter to use by default.
@@ -37,56 +68,25 @@ script_executable = "vpython3"
 default_args = {
   #########################################################
   # Changeable defaults
-  # General build options
-  use_sysroot = false
-  is_component_build = false
-
   # Node.js defaults.
-  node_report = true
-  is_debug = false
-  node_use_custom_libcxx = false
+  node_v8_path = "//v8"
 
   # V8 options.
   v8_embedder_string = "-node.0"
-  v8_enable_i18n_support = true
-
-  # V8 debug options.
-  v8_enable_disassembler = true
-  v8_deprecation_warnings = false
-  v8_imminent_deprecation_warnings = false
-  v8_enable_handle_zapping = false
-  v8_enable_pointer_compression = false
-  v8_optimized_debug = false
-  v8_enable_fast_mksnapshot = false
-  v8_enable_snapshot_compression = false
 
   #########################################################
   # Alternative configuration not supported. Do not change.
   # General build options.
   clang_use_chrome_plugins = false
-  icu_use_data_file = false
-  symbol_level = 0
-
-  # Node.js options. Do not change.
-  node_use_v8_platform = true
+  treat_warnings_as_errors = false
 
   # V8 options catering towards Node.js use case.
-  v8_postmortem_support = true
+  v8_expose_symbols = true
   v8_promise_internal_field_count = 1
   v8_use_external_startup_data = false
-  v8_untrusted_code_mitigations = false
-  v8_enable_pointer_compression = false
-  v8_enable_31bit_smis_on_64bit_arch = false
-  v8_disable_arguments_adaptor = false
-  v8_use_siphash = true
-  v8_expose_symbols = true
-  v8_enable_lazy_source_positions = false
-  v8_allow_javascript_in_promise_hooks = true
   v8_enable_javascript_promise_hooks = true
+  v8_enable_sandbox = false
+  v8_enable_maglev = false
   # TODO(cbruni, v8:12302): Remove once API is migrated
   v8_scriptormodule_legacy_lifetime = true
-
-  # V8 options.
-  v8_experimental_extra_library_files = []
-  v8_extra_library_files = []
 }

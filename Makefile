@@ -6,13 +6,9 @@ ifdef JOBS
   PARALLEL_ARGS = -j $(JOBS)
 endif
 
-BUILDDEPS_FLAGS = --no-nacl --no-chromeos-fonts --no-arm --lib32
-
-# Gclient sync and check build deps
+# Gclient sync
 deps:
 	gclient sync
-	build/install-build-deps.sh --quick-check $(BUILDDEPS_FLAGS) ||\
-	build/install-build-deps.sh $(BUILDDEPS_FLAGS)
 
 # Generate GN configs
 out/Release:
@@ -21,17 +17,14 @@ out/Release:
 out/Debug:
 	tools/gn-gen.py out/Debug --debug
 
-out/fuchsia:
-	tools/gn-gen.py out/fuchsia --target_os="fuchsia" --no-cache
-
 # Build
 .PHONY: build.Release
 build.Release: out/Release
-	autoninja -C $< test_all
+	autoninja -C $< node
 
 .PHONY:
 build.Debug: out/Debug
-	autoninja -C $< test_all
+	autoninja -C $< node
 
 .PHONY: build.fuchsia
 build.fuchsia: out/fuchsia
@@ -112,4 +105,3 @@ test-addons.Release: build.Release
 test-addons.Debug: build.Debug
 	tools/test.py --test-root out/Debug/gen/node/test\
 	    $(PARALLEL_ARGS) -m debug addons
-

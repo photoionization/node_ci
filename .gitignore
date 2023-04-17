@@ -1,8 +1,9 @@
 # Dependencies
 /base
 /build
-/buildtools/
+/buildtools
 /node
+/testing
 /third_party
 /tools/clang
 /v8
@@ -11,4 +12,4 @@
 /out
 
 # Generated
-/node_files.json
+*.swp
