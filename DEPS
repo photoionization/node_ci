@@ -15,44 +15,44 @@ vars = {
   'abseil_revision': '3f6f1caf8d47704b0771d11570d76ac75b279adc',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
-  'build_revision': '2bf4270421ec3345670d420cd9cbb96db6501b13',
+  'build_revision': 'fef3fe31e60ceb77027560ef56e986960463f54b',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': 'ac6f095ab3b7aba37198c736f7d7c929f9acdab0',
+  'buildtools_revision': '5d2ccbf93c7d956a9aff1d0acd21155e6b515ceb',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
-  'buildtools_clang_format_revision': 'bb994c6f067340c1135eb43eed84f4b33cfa7397',
-  'buildtools_clang_format_url': 'https://chromium.googlesource.com/chromium/llvm-project/cfe/tools/clang-format.git',
+  'buildtools_clang_format_revision': 'f97059df7f8b205064625cdb5f97b56668a125ef',
+  'buildtools_clang_format_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/clang/tools/clang-format.git',
 
-  'buildtools_libcxx_revision': '0643682e66fd742e3759fbc41ee291c64a9a58b9',
+  'buildtools_libcxx_revision': 'f8279b01085b800724f5c5629dc365b9f040dc53',
   'buildtools_libcxx_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git',
 
-  'buildtools_libcxxabi_revision': 'ee42da736df695c3de30e8d0d723b27e97bee719',
+  'buildtools_libcxxabi_revision': 'f2cb09f94e39caed554c0ea453741edbc24a38a4',
   'buildtools_libcxxabi_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxxabi.git',
 
-  'buildtools_libunwind_revision': '2b438f460b547d91578b78714b68476e0b7778eb',
+  'buildtools_libunwind_revision': '129773dde556dfd5dfc7df0eb3c0b970c56029f6',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libunwind.git',
 
-  'clang_revision': 'bdb6d43dc1e6a1d0500ee96bdb46a4e2d06c1352',
+  'clang_revision': '096dcd2735dd589d85a4ad8bead644869df9eb0e',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '3f3e2f789e27d41d3c20a555fd60a39ebd631e15',
+  'depot_tools_revision': '4786a41fb5aa74d356d2fc3e30545d59db5c0bf3',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
   'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
 
   # GN CIPD package version.
-  'gn_version': 'git_revision:69ec4fca1fa69ddadae13f9e6b7507efa0675263',
+  'gn_version': 'git_revision:6975103d9f59ed9f3cfbc6d2201298f2c2fde046',
 
   # ninja CIPD package version.
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
-  'ninja_version': 'version:2@1.8.2.chromium.3',
+  'ninja_version': 'version:2@1.11.1.chromium.6',
 
-  'googletest_revision': 'e49c6b946a44f9a58586bfc76f75687d8f77e725',
+  'googletest_revision': 'cb455a71fb23303e37ce8ee5b1cde6a2c18f66a5',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': '1e49ac26ddc712b1ab702f69023cbc57e9ae6628',
+  'icu_revision': 'a2961dc659b4ae847a9c6120718cc2517ee57d9e',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': '264c07d7e64f2874434a3b8039e101ddf1b01e7e',
@@ -67,10 +67,10 @@ vars = {
   'trace_common_revision' : '147f65333c38ddd1ebf554e89965c243c8ce50b3',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': '215932238d622457ce6f48a65c86667399ecd813',
+  'v8_revision': 'f4d61dfb362c1cbe85d6b74e512c4d619bbd2d38',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': '5edb52d4302d7aef232d585ec9ae27ef5c3c5438',
+  'zlib_revision': '14dd4c4455602c9b71a1a89b5cafd1f4030d2e3f',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
   'reclient_version': 're_client_version:0.40.0.40ff5a5',
