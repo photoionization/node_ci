@@ -43,7 +43,7 @@ vars = {
   'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
 
   # GN CIPD package version.
-  'gn_version': 'git_revision:6975103d9f59ed9f3cfbc6d2201298f2c2fde046',
+  'gn_version': 'git_revision:e9e83d9095d3234adf68f3e2866f25daf766d5c7',
 
   # ninja CIPD package version.
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
@@ -73,7 +73,7 @@ vars = {
   'zlib_revision': '14dd4c4455602c9b71a1a89b5cafd1f4030d2e3f',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
-  'reclient_version': 're_client_version:0.40.0.40ff5a5',
+  'reclient_version': 're_client_version:0.105.0.d6a0caf-gomaip',
 }
 
 deps = {
