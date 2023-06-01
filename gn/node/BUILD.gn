@@ -43,10 +43,7 @@ declare_args() {
   node_release_urlbase = ""
 
   # Use code cache to speed up startup.
-  # TODO(jgruber): Reenable once code caching is fixed.
-  # See github.com/nodejs/node/issues/47636.
-  # node_use_code_cache = is_linux
-  node_use_code_cache = false
+  node_use_code_cache = is_linux
 
   # Use snapshot to speed up startup.
   node_use_snapshot = !is_win && !is_fuchsia
