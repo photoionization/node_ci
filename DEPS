@@ -36,7 +36,7 @@ vars = {
   'clang_revision': '096dcd2735dd589d85a4ad8bead644869df9eb0e',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '4786a41fb5aa74d356d2fc3e30545d59db5c0bf3',
+  'depot_tools_revision': '4ec095fa85b7c7a748e3e58f3eef19e4bab80f5f',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
@@ -49,10 +49,10 @@ vars = {
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.11.1.chromium.6',
 
-  'googletest_revision': 'cb455a71fb23303e37ce8ee5b1cde6a2c18f66a5',
+  'googletest_revision': 'fb11778f43d5844ca9e2016bae75b22d26ea451f',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': 'a2961dc659b4ae847a9c6120718cc2517ee57d9e',
+  'icu_revision': 'e8c3bc9ea97d4423ad0515e5f1c064f486dae8b1',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': '264c07d7e64f2874434a3b8039e101ddf1b01e7e',
@@ -67,10 +67,10 @@ vars = {
   'trace_common_revision' : '147f65333c38ddd1ebf554e89965c243c8ce50b3',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'f4d61dfb362c1cbe85d6b74e512c4d619bbd2d38',
+  'v8_revision': 'f799ca5edc1e2d076fe03131c69e2743e0bfafb2',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': '14dd4c4455602c9b71a1a89b5cafd1f4030d2e3f',
+  'zlib_revision': 'e6795474e4885ae55b6c6c0a612d0889e2ebd8d9',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
   'reclient_version': 're_client_version:0.105.0.d6a0caf-gomaip',
