@@ -12,7 +12,7 @@ vars = {
   'checkout_google_benchmark' : False,
   'checkout_fuchsia_for_arm64_host' : False,
 
-  'abseil_revision': '3f6f1caf8d47704b0771d11570d76ac75b279adc',
+  'abseil_revision': '8f82e0563e3a844ab1488979845d80c78ea8991c',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
   'build_revision': 'fef3fe31e60ceb77027560ef56e986960463f54b',
