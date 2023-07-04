@@ -36,7 +36,7 @@ vars = {
   'clang_revision': '096dcd2735dd589d85a4ad8bead644869df9eb0e',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '4ec095fa85b7c7a748e3e58f3eef19e4bab80f5f',
+  'depot_tools_revision': '872ac9bd3d35f171a543731bfac1c8597518184e',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
@@ -49,28 +49,28 @@ vars = {
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.11.1.chromium.6',
 
-  'googletest_revision': 'fb11778f43d5844ca9e2016bae75b22d26ea451f',
+  'googletest_revision': 'be03d00f5f0cc3a997d1a368bee8a1fe93651f48',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
   'icu_revision': 'e8c3bc9ea97d4423ad0515e5f1c064f486dae8b1',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
-  'jinja2_revision': '264c07d7e64f2874434a3b8039e101ddf1b01e7e',
+  'jinja2_revision': '515dd10de9bf63040045902a4a310d2ba25213a0',
   'jinja2_url': 'https://chromium.googlesource.com/chromium/src/third_party/jinja2.git',
 
   'markupsafe_revision': '13f4e8c9e206567eeb13bf585406ddc574005748',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': '9ce55548b272269ad5b3aeaa0d4a3a7bbbebd71f',
+  'node_revision': '2f95c16691311679fa3b895e7774d01c66cd058e',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
   'trace_common_revision' : '147f65333c38ddd1ebf554e89965c243c8ce50b3',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'f799ca5edc1e2d076fe03131c69e2743e0bfafb2',
+  'v8_revision': '5af33c99b6a2f5f1c150b3e21edab6b1ac7de1fd',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': 'e6795474e4885ae55b6c6c0a612d0889e2ebd8d9',
+  'zlib_revision': 'f999826d2db966ed3288192360f2d8f1b7f502b3',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
   'reclient_version': 're_client_version:0.105.0.d6a0caf-gomaip',

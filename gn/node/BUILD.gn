@@ -55,28 +55,12 @@ assert(!node_use_etw, "node_use_etw not supported in GN")
 assert(!node_enable_inspector || node_use_openssl,
        "node_enable_inspector requires node_use_openssl")
 
-template("chdir_action") {
-  action(target_name) {
-    forward_variables_from(invoker,
-                           "*",
-                           [
-                             "script",
-                             "args",
-                           ])
-    assert(defined(cwd), "Need cwd in $target_name")
-    script = "//tools/run_in_dir.py"
-    if (defined(sources)) {
-      sources += [ invoker.script ]
-    } else {
-      assert(defined(inputs))
-      inputs += [ invoker.script ]
-    }
-    args = [
-      rebase_path(cwd),
-      rebase_path(invoker.script),
-    ]
-    args += invoker.args
-  }
+executable("node_js2c") {
+  sources = [ "tools/js2c.cc" ]
+  public_deps = [
+    "deps/simdutf",
+    "deps/uv"
+  ]
 }
 
 copy("node_js2c_inputs") {
@@ -109,31 +93,25 @@ action("generate_config_gypi") {
   args = rebase_path(script_args, root_build_dir)
 }
 
-chdir_action("node_js2c") {
+action("run_node_js2c") {
   deps = [
     ":generate_config_gypi",
-    ":node_js2c_inputs",
+    ":node_js2c",
+    ":node_js2c_inputs"
   ]
 
-  macro_inputs = []
-  config_gypi = [ "$target_gen_dir/js2c_inputs/config.gypi" ]
-
-  # We use a relative path to work around an assertion in js2c.py.
-  config_gypi_relative_path = [ "config.gypi" ]
-
-  library_files = node_files.all_library_files
-  inputs =
-      get_target_outputs(":node_js2c_inputs") +
-      macro_inputs + config_gypi
+  script = "//tools/run_executable_in_dir.py"
+  cwd = rebase_path("$target_gen_dir/js2c_inputs")
+  exe = rebase_path("$root_build_dir/node_js2c")
+  stamp = "${exe}.stamp"
+  js2c_inputs = [ "deps", "lib", "config.gypi" ]
   outputs = [
     "$target_gen_dir/node_javascript.cc",
   ]
 
-  cwd = "$target_gen_dir/js2c_inputs"
-  script = "tools/js2c.py"
-  args = [ "--target" ] + rebase_path(outputs)
-  args += library_files
-  args += rebase_path(macro_inputs) + config_gypi_relative_path
+  args = [ cwd, stamp, exe ] + rebase_path(outputs)
+  args += ["--root", cwd]
+  args += js2c_inputs
 }
 
 config("node_base_external") {
@@ -238,7 +216,7 @@ config("node_base_internal") {
 
 source_set("node_base") {
   deps = [
-    ":node_js2c",
+    ":run_node_js2c",
     "deps/ada",
     "deps/base64",
     "deps/brotli/c:brotli",

@@ -116,6 +116,7 @@ if __name__ == '__main__':
   # from configure.py. I have a feeling this is still in flux in the NodeJS side,
   # so let's delay this a bit.
   library_files.remove('<@(node_builtin_shareable_builtins)')
+  library_files.remove('<@(linked_module_files)')
   library_files.append('deps/cjs-module-lexer/lexer.js')
   library_files.append('deps/cjs-module-lexer/dist/lexer.js')
   library_files.append('deps/undici/undici.js')
