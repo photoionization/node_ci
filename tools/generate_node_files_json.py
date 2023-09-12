@@ -158,7 +158,7 @@ if __name__ == '__main__':
       t for t in node_gyp['targets']
       if t['target_name'] == 'cctest')
   out['cctest_sources'] = [
-      f for f in cctest_target['sources'] if not f.startswith('test/cctest/gtest')]
+      f for f in ReplaceVariables(node_gyp, cctest_target['sources']) if not f.startswith('test/cctest/gtest')]
 
   # Find inspector sources.
   inspector_sources = list(map(lambda s: '../../' + s,
