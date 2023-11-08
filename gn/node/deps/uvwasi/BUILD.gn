@@ -22,6 +22,8 @@ node_dep("uvwasi") {
     "src/path_resolver.h",
     "src/poll_oneoff.c",
     "src/poll_oneoff.h",
+    "src/sync_helpers.c",
+    "src/sync_helpers.h",
     "src/uv_mapping.c",
     "src/uv_mapping.h",
     "src/uvwasi_alloc.h",

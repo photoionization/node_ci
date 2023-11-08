@@ -12,7 +12,7 @@ vars = {
   'checkout_google_benchmark' : False,
   'checkout_fuchsia_for_arm64_host' : False,
 
-  'abseil_revision': 'd7df3f77cdca6b1abfc908fb5315337288874c5c',
+  'abseil_revision': 'ba01136be6be9f9e84f312e748738e3bb78ef6d3',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
   'build_revision': 'fef3fe31e60ceb77027560ef56e986960463f54b',
@@ -36,7 +36,7 @@ vars = {
   'clang_revision': '096dcd2735dd589d85a4ad8bead644869df9eb0e',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': '8babcb7e2ec9ffe4e0394a66378423242dd66e6c',
+  'depot_tools_revision': 'a83e6906622848185f5eb4e974ec35586dfe5043',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
@@ -49,10 +49,10 @@ vars = {
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.11.1.chromium.6',
 
-  'googletest_revision': 'eab0e7e289db13eabfc246809b0284dac02a369d',
+  'googletest_revision': 'b10fad38c4026a29ea6561ab15fc4818170d1c10',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
-  'icu_revision': '985b9a6f70e13f3db741fed121e4dcc3046ad494',
+  'icu_revision': '25def7d9e715f49f41fcae07fe2c969991706fcb',
   'icu_url': 'https://chromium.googlesource.com/chromium/deps/icu.git',
 
   'jinja2_revision': '515dd10de9bf63040045902a4a310d2ba25213a0',
@@ -61,16 +61,16 @@ vars = {
   'markupsafe_revision': '006709ba3ed87660a17bd4548c45663628f5ed85',
   'markupsafe_url': 'https://chromium.googlesource.com/chromium/src/third_party/markupsafe.git',
 
-  'node_revision': 'e2183d4de396a43146c9ddfcacf27093cf51d201',
+  'node_revision': '48baefc7b9d2e59cf1b09dd73677e84bc1db1ae2',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
-  'trace_common_revision' : '147f65333c38ddd1ebf554e89965c243c8ce50b3',
+  'trace_common_revision' : '29ac73db520575590c3aceb0a6f1f58dda8934f6',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'e3d96568cc4ab28c57ff6863ad143f41c93040b0',
+  'v8_revision': '17e1db673577433c93b52c879c1fab2e5319fd97',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
-  'zlib_revision': 'f5fd0ad2663e239a31184ad4c9919991dda16f46',
+  'zlib_revision': 'dfc48fc4de8e80416606e2aab42f430ced2a524e',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
   'reclient_version': 're_client_version:0.105.0.d6a0caf-gomaip',
