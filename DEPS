@@ -12,35 +12,32 @@ vars = {
   'checkout_google_benchmark' : False,
   'checkout_fuchsia_for_arm64_host' : False,
 
-  'abseil_revision': '84ccde02f2ad7c440aa8b5d99f73b77c5e6484ad',
+  'abseil_revision': 'ba01136be6be9f9e84f312e748738e3bb78ef6d3',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
-  'build_revision': '8d813a198cb6c99100b2a5eabddd5299a2195ebe',
+  'build_revision': 'fef3fe31e60ceb77027560ef56e986960463f54b',
   'build_url': 'https://chromium.googlesource.com/chromium/src/build.git',
 
-  'buildtools_revision': 'd62e23e82180d514dbf1d5d7caffd7dcbc3294c1',
+  'buildtools_revision': '5d2ccbf93c7d956a9aff1d0acd21155e6b515ceb',
   'buildtools_url': 'https://chromium.googlesource.com/chromium/src/buildtools.git',
 
-  'buildtools_clang_format_revision': '2221d56f57b4346042368e520140e5894d319f94',
+  'buildtools_clang_format_revision': 'f97059df7f8b205064625cdb5f97b56668a125ef',
   'buildtools_clang_format_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/clang/tools/clang-format.git',
 
-  'buildtools_libcxx_revision': '2a2315e69ab61cb488c18fbbb1cd502be049c122',
+  'buildtools_libcxx_revision': 'f8279b01085b800724f5c5629dc365b9f040dc53',
   'buildtools_libcxx_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git',
 
-  'buildtools_libcxxabi_revision': '0226cb1cdfe740b173394e1cebbd0dcf293e38ad',
+  'buildtools_libcxxabi_revision': 'f2cb09f94e39caed554c0ea453741edbc24a38a4',
   'buildtools_libcxxabi_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxxabi.git',
 
-  'buildtools_libunwind_revision': '69b8c646978a1650f10ee7c355b85018a3e23909',
+  'buildtools_libunwind_revision': '129773dde556dfd5dfc7df0eb3c0b970c56029f6',
   'buildtools_libunwind_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libunwind.git',
 
-  'clang_revision': 'bbcb7c6c14fffe3274a20fb4c11e2cb933e0843e',
+  'clang_revision': '096dcd2735dd589d85a4ad8bead644869df9eb0e',
   'clang_url': 'https://chromium.googlesource.com/chromium/src/tools/clang.git',
 
-  'depot_tools_revision': 'ea9bf7f343d3510746a51313a20fb596cd7a6d58',
+  'depot_tools_revision': 'a83e6906622848185f5eb4e974ec35586dfe5043',
   'depot_tools_url': 'https://chromium.googlesource.com/chromium/tools/depot_tools.git',
-
-  # Fetch configuration files required for the 'use_remoteexec' gn arg
-  'download_remoteexec_cfg': False,
 
   'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
   'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
@@ -70,20 +67,13 @@ vars = {
   'trace_common_revision' : '29ac73db520575590c3aceb0a6f1f58dda8934f6',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
-  'v8_revision': 'dd1ac637c65dfb6355127a5c778f5125acc4de40',
+  'v8_revision': '17e1db673577433c93b52c879c1fab2e5319fd97',
   'v8_url': 'https://chromium.googlesource.com/v8/v8.git',
 
   'zlib_revision': 'dfc48fc4de8e80416606e2aab42f430ced2a524e',
   'zlib_url': 'https://chromium.googlesource.com/chromium/src/third_party/zlib.git',
 
   'reclient_version': 're_client_version:0.105.0.d6a0caf-gomaip',
-
-  # RBE instance to use for running remote builds
-  'rbe_instance': Str('projects/rbe-chrome-untrusted/instances/default_instance'),
-
-  # RBE project to download rewrapper config files for. Only needed if
-  # different from the project used in 'rbe_instance'
-  'rewrapper_cfg_project': Str(''),
 }
 
 deps = {
@@ -91,9 +81,9 @@ deps = {
   'node-ci/build': Var('build_url') + '@' + Var('build_revision'),
   'node-ci/buildtools': Var('buildtools_url') + '@' + Var('buildtools_revision'),
   'node-ci/buildtools/clang_format/script': Var('buildtools_clang_format_url') + '@' + Var('buildtools_clang_format_revision'),
-  'node-ci/third_party/libc++/src': Var('buildtools_libcxx_url') + '@' + Var('buildtools_libcxx_revision'),
-  'node-ci/third_party/libc++abi/src': Var('buildtools_libcxxabi_url') + '@' + Var('buildtools_libcxxabi_revision'),
-  'node-ci/third_party/libunwind/src': Var('buildtools_libunwind_url') + '@' + Var('buildtools_libunwind_revision'),
+  'node-ci/buildtools/third_party/libc++/trunk': Var('buildtools_libcxx_url') + '@' + Var('buildtools_libcxx_revision'),
+  'node-ci/buildtools/third_party/libc++abi/trunk': Var('buildtools_libcxxabi_url') + '@' + Var('buildtools_libcxxabi_revision'),
+  'node-ci/buildtools/third_party/libunwind/trunk': Var('buildtools_libunwind_url') + '@' + Var('buildtools_libunwind_revision'),
   'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
   'node-ci/third_party/abseil-cpp': Var('abseil_url') + '@' + Var('abseil_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
@@ -207,21 +197,5 @@ hooks = [
       'python3',
       'node-ci/build/fuchsia/update_sdk.py',
     ],
-  },
-  # Configure remote exec cfg files
-  {
-    'name': 'configure_reclient_cfgs',
-    'pattern': '.',
-    'condition': 'download_remoteexec_cfg',
-    'action': ['python3',
-               'node-ci/buildtools/reclient_cfgs/configure_reclient_cfgs.py',
-               '--rbe_instance',
-               Var('rbe_instance'),
-               '--reproxy_cfg_template',
-               'reproxy.cfg.template',
-               '--rewrapper_cfg_project',
-               Var('rewrapper_cfg_project'),
-               '--quiet',
-               ],
   },
 ]
