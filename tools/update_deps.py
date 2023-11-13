@@ -24,9 +24,9 @@ BUILD_DEPS = {
   'node-ci/build': 'origin/main',
   'node-ci/buildtools': 'origin/main',
   'node-ci/buildtools/clang_format/script': 'origin/main',
-  'node-ci/buildtools/third_party/libc++/trunk': 'origin/main',
-  'node-ci/buildtools/third_party/libc++abi/trunk': 'origin/main',
-  'node-ci/buildtools/third_party/libunwind/trunk': 'origin/main',
+  'node-ci/third_party/libc++/src': 'origin/main',
+  'node-ci/third_party/libc++abi/src': 'origin/main',
+  'node-ci/third_party/libunwind/src': 'origin/main',
   'node-ci/tools/clang': 'origin/main',
 }
 
