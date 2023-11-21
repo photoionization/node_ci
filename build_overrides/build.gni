@@ -3,3 +3,5 @@
 # found in the LICENSE file.
 
 import("//v8/build_overrides/build.gni")
+
+build_with_node = true
