@@ -52,6 +52,9 @@ vars = {
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.11.1.chromium.6',
 
+  'fp16_revision': '0a92994d729ff76a58f692d3028ca1b64b145d91',
+  'fp16_url': 'https://chromium.googlesource.com/external/github.com/Maratyszcza/FP16.git',
+
   'googletest_revision': 'b10fad38c4026a29ea6561ab15fc4818170d1c10',
   'googletest_url': 'https://chromium.googlesource.com/external/github.com/google/googletest.git',
 
@@ -97,6 +100,7 @@ deps = {
   'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
   'node-ci/third_party/abseil-cpp': Var('abseil_url') + '@' + Var('abseil_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
+  'node-ci/third_party/fp16/src': Var('fp16_url') + '@' + Var('fp16_revision'),
   'node-ci/third_party/fuchsia-sdk': {
     'url': Var('fuchsia_sdk_url') + '@' + Var('fuchsia_sdk_revision'),
     'condition': 'checkout_fuchsia',
