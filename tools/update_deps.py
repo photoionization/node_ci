@@ -12,6 +12,7 @@ DEPS = {
   'node-ci/node' : 'origin',
   'node-ci/third_party/abseil-cpp': 'origin/main',
   'node-ci/third_party/depot_tools': 'origin/main',
+  'node-ci/third_party/fp16': 'origin/master',
   'node-ci/third_party/googletest/src': 'origin/main',
   'node-ci/third_party/icu': 'origin/main',
   'node-ci/third_party/jinja2': 'origin/main',

@@ -3,7 +3,7 @@
 # found in the LICENSE file.
 
 import("//node/node_files.gni")
-import("//node/node.gni")
+import("//node/v8-node-ci-node.gni")
 
 sync_files("sync_files") {
   sources = node_files.test_addons_files

@@ -52,11 +52,8 @@ def GenerateBuildFiles(options):
   gn_args.append('symbol_level=%s' % (1 if options.debug else 0))
   gn_args.append('use_goma=%s' % ToBool(options.goma))
   gn_args.append('is_component_build=%s' % ToBool(options.shared))
-  gn_args.append('node_use_code_cache=%s' % ToBool(not options.no_cache))
+  gn_args.append('node_use_node_code_cache=%s' % ToBool(not options.no_cache))
   gn_args.append('v8_enable_snapshot_compression=false')
-  # Override system's OpenSSL configs for tests.
-  gn_args.append('openssl_dir=""')
-  gn_args.append('openssl_seclevel=1')
   gn_args.append('v8_enable_javascript_promise_hooks=true')
   gn_args.append('v8_scriptormodule_legacy_lifetime=true')
 

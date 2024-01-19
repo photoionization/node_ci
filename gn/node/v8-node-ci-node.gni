@@ -15,24 +15,6 @@ if (is_win) {
   node_exe = "node"
 }
 
-template("node_dep") {
-  static_library(target_name) {
-    forward_variables_from(invoker, "*", ["configs", "remove_configs"])
-    if (defined(invoker.configs)) {
-      configs += invoker.configs
-    }
-    if (is_posix || is_mac || is_fuchsia) {
-      configs -= [ "//build/config/gcc:symbol_visibility_hidden" ]
-      configs += [ "//build/config/gcc:symbol_visibility_default" ]
-    }
-    configs += [ "//build/config/compiler:no_chromium_code" ]
-    configs -= [ "//build/config/compiler:chromium_code" ]
-    if (defined(invoker.remove_configs)) {
-      configs -= invoker.remove_configs
-    }
-  }
-}
-
 template("call_node") {
   action(target_name) {
     deps = invoker.deps + [ "//node:node($v8_snapshot_toolchain)" ]
