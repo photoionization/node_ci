@@ -4,14 +4,9 @@
 
 gclient_gn_args_file = 'node-ci/build/config/gclient_args.gni'
 gclient_gn_args = [
-  'checkout_google_benchmark',
-  'checkout_fuchsia_for_arm64_host'
 ]
 
 vars = {
-  'checkout_google_benchmark' : False,
-  'checkout_fuchsia_for_arm64_host' : False,
-
   'abseil_revision': '84ccde02f2ad7c440aa8b5d99f73b77c5e6484ad',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
@@ -41,9 +36,6 @@ vars = {
 
   # Fetch configuration files required for the 'use_remoteexec' gn arg
   'download_remoteexec_cfg': False,
-
-  'fuchsia_sdk_revision': 'f8df9ff79b878d1998970cc04a197061069e48ce',
-  'fuchsia_sdk_url': 'https://chromium.googlesource.com/chromium/src/third_party/fuchsia-sdk.git',
 
   # GN CIPD package version.
   'gn_version': 'git_revision:e9e83d9095d3234adf68f3e2866f25daf766d5c7',
@@ -101,10 +93,6 @@ deps = {
   'node-ci/third_party/abseil-cpp': Var('abseil_url') + '@' + Var('abseil_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
   'node-ci/third_party/fp16/src': Var('fp16_url') + '@' + Var('fp16_revision'),
-  'node-ci/third_party/fuchsia-sdk': {
-    'url': Var('fuchsia_sdk_url') + '@' + Var('fuchsia_sdk_revision'),
-    'condition': 'checkout_fuchsia',
-  },
   'node-ci/third_party/googletest/src': Var('googletest_url') + '@' + Var('googletest_revision'),
   'node-ci/third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
   'node-ci/third_party/jinja2': Var('jinja2_url') + '@' + Var('jinja2_revision'),
@@ -215,15 +203,6 @@ hooks = [
     'action': ['python3',
                'node-ci/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=x64'],
-  },
-  {
-    'name': 'fuchsia_sdk',
-    'pattern': '.',
-    'condition': 'checkout_fuchsia',
-    'action': [
-      'python3',
-      'node-ci/build/fuchsia/update_sdk.py',
-    ],
   },
   # Configure remote exec cfg files
   {
