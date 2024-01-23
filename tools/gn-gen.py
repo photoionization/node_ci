@@ -50,12 +50,8 @@ def GenerateBuildFiles(options):
 
   gn_args.append('is_debug=%s' % ToBool(options.debug))
   gn_args.append('symbol_level=%s' % (1 if options.debug else 0))
-  gn_args.append('use_goma=%s' % ToBool(options.goma))
   gn_args.append('is_component_build=%s' % ToBool(options.shared))
   gn_args.append('node_use_node_code_cache=%s' % ToBool(not options.no_cache))
-  gn_args.append('v8_enable_snapshot_compression=false')
-  gn_args.append('v8_enable_javascript_promise_hooks=true')
-  gn_args.append('v8_scriptormodule_legacy_lifetime=true')
 
   flattened_args = ' '.join(gn_args)
   args = ['gn', 'gen', options.out_dir, '-q', '--args=' + flattened_args]
@@ -66,10 +62,6 @@ def ParseOptions(args):
   parser = argparse.ArgumentParser(
       description='Generate GN build configurations')
   parser.add_argument('out_dir', help='build directory')
-  parser.add_argument('--goma', help='use goma to speed up compile',
-                      action='store_true')
-  parser.add_argument('--jumbo', help='use jumbo to speed up compile',
-                      action='store_true')
   parser.add_argument('--asan', help='build with address sanitizer',
                       action='store_true', default=False)
   parser.add_argument('--tsan', help='build with thread sanitizer',
