@@ -45,6 +45,7 @@ exec_script_whitelist =
     "//node/deps/simdutf/unofficial.gni",
     "//node/deps/uvwasi/unofficial.gni",
     "//node/deps/uv/unofficial.gni",
+    "//node/deps/v8/build_overrides/build.gni",
     "//node/src/inspector/unofficial.gni",
   ]
 
@@ -74,6 +75,10 @@ default_args = {
   # Alternative configuration not supported. Do not change.
   # General build options.
   clang_use_chrome_plugins = false
+
+  # Node.js requires macOS 11 and later.
+  mac_deployment_target="11.0"
+  mac_min_system_version="11.0"
 
   # V8 options catering towards Node.js use case.
   v8_expose_symbols = true

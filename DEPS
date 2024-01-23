@@ -2,11 +2,17 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-gclient_gn_args_file = 'node-ci/build/config/gclient_args.gni'
+use_relative_paths = True
+
+gclient_gn_args_file = 'build/config/gclient_args.gni'
 gclient_gn_args = [
+  'build_upstream_node',
 ]
 
 vars = {
+  # Set to true to use deps bundled in node.
+  'build_upstream_node': False,
+
   'abseil_revision': '84ccde02f2ad7c440aa8b5d99f73b77c5e6484ad',
   'abseil_url': 'https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp.git',
 
@@ -82,25 +88,37 @@ vars = {
 }
 
 deps = {
-  'node-ci/base/trace_event/common': Var('trace_common_url') + '@' + Var('trace_common_revision'),
-  'node-ci/build': Var('build_url') + '@' + Var('build_revision'),
-  'node-ci/buildtools': Var('buildtools_url') + '@' + Var('buildtools_revision'),
-  'node-ci/buildtools/clang_format/script': Var('buildtools_clang_format_url') + '@' + Var('buildtools_clang_format_revision'),
-  'node-ci/third_party/libc++/src': Var('buildtools_libcxx_url') + '@' + Var('buildtools_libcxx_revision'),
-  'node-ci/third_party/libc++abi/src': Var('buildtools_libcxxabi_url') + '@' + Var('buildtools_libcxxabi_revision'),
-  'node-ci/third_party/libunwind/src': Var('buildtools_libunwind_url') + '@' + Var('buildtools_libunwind_revision'),
-  'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
-  'node-ci/third_party/abseil-cpp': Var('abseil_url') + '@' + Var('abseil_revision'),
-  'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
-  'node-ci/third_party/fp16/src': Var('fp16_url') + '@' + Var('fp16_revision'),
-  'node-ci/third_party/googletest/src': Var('googletest_url') + '@' + Var('googletest_revision'),
-  'node-ci/third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
-  'node-ci/third_party/jinja2': Var('jinja2_url') + '@' + Var('jinja2_revision'),
-  'node-ci/third_party/markupsafe': Var('markupsafe_url') + '@' + Var('markupsafe_revision'),
-  'node-ci/third_party/zlib': Var('zlib_url') + '@' + Var('zlib_revision'),
-  'node-ci/tools/clang': Var('clang_url') + '@' + Var('clang_revision'),
-  'node-ci/v8': Var('v8_url') + '@' +  Var('v8_revision'),
-  'node-ci/buildtools/linux64': {
+  'base/trace_event/common': {
+    'url': Var('trace_common_url') + '@' + Var('trace_common_revision'),
+    'condition': 'not build_upstream_node',
+  },
+  'build': Var('build_url') + '@' + Var('build_revision'),
+  'buildtools': Var('buildtools_url') + '@' + Var('buildtools_revision'),
+  'buildtools/clang_format/script': Var('buildtools_clang_format_url') + '@' + Var('buildtools_clang_format_revision'),
+  'third_party/libc++/src': Var('buildtools_libcxx_url') + '@' + Var('buildtools_libcxx_revision'),
+  'third_party/libc++abi/src': Var('buildtools_libcxxabi_url') + '@' + Var('buildtools_libcxxabi_revision'),
+  'third_party/libunwind/src': Var('buildtools_libunwind_url') + '@' + Var('buildtools_libunwind_revision'),
+  'node': Var('node_url') + '@' + Var('node_revision'),
+  'third_party/abseil-cpp': Var('abseil_url') + '@' + Var('abseil_revision'),
+  'third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
+  'third_party/fp16/src': {
+    'url': Var('fp16_url') + '@' + Var('fp16_revision'),
+    'condition': 'not build_upstream_node',
+  },
+  'third_party/googletest/src': {
+    'url': Var('googletest_url') + '@' + Var('googletest_revision'),
+    'condition': 'not build_upstream_node',
+  },
+  'third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
+  'third_party/jinja2': Var('jinja2_url') + '@' + Var('jinja2_revision'),
+  'third_party/markupsafe': Var('markupsafe_url') + '@' + Var('markupsafe_revision'),
+  'third_party/zlib': Var('zlib_url') + '@' + Var('zlib_revision'),
+  'tools/clang': Var('clang_url') + '@' + Var('clang_revision'),
+  'v8': {
+    'url': Var('v8_url') + '@' +  Var('v8_revision'),
+    'condition': 'not build_upstream_node',
+  },
+  'buildtools/linux64': {
     'packages': [
       {
         'package': 'gn/gn/linux-amd64',
@@ -110,7 +128,7 @@ deps = {
     'dep_type': 'cipd',
     'condition': 'host_os == "linux"',
   },
-  'node-ci/buildtools/mac': {
+  'buildtools/mac': {
     'packages': [
       {
         'package': 'gn/gn/mac-amd64',
@@ -120,7 +138,7 @@ deps = {
     'dep_type': 'cipd',
     'condition': 'host_os == "mac"',
   },
-  'node-ci/buildtools/win': {
+  'buildtools/win': {
     'packages': [
       {
         'package': 'gn/gn/windows-amd64',
@@ -130,7 +148,7 @@ deps = {
     'dep_type': 'cipd',
     'condition': 'host_os == "win"',
   },
-  'node-ci/buildtools/reclient': {
+  'buildtools/reclient': {
     'packages': [
       {
         'package': 'infra/rbe/client/${{platform}}',
@@ -140,7 +158,7 @@ deps = {
     'dep_type': 'cipd',
     'condition': 'host_os == "linux" or host_os == "win"',
   },
-  'node-ci/third_party/ninja': {
+  'third_party/ninja': {
     'packages': [
       {
         'package': 'infra/3pp/tools/ninja/${{platform}}',
@@ -160,48 +178,49 @@ hooks = [
     'pattern': '.',
     'action': [
         'python3',
-        'node-ci/build/landmines.py',
+        'build/landmines.py',
         '--landmine-scripts',
-        'node-ci/tools/get_landmines.py',
+        'tools/get_landmines.py',
     ],
   },
   {
     'name': 'generate_node_filelist',
-    'pattern': 'node-ci/node',
-    'action': ['python3', 'node-ci/tools/generate_node_files_json.py'],
+    'pattern': 'node',
+    'condition': 'not build_upstream_node',
+    'action': ['python3', 'tools/generate_node_files_json.py'],
   },
   {
     # Update the Windows toolchain if necessary.
     'name': 'win_toolchain',
     'pattern': '.',
     'condition': 'checkout_win',
-    'action': ['python3', 'node-ci/build/vs_toolchain.py', 'update'],
+    'action': ['python3', 'build/vs_toolchain.py', 'update'],
   },
   {
     # Update the Mac toolchain if necessary.
     'name': 'mac_toolchain',
     'pattern': '.',
     'condition': 'checkout_mac',
-    'action': ['python3', 'node-ci/build/mac_toolchain.py'],
+    'action': ['python3', 'build/mac_toolchain.py'],
   },
   {
     'name': 'clang',
     'pattern': '.',
-    'action': ['python3', 'node-ci/tools/clang/scripts/update.py'],
+    'action': ['python3', 'tools/clang/scripts/update.py'],
   },
   {
     # Update LASTCHANGE.
     'name': 'lastchange',
     'pattern': '.',
-    'action': ['python3', 'node-ci/build/util/lastchange.py',
-               '-o', 'node-ci/build/util/LASTCHANGE'],
+    'action': ['python3', 'build/util/lastchange.py',
+               '-o', 'build/util/LASTCHANGE'],
   },
   {
     'name': 'sysroot_x64',
     'pattern': '.',
     'condition': 'checkout_linux and checkout_x64',
     'action': ['python3',
-               'node-ci/build/linux/sysroot_scripts/install-sysroot.py',
+               'build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=x64'],
   },
   # Configure remote exec cfg files
@@ -210,7 +229,7 @@ hooks = [
     'pattern': '.',
     'condition': 'download_remoteexec_cfg',
     'action': ['python3',
-               'node-ci/buildtools/reclient_cfgs/configure_reclient_cfgs.py',
+               'buildtools/reclient_cfgs/configure_reclient_cfgs.py',
                '--rbe_instance',
                Var('rbe_instance'),
                '--reproxy_cfg_template',

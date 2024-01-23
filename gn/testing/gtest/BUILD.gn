@@ -2,7 +2,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import("//node/node.gni")
+
 group("gtest") {
   testonly = true
-  public_deps = [ "//v8/testing/gtest" ]
+  public_deps = [ "$node_v8_path/testing/gtest" ]
 }

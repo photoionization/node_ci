@@ -8,13 +8,22 @@ import os
 import subprocess
 import sys
 
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def ToBool(option):
   return 'true' if option else 'false'
+
+def BuildUpstreamNode():
+  with open(os.path.join(ROOT_DIR, 'build/config/gclient_args.gni'), 'r') as f:
+    return 'build_upstream_node = true' in f.read()
 
 def GenerateBuildFiles(options):
   gn_args = []
   # Only one sanitizer is enabled.
   assert(options.asan + options.tsan + options.ubsan + options.ubsan_vptr <= 1)
+
+  if BuildUpstreamNode():
+    gn_args.append('node_v8_path="//node/deps/v8"')
 
   if options.asan or options.tsan or options.ubsan or options.ubsan_vptr:
     options.shared = False
