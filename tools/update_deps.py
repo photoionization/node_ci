@@ -8,27 +8,27 @@ import os
 import subprocess
 
 DEPS = {
-  'node-ci/base/trace_event/common': 'origin/main',
-  'node-ci/node' : 'origin',
-  'node-ci/third_party/abseil-cpp': 'origin/main',
-  'node-ci/third_party/depot_tools': 'origin/main',
-  'node-ci/third_party/fp16': 'origin/master',
-  'node-ci/third_party/googletest/src': 'origin/main',
-  'node-ci/third_party/icu': 'origin/main',
-  'node-ci/third_party/jinja2': 'origin/main',
-  'node-ci/third_party/markupsafe': 'origin/main',
-  'node-ci/third_party/zlib': 'origin/main',
-  'node-ci/v8' : 'origin/main',
+  'base/trace_event/common': 'origin/main',
+  'node' : 'origin',
+  'third_party/abseil-cpp': 'origin/main',
+  'third_party/depot_tools': 'origin/main',
+  'third_party/fp16/src': 'origin/master',
+  'third_party/googletest/src': 'origin/main',
+  'third_party/icu': 'origin/main',
+  'third_party/jinja2': 'origin/main',
+  'third_party/markupsafe': 'origin/main',
+  'third_party/zlib': 'origin/main',
+  'v8' : 'origin/main',
 }
 
 BUILD_DEPS = {
-  'node-ci/build': 'origin/main',
-  'node-ci/buildtools': 'origin/main',
-  'node-ci/buildtools/clang_format/script': 'origin/main',
-  'node-ci/third_party/libc++/src': 'origin/main',
-  'node-ci/third_party/libc++abi/src': 'origin/main',
-  'node-ci/third_party/libunwind/src': 'origin/main',
-  'node-ci/tools/clang': 'origin/main',
+  'build': 'origin/main',
+  'buildtools': 'origin/main',
+  'buildtools/clang_format/script': 'origin/main',
+  'third_party/libc++/src': 'origin/main',
+  'third_party/libc++abi/src': 'origin/main',
+  'third_party/libunwind/src': 'origin/main',
+  'tools/clang': 'origin/main',
 }
 
 def update_deps(root, deps_dict):
@@ -64,7 +64,9 @@ def main(update_build):
   # Fetch from upstream
   subprocess.check_output(['gclient', 'fetch'])
   # Get gclient root
-  root = subprocess.check_output(['gclient', 'root']).strip().decode('utf-8')
+  root = os.path.join(
+            subprocess.check_output(['gclient', 'root']).strip().decode('utf-8'),
+            "node-ci")
   update_deps(root, DEPS)
   if update_build:
     update_deps(root, BUILD_DEPS)

@@ -57,6 +57,7 @@ def GenerateBuildFiles(options):
     gn_args.append('is_ubsan_vptr=true')
     gn_args.append('is_ubsan_no_recover=true')
 
+  gn_args.append('icu_use_data_file = false')
   gn_args.append('is_debug=%s' % ToBool(options.debug))
   gn_args.append('symbol_level=%s' % (1 if options.debug else 0))
   gn_args.append('is_component_build=%s' % ToBool(options.shared))

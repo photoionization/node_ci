@@ -75,6 +75,7 @@ default_args = {
   # Alternative configuration not supported. Do not change.
   # General build options.
   clang_use_chrome_plugins = false
+  icu_use_data_file = false
 
   # Node.js requires macOS 11 and later.
   mac_deployment_target="11.0"
