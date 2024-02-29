@@ -121,7 +121,7 @@ deps = {
   'buildtools/linux64': {
     'packages': [
       {
-        'package': 'gn/gn/linux-amd64',
+        'package': 'gn/gn/linux-${{arch}}',
         'version': Var('gn_version'),
       }
     ],
@@ -131,7 +131,7 @@ deps = {
   'buildtools/mac': {
     'packages': [
       {
-        'package': 'gn/gn/mac-amd64',
+        'package': 'gn/gn/mac-${{arch}}',
         'version': Var('gn_version'),
       }
     ],
@@ -156,7 +156,7 @@ deps = {
       }
     ],
     'dep_type': 'cipd',
-    'condition': 'host_os == "linux" or host_os == "win"',
+    'condition': '(host_os == "linux" or host_os == "mac" or host_os == "win") and (host_cpu != "arm64" or host_os == "mac")',
   },
   'third_party/ninja': {
     'packages': [
@@ -214,6 +214,30 @@ hooks = [
     'pattern': '.',
     'action': ['python3', 'build/util/lastchange.py',
                '-o', 'build/util/LASTCHANGE'],
+  },
+  {
+    'name': 'sysroot_arm',
+    'pattern': '.',
+    'condition': '(checkout_linux and checkout_arm)',
+    'action': ['python3',
+               'build/linux/sysroot_scripts/install-sysroot.py',
+               '--arch=arm'],
+  },
+  {
+    'name': 'sysroot_arm64',
+    'pattern': '.',
+    'condition': '(checkout_linux and checkout_arm64)',
+    'action': ['python3',
+               'build/linux/sysroot_scripts/install-sysroot.py',
+               '--arch=arm64'],
+  },
+  {
+    'name': 'sysroot_x86',
+    'pattern': '.',
+    'condition': '(checkout_linux and (checkout_x86 or checkout_x64))',
+    'action': ['python3',
+               'build/linux/sysroot_scripts/install-sysroot.py',
+               '--arch=x86'],
   },
   {
     'name': 'sysroot_x64',
