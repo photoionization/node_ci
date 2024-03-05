@@ -1,0 +1,143 @@
+import("//build/config/c++/c++.gni")
+import("//node/node.gni")
+
+if (is_mac) {
+  import("//build/config/mac/mac_sdk.gni")
+}
+
+group("node_tests") {
+  testonly = true
+
+  deps = [
+    ":node_test_addons",
+    ":node_test_node_api",
+    ":node_test_js_native_api",
+    # The tests files are copied for consumption in node_integration_ng.py.
+    # TODO(zcbenz): Remove this after refactoring node_integration_ng.py.
+    ":copy_test_common",
+    ":copy_test_testpy",
+  ]
+}
+
+action("node_headers") {
+  deps = [ "$node_path:generate_config_gypi" ]
+  outputs = [ "$root_gen_dir/node_headers/include/node/node.h" ]
+
+  script = "$node_path/tools/install.py"
+
+  args = [
+    "install",
+    "--silent",
+    "--headers-only",
+    "--prefix", "/",
+    "--dest-dir", rebase_path("$root_gen_dir/node_headers"),
+    "--config-gypi-path", rebase_path("$root_gen_dir/node/config.gypi"),
+    "--v8-dir", rebase_path(node_v8_path),
+    "--root-dir", rebase_path(node_path),
+  ]
+}
+
+template("build_addons") {
+  testonly = true
+
+  group(target_name) {
+    deps = [
+      ":$target_name" + "_build",
+      ":$target_name" + "_copy",
+    ]
+  }
+
+  action(target_name + "_build") {
+    deps = [
+      "$node_path:node",
+      ":node_headers",
+    ]
+    script = "//tools/run_with_env.py"
+
+    # TODO(zcbenz): Make search_files.py support more extensions.
+    inputs = exec_script("$node_path/tools/search_files.py",
+                         [ rebase_path(".", root_build_dir),
+                           rebase_path("$node_path/test/" + invoker.target, root_build_dir),
+                           "cc" ],
+                         "list lines")
+
+    stamp = "$target_gen_dir/$target_name.stamp"
+    outputs = [ stamp ]
+
+    args = [
+      rebase_path("$node_path/tools/build_addons.py"),
+      rebase_path("$node_path/test/" + invoker.target),
+      "--loglevel", "verbose",
+      "--out-dir", rebase_path(root_build_dir),
+      "--headers-dir", rebase_path("$root_gen_dir/node_headers"),
+      "--stamp", rebase_path(stamp),
+    ]
+
+    if (defined(invoker.skip_tests)) {
+      args += [ "--skip-tests", string_join(",", invoker.skip_tests) ]
+    }
+
+    if (use_custom_libcxx) {
+      config_site_path = rebase_path("//buildtools/third_party/libc++")
+      libcpp_path = rebase_path("//third_party/libc++")
+      libcppabi_path = rebase_path("//third_party/libc++abi")
+      clang_path = rebase_path("//third_party/llvm-build/Release+Asserts/bin/clang++")
+      clang_args = "-isystem $libcpp_path/src/include " +
+                   "-isystem $libcppabi_path/src/include " +
+                   "-I $config_site_path " +
+                   "-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE " +
+                   "-nostdinc++ " +
+                   "-nostdlib++ "
+      if (is_mac) {
+        mac_sdk_path_abs = rebase_path(mac_sdk_path)
+        clang_args += "-isysroot $mac_sdk_path_abs "
+      }
+      args += [ "--env", "CXX", "$clang_path $clang_args" ]
+    }
+  }
+
+  # The tests files are copied for consumption in node_integration_ng.py.
+  # TODO(zcbenz): Remove this after refactoring node_integration_ng.py.
+  action(target_name + "_copy") {
+    build_step = invoker.target_name + "_build"
+    deps = [ ":$build_step" ]
+    script = "//tools/cp_dir.py"
+    inputs = [ "$node_path/test/" + invoker.target ]
+    outputs = [ "$root_gen_dir/node/test/" + invoker.target ]
+    args = rebase_path(inputs) + rebase_path(outputs)
+  }
+}
+
+build_addons("node_test_addons") {
+  target = "addons"
+  if (target_os == "mac") {
+    # TODO(zcbenz): Following addons fail to link.
+    skip_tests = [
+      "openssl-client-cert-engine",
+      "openssl-key-engine",
+      "openssl-test-engine",
+    ]
+  }
+}
+
+build_addons("node_test_node_api") {
+  target = "node-api"
+}
+
+build_addons("node_test_js_native_api") {
+  target = "js-native-api"
+}
+
+action("copy_test_common") {
+  script = "//tools/cp_dir.py"
+  inputs = [ "$node_path/test/common" ]
+  outputs = [ "$root_gen_dir/node/test/common" ]
+  args = rebase_path(inputs) + rebase_path(outputs)
+}
+
+action("copy_test_testpy") {
+  script = "//tools/cp_dir.py"
+  inputs = [ "$node_path/test/testpy" ]
+  outputs = [ "$root_gen_dir/node/test/testpy" ]
+  args = rebase_path(inputs) + rebase_path(outputs)
+}
