@@ -21,11 +21,14 @@ group("node_tests") {
 
 action("node_headers") {
   deps = [ "$node_path:generate_config_gypi" ]
-  outputs = [ "$root_gen_dir/node_headers/include/node/node.h" ]
 
-  script = "$node_path/tools/install.py"
+  stamp = "$target_gen_dir/$target_name.stamp"
+  outputs = [ stamp ]
+
+  script = "//tools/run_with_env.py"
 
   args = [
+    rebase_path("$node_path/tools/install.py", root_build_dir),
     "install",
     "--silent",
     "--headers-only",
@@ -34,7 +37,27 @@ action("node_headers") {
     "--config-gypi-path", rebase_path("$root_gen_dir/node/config.gypi"),
     "--v8-dir", rebase_path(node_v8_path),
     "--root-dir", rebase_path(node_path),
+    "--stamp", rebase_path(stamp),
   ]
+}
+
+template("copy_dir") {
+  action(target_name) {
+    testonly = true
+    forward_variables_from(invoker, [ "deps" ])
+
+    script = "//tools/run_with_env.py"
+
+    stamp = "$target_gen_dir/$target_name.stamp"
+    outputs = [ stamp ]
+
+    args = [
+      rebase_path("//tools/cp_dir.py", root_build_dir),
+      rebase_path(invoker.src, root_build_dir),
+      rebase_path(invoker.dest, root_build_dir),
+      "--stamp", rebase_path(stamp, root_build_dir),
+    ]
+  }
 }
 
 template("build_addons") {
@@ -98,13 +121,12 @@ template("build_addons") {
 
   # The tests files are copied for consumption in node_integration_ng.py.
   # TODO(zcbenz): Remove this after refactoring node_integration_ng.py.
-  action(target_name + "_copy") {
+  copy_dir(target_name + "_copy") {
     build_step = invoker.target_name + "_build"
     deps = [ ":$build_step" ]
-    script = "//tools/cp_dir.py"
-    inputs = [ "$node_path/test/" + invoker.target ]
-    outputs = [ "$root_gen_dir/node/test/" + invoker.target ]
-    args = rebase_path(inputs) + rebase_path(outputs)
+
+    src = "$node_path/test/" + invoker.target
+    dest = "$root_gen_dir/node/test/" + invoker.target
   }
 }
 
@@ -128,16 +150,12 @@ build_addons("node_test_js_native_api") {
   target = "js-native-api"
 }
 
-action("copy_test_common") {
-  script = "//tools/cp_dir.py"
-  inputs = [ "$node_path/test/common" ]
-  outputs = [ "$root_gen_dir/node/test/common" ]
-  args = rebase_path(inputs) + rebase_path(outputs)
+copy_dir("copy_test_common") {
+  src = "$node_path/test/common"
+  dest = "$root_gen_dir/node/test/common"
 }
 
-action("copy_test_testpy") {
-  script = "//tools/cp_dir.py"
-  inputs = [ "$node_path/test/testpy" ]
-  outputs = [ "$root_gen_dir/node/test/testpy" ]
-  args = rebase_path(inputs) + rebase_path(outputs)
+copy_dir("copy_test_testpy") {
+  src = "$node_path/test/testpy"
+  dest = "$root_gen_dir/node/test/testpy"
 }
