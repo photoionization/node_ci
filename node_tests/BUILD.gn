@@ -100,11 +100,19 @@ template("build_addons") {
       args += [ "--skip-tests", string_join(",", invoker.skip_tests) ]
     }
 
-    if (use_custom_libcxx) {
+    clang_path = rebase_path("//third_party/llvm-build/Release+Asserts/bin/clang++")
+    clang_args = ""
+    if (false) {  # use_custom_libcxx
+      # TODO(zcbenz): Following code makes native addons build with the custom
+      # libcxx headers, but does not actually link with libcxx, and some addons
+      # tests will fail with linking error.
+      # We should eventually find a way to link the addons with custom libcxx,
+      # and enable this code path, because the node addons should use the same
+      # libcxx with the node binary otherwise addons would crash when using V8
+      # APIs that use STL containers.
       config_site_path = rebase_path("//buildtools/third_party/libc++")
       libcpp_path = rebase_path("//third_party/libc++")
       libcppabi_path = rebase_path("//third_party/libc++abi")
-      clang_path = rebase_path("//third_party/llvm-build/Release+Asserts/bin/clang++")
       clang_args = "-isystem $libcpp_path/src/include " +
                    "-isystem $libcppabi_path/src/include " +
                    "-I $config_site_path " +
@@ -115,8 +123,8 @@ template("build_addons") {
         mac_sdk_path_abs = rebase_path(mac_sdk_path)
         clang_args += "-isysroot $mac_sdk_path_abs "
       }
-      args += [ "--env", "CXX", "$clang_path $clang_args" ]
     }
+    args += [ "--env", "CXX", "$clang_path $clang_args" ]
   }
 
   # The tests files are copied for consumption in node_integration_ng.py.
